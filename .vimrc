@@ -1,6 +1,6 @@
 " cocopon's vimrc
 "
-" This vimrc will setup automatilcally. yay!
+" This vimrc will setup automatically. yay!
 
 
 " Required Bundles {{{
