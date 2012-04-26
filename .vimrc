@@ -115,7 +115,6 @@ function! s:setup()
 				\ ]
 
 	for funcname in funcnames
-		let Func = function('s:setup_' . funcname)
 		execute printf('let s:%s_executed = s:setup_%s()', funcname, funcname)
 	endfor
 endfunction
