@@ -1,0 +1,9 @@
+# Bind
+bind generic g move-first-line
+bind generic G move-last-line
+bind generic ^f move-page-down
+bind generic ^b move-page-up
+
+# Set
+set show-rev-graph = yes
+
