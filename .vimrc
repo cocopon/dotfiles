@@ -7,6 +7,7 @@
 let s:github_bundles = [
 			\ 	'mattn/calendar-vim',
 			\ 	'mattn/zencoding-vim',
+			\ 	'scrooloose/syntastic',
 			\ 	'Shougo/neocomplcache',
 			\ 	'Shougo/neocomplcache-snippets-complete',
 			\ 	'Shougo/unite.vim',
@@ -227,11 +228,21 @@ let g:vimfiler_safe_mode_by_default = 0
 " Neocomplcache-snippets-complete
 imap <C-l> <Plug>(neocomplcache_snippets_expand)
 smap <C-l> <Plug>(neocomplcache_snippets_expand)
+
+" Syntastic
+let g:syntastic_mode_map = {
+			\ 	'mode': 'passive',
+			\ 	'active_filetypes': ['javascript'],
+			\ 	'passive_filetypes': [],
+			\ }
+let g:syntastic_javascript_checker = 'jslint'
+let g:syntastic_javascript_jslint_conf = '--sloppy --white'
 " }}}
 
 
 " FileType {{{
-autocmd FileType text setlocal textwidth=0
+autocmd FileType text setlocal tw=0
+autocmd FileType ruby setlocal sw=2 ts=2
 " }}}
 
 
