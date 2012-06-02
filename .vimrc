@@ -172,7 +172,7 @@ cnoremap <Down> <C-n>
 set tabstop=4
 set shiftwidth=4
 set list
-set listchars=tab:▸\ 
+set listchars=eol:¬,tab:▸\ 
 set autoindent
 set nosmartindent
 autocmd FileType html set indentexpr&
