@@ -232,7 +232,7 @@ smap <C-l> <Plug>(neocomplcache_snippets_expand)
 " Syntastic
 let g:syntastic_mode_map = {
 			\ 	'mode': 'passive',
-			\ 	'active_filetypes': ['javascript'],
+			\ 	'active_filetypes': [],
 			\ 	'passive_filetypes': [],
 			\ }
 let g:syntastic_javascript_checker = 'jslint'
