@@ -242,8 +242,12 @@ let g:syntastic_javascript_jslint_conf = '--sloppy --white'
 
 
 " FileType {{{
-autocmd FileType text setlocal tw=0
-autocmd FileType ruby setlocal sw=2 ts=2
+autocmd BufRead,BufNewFile *.as set filetype=javascript
+autocmd FileType eruby setlocal sw=2 ts=2
+autocmd FileType html  setlocal sw=2 ts=2
+autocmd FileType text  setlocal tw=0
+autocmd FileType ruby  setlocal sw=2 ts=2
+autocmd FileType vim   setlocal sw=2 ts=2
 " }}}
 
 
