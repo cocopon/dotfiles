@@ -15,6 +15,7 @@ let s:github_bundles = [
 			\ 	'Shougo/vimproc',
 			\ 	'Shougo/vimshell',
 			\ 	'Shougo/vinarise',
+			\ 	'pangloss/vim-javascript',
 			\ 	't9md/vim-textmanip',
 			\ 	'thinca/vim-editvar',
 			\ 	'thinca/vim-qfreplace',
