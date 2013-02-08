@@ -5,6 +5,7 @@
 
 " Required Bundles {{{
 let s:github_bundles = [
+			\ 	'h1mesuke/unite-outline',
 			\ 	'mattn/calendar-vim',
 			\ 	'mattn/zencoding-vim',
 			\ 	'scrooloose/syntastic',
@@ -220,6 +221,7 @@ let g:unite_enable_start_insert = 0
 nnoremap <silent> ,ub :<C-u>Unite -default-action=open bookmark<CR>
 nnoremap <silent> ,uf :<C-u>Unite file<CR>
 nnoremap <silent> ,um :<C-u>Unite -default-action=open file_mru<CR>
+nnoremap <silent> ,uo :<C-u>Unite outline<CR>
 nnoremap <silent> ,ut :<C-u>Unite -default-action=open todo/all<CR>
 
 " Vimfiler
