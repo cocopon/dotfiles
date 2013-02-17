@@ -6,6 +6,8 @@
 " Required Bundles {{{
 let s:github_bundles = [
 			\ 	'h1mesuke/unite-outline',
+			\ 	'Lokaltog/vim-easymotion',
+			\ 	'Lokaltog/vim-powerline',
 			\ 	'mattn/calendar-vim',
 			\ 	'mattn/zencoding-vim',
 			\ 	'scrooloose/syntastic',
@@ -28,6 +30,7 @@ let s:github_bundles = [
 			\ 	'ujihisa/vital.vim',
 			\ 	'vim-scripts/Align',
 			\ 	'vim-scripts/matchit.zip',
+			\ 	'w0ng/vim-hybrid',
 			\
 			\ 	'altercation/vim-colors-solarized',
 			\ 	'nanotech/jellybeans.vim',
