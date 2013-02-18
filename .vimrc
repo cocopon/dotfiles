@@ -7,7 +7,6 @@
 let s:github_bundles = [
 			\ 	'h1mesuke/unite-outline',
 			\ 	'Lokaltog/vim-easymotion',
-			\ 	'Lokaltog/vim-powerline',
 			\ 	'mattn/calendar-vim',
 			\ 	'mattn/zencoding-vim',
 			\ 	'scrooloose/syntastic',
