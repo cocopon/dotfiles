@@ -26,16 +26,22 @@ let s:github_bundles = [
 			\ 	'tomtom/tcomment_vim',
 			\ 	'tpope/vim-surround',
 			\ 	'ujihisa/camelcasemotion',
+			\ 	'ujihisa/unite-colorscheme',
 			\ 	'ujihisa/vital.vim',
 			\ 	'vim-scripts/Align',
 			\ 	'vim-scripts/matchit.zip',
-			\ 	'w0ng/vim-hybrid',
 			\
 			\ 	'altercation/vim-colors-solarized',
+			\ 	'jnurmine/Zenburn',
+			\ 	'jonathanfilip/vim-lucius',
 			\ 	'nanotech/jellybeans.vim',
+			\ 	'tomasr/molokai',
 			\ 	'vim-scripts/proton',
 			\ 	'vim-scripts/pyte',
+			\ 	'vim-scripts/rdark',
 			\ 	'vim-scripts/twilight',
+			\ 	'vim-scripts/Wombat',
+			\ 	'w0ng/vim-hybrid',
 			\ ]
 let s:other_bundles = [
 			\ ]
