@@ -1,10 +1,10 @@
 " Appearance
 if has('gui_macvim')
-  colorscheme jellybeans
+	colorscheme hybrid
 
-  set cursorline
-  set guifont=Monaco:h12
-  set guifontwide=HiraMaruPro-W4:h12
-  set guioptions-=T
-  set showtabline=2
+	set cursorline
+	set guifont=SourceCodePro-Regular:h12
+	set guioptions-=T
+	set showtabline=2
+	set transparency=3
 end
