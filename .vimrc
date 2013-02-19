@@ -9,6 +9,7 @@ let s:github_bundles = [
 			\ 	'Lokaltog/vim-easymotion',
 			\ 	'mattn/calendar-vim',
 			\ 	'mattn/zencoding-vim',
+			\ 	'pangloss/vim-javascript',
 			\ 	'scrooloose/syntastic',
 			\ 	'Shougo/neocomplcache',
 			\ 	'Shougo/neocomplcache-snippets-complete',
@@ -17,7 +18,6 @@ let s:github_bundles = [
 			\ 	'Shougo/vimproc',
 			\ 	'Shougo/vimshell',
 			\ 	'Shougo/vinarise',
-			\ 	'pangloss/vim-javascript',
 			\ 	't9md/vim-textmanip',
 			\ 	'thinca/vim-editvar',
 			\ 	'thinca/vim-qfreplace',
@@ -54,9 +54,9 @@ function! VimrcEnvironment()
 	let path_separator = is_win ? '\' : '/'
 
 	return {
-		\ 	'is_win': is_win,
-		\ 	'path_separator': path_separator
-		\ }
+				\ 	'is_win': is_win,
+				\ 	'path_separator': path_separator,
+				\ }
 endfunction
 let s:env = VimrcEnvironment()
 
@@ -285,7 +285,7 @@ endif
 " }}}
 
 
-" Local Settings {{{
+" Local settings {{{
 let s:local_vimrc = s:join_path([s:vimfiles, '.vimrc_local'])
 if filereadable(s:local_vimrc)
 	execute 'source ' . s:local_vimrc
