@@ -49,16 +49,24 @@ let s:other_bundles = [
 
 " Utilities {{{
 " Environment
-let s:is_win = has('win32') || has('win64')
+function! VimrcEnvironment()
+	let is_win = has('win32') || has('win64')
+	let path_separator = is_win ? '\' : '/'
+
+	return {
+		\ 	'is_win': is_win,
+		\ 	'path_separator': path_separator
+		\ }
+endfunction
+let s:env = VimrcEnvironment()
 
 " Path
-let s:path_separator = s:is_win ? '\' : '/'
 function! s:join_path(comps)
-	return join(a:comps, s:path_separator)
+	return join(a:comps, s:env.path_separator)
 endfunction
 
 " Vimfiles Directory
-let s:vimfiles = s:is_win 
+let s:vimfiles = s:env.is_win 
 			\ ? s:join_path([$VIM, 'vimfiles'])
 			\ : expand(s:join_path(['~', '.vim']))
 
