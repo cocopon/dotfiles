@@ -277,16 +277,11 @@ endif
 " }}}
 
 
-" My plugins {{{
-let g:sandwich_user_breads = {
-			\ 	'「': '」',
-			\ 	'【': '】',
-			\ }
-let g:todo_data_path = '~/tmp/hoge.txt'
-set runtimepath+=$HOME/.vim/bundle/sandwich.vim
-set runtimepath+=$HOME/.vim/bundle/nostalgia.vim
-set runtimepath+=$HOME/.vim/bundle/todo.vim
-set runtimepath+=$HOME/.vim/bundle/vimldoc
+" Local Settings {{{
+let s:local_vimrc = s:join_path([s:vimfiles, '.vimrc_local'])
+if filereadable(s:local_vimrc)
+	execute 'source ' . s:local_vimrc
+endif
 " }}}
 
 
