@@ -32,7 +32,6 @@ let s:github_bundles = [
 			\ 	'vim-scripts/matchit.zip',
 			\
 			\ 	'altercation/vim-colors-solarized',
-			\ 	'jnurmine/Zenburn',
 			\ 	'jonathanfilip/vim-lucius',
 			\ 	'nanotech/jellybeans.vim',
 			\ 	'tomasr/molokai',
