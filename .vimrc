@@ -248,6 +248,10 @@ let g:syntastic_mode_map = {
 			\ }
 let g:syntastic_javascript_checker = 'jslint'
 let g:syntastic_javascript_jslint_conf = '--sloppy --white'
+
+" EasyMotion
+let g:EasyMotion_keys = 'hfklasdfgyuiopqwertnmzxcvb'
+let g:EasyMotion_leader_key = '<Space><Space>'
 " }}}
 
 
