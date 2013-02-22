@@ -6,6 +6,7 @@
 " Required Bundles {{{
 let s:github_bundles = [
 			\ 	'h1mesuke/unite-outline',
+			\ 	'kana/vim-arpeggio',
 			\ 	'Lokaltog/vim-easymotion',
 			\ 	'mattn/calendar-vim',
 			\ 	'mattn/zencoding-vim',
@@ -277,6 +278,10 @@ let g:syntastic_javascript_jslint_conf = '--sloppy --white'
 " EasyMotion
 let g:EasyMotion_keys = 'hfklasdfgyuiopqwertnmzxcvb'
 let g:EasyMotion_leader_key = '<Space><Space>'
+
+" Arpeggio
+call arpeggio#load()
+Arpeggio nnoremap ew :<C-u>e %:h<CR>
 " }}}
 
 
