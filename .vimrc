@@ -12,7 +12,7 @@ let s:github_bundles = [
 			\ 	'pangloss/vim-javascript',
 			\ 	'scrooloose/syntastic',
 			\ 	'Shougo/neocomplcache',
-			\ 	'Shougo/neocomplcache-snippets-complete',
+			\ 	'Shougo/neosnippet',
 			\ 	'Shougo/unite.vim',
 			\ 	'Shougo/vimfiler',
 			\ 	'Shougo/vimproc',
@@ -61,53 +61,68 @@ function! VimrcEnvironment()
 endfunction
 let s:env = VimrcEnvironment()
 
-" Path
+function! s:mkdir_silently(dir)
+	if isdirectory(a:dir)
+		return 0
+	endif
+
+	call mkdir(a:dir)
+	return 1
+endfunction
+
+" Paths
 function! s:join_path(comps)
 	return join(a:comps, s:env.path_separator)
 endfunction
 
-" Vimfiles Directory
-let s:vimfiles = s:env.is_win 
+let s:runtime_path = s:env.is_win 
 			\ ? s:join_path([$VIM, 'vimfiles'])
 			\ : expand(s:join_path(['~', '.vim']))
-
-" Bundle Directory
-let s:bundle = s:join_path([s:vimfiles, 'bundle'])
+let s:dirs = {
+			\ 	'runtime': s:runtime_path,
+			\ 	'neobundle': s:join_path([s:runtime_path, 'neobundle.vim']),
+			\ 	'bundle': s:join_path([s:runtime_path, 'bundle']),
+			\ 	'neosnippet': s:join_path([s:runtime_path, '.neosnippet']),
+			\ }
 " }}}
 
 
 " Setup {{{
-function! s:setup_vimfiles()
-	if isdirectory(s:vimfiles)
-		return 0
-	endif
+function! s:setup_dirs()
+	let result = 0
 
-	call mkdir(s:vimfiles)
+	for dir in values(s:dirs)
+		 let result = s:mkdir_silently(dir)
+
+		 if result == 0
+			 return 0
+		 endif
+	endfor
+
 	return 1
 endfunction
 
-let s:neobundle_vim = s:join_path([s:vimfiles, 'neobundle.vim'])
 function! s:setup_neobundle()
 	let neobundle_url = 'https://github.com/Shougo/neobundle.vim'
-	if isdirectory(s:neobundle_vim)
+	if isdirectory(s:dirs.neobundle)
 		return 0
 	endif
 
-	execute printf('!git clone %s %s', neobundle_url, s:neobundle_vim)
+	execute printf('!git clone %s %s', neobundle_url, s:dirs.neobundle)
 	return 1
 endfunction
 
 function! s:setup_bundles()
-	let exists_bundle = isdirectory(s:bundle)
+	let exists_bundle = isdirectory(s:dirs.bundle)
 	if !exists_bundle
-		call mkdir(s:bundle)
+		call mkdir(s:dirs.bundle)
 	endif
 
 	set nocompatible
 	filetype off
 	if has('vim_starting')
-		execute 'set runtimepath+=' . s:neobundle_vim
-		call neobundle#rc(s:join_path([s:vimfiles, 'bundle']))
+		execute 'set runtimepath+=' . s:dirs.neobundle
+		call neobundle#rc(s:dirs.bundle)
 	endif
 
 	for bundle in s:github_bundles
@@ -128,7 +143,7 @@ endfunction
 
 function! s:setup()
 	let funcnames = [
-				\ 	'vimfiles',
+				\ 	'dirs',
 				\ 	'neobundle',
 				\ 	'bundles',
 				\ ]
@@ -225,8 +240,14 @@ map <silent> e <Plug>CamelCaseMotion_e
 runtime macros/matchit.vim
 let b:match_words="\<if\>:\<end\>,\<do\>:\<end\>,\<def\>:\<end\>"
 
-" neocomplcache
+" NeoComplCache
 let g:neocomplcache_enable_at_startup = 1
+
+" NeoSnippet
+let g:neosnippet#snippets_directory = s:dirs.neosnippet
+imap <C-Space> <Plug>(neosnippet_expand_or_jump)
+smap <C-Space> <Plug>(neosnippet_expand_or_jump)
+xmap <C-Space> <Plug>(neosnippet_expand_target)
 
 " Netrw
 let g:netrw_altv = 1
@@ -243,10 +264,6 @@ nnoremap <silent> ,ut :<C-u>Unite -default-action=open todo/all<CR>
 " Vimfiler
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
-
-" Neocomplcache-snippets-complete
-imap <C-l> <Plug>(neocomplcache_snippets_expand)
-smap <C-l> <Plug>(neocomplcache_snippets_expand)
 
 " Syntastic
 let g:syntastic_mode_map = {
@@ -287,7 +304,7 @@ endif
 
 
 " Local settings {{{
-let s:local_vimrc = s:join_path([s:vimfiles, '.vimrc_local'])
+let s:local_vimrc = s:join_path([s:dirs.runtime, '.vimrc_local'])
 if filereadable(s:local_vimrc)
 	execute 'source ' . s:local_vimrc
 endif
