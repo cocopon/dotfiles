@@ -33,6 +33,7 @@ let s:github_bundles = [
 			\
 			\ 	'altercation/vim-colors-solarized',
 			\ 	'jonathanfilip/vim-lucius',
+			\ 	'jpo/vim-railscasts-theme',
 			\ 	'nanotech/jellybeans.vim',
 			\ 	'tomasr/molokai',
 			\ 	'vim-scripts/proton',
