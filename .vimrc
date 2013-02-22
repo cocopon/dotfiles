@@ -76,15 +76,18 @@ function! s:join_path(comps)
 	return join(a:comps, s:env.path_separator)
 endfunction
 
-let s:runtime_path = s:env.is_win 
-			\ ? s:join_path([$VIM, 'vimfiles'])
-			\ : expand(s:join_path(['~', '.vim']))
-let s:dirs = {
-			\ 	'runtime': s:runtime_path,
-			\ 	'neobundle': s:join_path([s:runtime_path, 'neobundle.vim']),
-			\ 	'bundle': s:join_path([s:runtime_path, 'bundle']),
-			\ 	'neosnippet': s:join_path([s:runtime_path, '.neosnippet']),
-			\ }
+function! VimrcDirectories()
+	let runtime_path = s:env.is_win 
+				\ ? s:join_path([$VIM, 'vimfiles'])
+				\ : expand(s:join_path(['~', '.vim']))
+	return {
+				\ 	'runtime': runtime_path,
+				\ 	'neobundle': s:join_path([runtime_path, 'neobundle.vim']),
+				\ 	'bundle': s:join_path([runtime_path, 'bundle']),
+				\ 	'neosnippet': s:join_path([runtime_path, '.neosnippet']),
+				\ }
+endfunction
+let s:dirs = VimrcDirectories()
 " }}}
 
 
