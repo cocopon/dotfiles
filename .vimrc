@@ -10,7 +10,7 @@ let s:github_bundles = [
 			\ 	'Lokaltog/vim-easymotion',
 			\ 	'mattn/calendar-vim',
 			\ 	'mattn/zencoding-vim',
-			\ 	'pangloss/vim-javascript',
+			\ 	'OrgaChem/JavaScript-syntax',
 			\ 	'scrooloose/syntastic',
 			\ 	'Shougo/neocomplcache',
 			\ 	'Shougo/neosnippet',
