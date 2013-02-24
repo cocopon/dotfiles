@@ -304,6 +304,7 @@ set nobackup
 set noswapfile
 set nrformats-=octal
 set number
+set scrolloff=5
 if has('virtualedit')
 	set virtualedit=block
 endif
