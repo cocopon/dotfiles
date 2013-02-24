@@ -305,6 +305,7 @@ set noswapfile
 set nrformats-=octal
 set number
 set scrolloff=5
+set shortmess=aTI
 if has('virtualedit')
 	set virtualedit=block
 endif
