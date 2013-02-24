@@ -117,10 +117,8 @@ function! s:setup_neobundle()
 endfunction
 
 function! s:setup_bundles()
-	let exists_bundle = isdirectory(s:dirs.bundle)
-	if !exists_bundle
-		call mkdir(s:dirs.bundle)
-	endif
+	call s:mkdir_silently(s:dirs.bundle)
+	let exists_bundle = (glob(s:join_path([s:dirs.bundle, '*'])) != '')
 
 	set nocompatible
 	filetype off
