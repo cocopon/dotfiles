@@ -257,11 +257,12 @@ let g:netrw_preview = 1
 
 " Unite
 let g:unite_enable_start_insert = 0
-nnoremap <silent> ,ub :<C-u>Unite -default-action=open bookmark<CR>
+nnoremap <silent> ,ub :<C-u>Unite bookmark -default-action=open<CR>
 nnoremap <silent> ,uf :<C-u>Unite file<CR>
-nnoremap <silent> ,um :<C-u>Unite -default-action=open file_mru<CR>
+nnoremap <silent> ,um :<C-u>Unite file_mru -default-action=open<CR>
 nnoremap <silent> ,uo :<C-u>Unite outline<CR>
-nnoremap <silent> ,ut :<C-u>Unite -default-action=open todo/all<CR>
+nnoremap <silent> ,us :<C-u>Unite line -input=<C-r>/<CR>
+nnoremap <silent> ,ut :<C-u>Unite todo/all -default-action=open<CR>
 
 " Vimfiler
 let g:vimfiler_as_default_explorer = 1
