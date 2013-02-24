@@ -318,4 +318,4 @@ endif
 " }}}
 
 
-" vim: set fdm=marker sw=2 ts=2:
+" vim: set fdm=marker:
