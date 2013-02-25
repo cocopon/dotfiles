@@ -5,6 +5,7 @@
 
 " Required Bundles {{{
 let s:github_bundles = [
+			\ 	'cocopon/todo.vim',
 			\ 	'h1mesuke/unite-outline',
 			\ 	'kana/vim-arpeggio',
 			\ 	'Lokaltog/vim-easymotion',
@@ -19,13 +20,13 @@ let s:github_bundles = [
 			\ 	'Shougo/vimproc',
 			\ 	'Shougo/vimshell',
 			\ 	'Shougo/vinarise',
-			\ 	't9md/vim-textmanip',
 			\ 	'thinca/vim-editvar',
 			\ 	'thinca/vim-qfreplace',
 			\ 	'thinca/vim-quickrun',
 			\ 	'thinca/vim-ref',
 			\ 	'tomtom/tcomment_vim',
 			\ 	'tpope/vim-surround',
+			\ 	'tyru/restart.vim',
 			\ 	'ujihisa/camelcasemotion',
 			\ 	'ujihisa/unite-colorscheme',
 			\ 	'vim-jp/vital.vim',
@@ -52,13 +53,11 @@ let s:other_bundles = [
 " Utilities {{{
 " Environment
 function! VimrcEnvironment()
-	let is_win = has('win32') || has('win64')
-	let path_separator = is_win ? '\' : '/'
+	let env = {}
+	let env.is_win = has('win32') || has('win64')
+	let env.path_separator = env.is_win ? '\' : '/'
 
-	return {
-				\ 	'is_win': is_win,
-				\ 	'path_separator': path_separator,
-				\ }
+	return env
 endfunction
 let s:env = VimrcEnvironment()
 
@@ -159,6 +158,14 @@ call s:setup()
 " }}}
 
 
+" Encoding {{{
+set enc=utf-8
+source $VIMRUNTIME/delmenu.vim
+set langmenu=ja_JP.utf-8
+source $VIMRUNTIME/menu.vim
+" }}}
+
+
 " Key {{{
 " Disable Ctrl+@
 imap <C-@> <Nop>
@@ -186,20 +193,22 @@ cnoremap <C-e> <End>
 cnoremap <C-f> <Right>
 cnoremap <C-h> <Backspace>
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
-imap <C-a> <Home>
-imap <C-b> <Left>
-imap <C-d> <Del>
-imap <C-e> <End>
-imap <C-f> <Right>
-imap <C-h> <Backspace>
-imap <C-k> <C-o>D
-imap <C-n> <Down>
-imap <C-p> <Up>
+inoremap <C-a> <Home>
+inoremap <C-b> <Left>
+inoremap <C-d> <Del>
+inoremap <C-e> <End>
+inoremap <C-f> <Right>
+inoremap <C-h> <Backspace>
+inoremap <C-k> <C-o>D
+inoremap <C-n> <Down>
+inoremap <C-p> <Up>
 " Refer history in Command-line mode
 cnoremap <C-p> <Up>
 cnoremap <Up> <C-p>
 cnoremap <C-n> <Down>
 cnoremap <Down> <C-n>
+" For US Keyboard
+noremap ; :
 " }}}
 
 
@@ -210,9 +219,6 @@ set list
 set listchars=eol:¬,tab:▸\ 
 set autoindent
 set nosmartindent
-autocmd FileType html set indentexpr&
-autocmd FileType js set indentexpr&
-autocmd FileType xhtml set indentexpr&
 " }}}
 
 
@@ -257,12 +263,12 @@ let g:netrw_preview = 1
 
 " Unite
 let g:unite_enable_start_insert = 0
+let g:unite_split_rule = 'botright'
 nnoremap <silent> ,ub :<C-u>Unite bookmark -default-action=open<CR>
 nnoremap <silent> ,uf :<C-u>Unite file<CR>
-nnoremap <silent> ,um :<C-u>Unite file_mru -default-action=open<CR>
+nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
 nnoremap <silent> ,uo :<C-u>Unite outline<CR>
-nnoremap <silent> ,us :<C-u>Unite line -input=<C-r>/<CR>
-nnoremap <silent> ,ut :<C-u>Unite todo/all -default-action=open<CR>
+nnoremap <silent> ,ut :<C-u>Unite todo/all<CR>
 
 " Vimfiler
 let g:vimfiler_as_default_explorer = 1
@@ -274,8 +280,9 @@ let g:syntastic_mode_map = {
 			\ 	'active_filetypes': ['javascript'],
 			\ 	'passive_filetypes': [],
 			\ }
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_javascript_checker = 'jslint'
-let g:syntastic_javascript_jslint_conf = '--sloppy --white'
+let g:syntastic_javascript_jslint_conf = '--browser --nomen --sloppy --white --es5=false'
 
 " EasyMotion
 let g:EasyMotion_keys = 'hfklasdfgyuiopqwertnmzxcvb'
@@ -283,36 +290,51 @@ let g:EasyMotion_leader_key = '<Space><Space>'
 
 " Arpeggio
 call arpeggio#load()
+Arpeggio nnoremap ef :Unite file_mru<CR>
 Arpeggio nnoremap ew :<C-u>e %:h<CR>
 " }}}
 
 
 " FileType {{{
-autocmd BufRead,BufNewFile *.as set filetype=javascript
-autocmd FileType eruby setlocal sw=2 ts=2
-autocmd FileType html  setlocal sw=2 ts=2
-autocmd FileType text  setlocal tw=0
-autocmd FileType ruby  setlocal sw=2 ts=2
-autocmd FileType vim   setlocal sw=2 ts=2
+autocmd BufRead,BufNewFile *.as setlocal filetype=javascript
+autocmd FileType css        setlocal sw=4 ts=4
+autocmd FileType eruby      setlocal sw=2 ts=2
+autocmd FileType html       setlocal sw=2 ts=2 indentexpr&
+autocmd FileType javascript setlocal sw=4 ts=4
+autocmd FileType php        setlocal sw=4 ts=4
+autocmd FileType python     setlocal sw=4 ts=4
+autocmd FileType ruby       setlocal sw=2 ts=2
+autocmd FileType scss       setlocal sw=4 ts=4
+autocmd FileType text       setlocal tw=0
+autocmd FileType vim        setlocal sw=2 ts=2
+autocmd FileType xhtml      setlocal indentexpr&
+autocmd FileType xml        setlocal sw=2 ts=2
 " }}}
 
 
 " Misc {{{
 set completeopt=menu,menuone,preview
 set display=lastline
+set grepprg=grep\ -nH
 set nobackup
 set noswapfile
 set nrformats-=octal
 set number
 set scrolloff=5
 set shortmess=aTI
+set sidescroll=1
 if has('virtualedit')
 	set virtualedit=block
 endif
+
+" Disable archive plugins
+let loaded_gzip = 1
+let loaded_zip = 1
+let loaded_zipPlugin = 1
 " }}}
 
 
-" Local settings {{{
+" Local Settings {{{
 let s:local_vimrc = s:join_path([s:dirs.runtime, '.vimrc_local'])
 if filereadable(s:local_vimrc)
 	execute 'source ' . s:local_vimrc
