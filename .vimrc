@@ -1,6 +1,9 @@
-" cocopon's vimrc
+"   __  __ _ _____ _____ _____ 
+"   \ \ | |_|     |  ___| ____|
+"  _ \ \| | | | | | |   | |___ 
+" |_| \___|_|_|_|_|_|   |_____|
 "
-" This vimrc will setup automatically. yay!
+" Yay, it's fully automated vimrc!
 
 
 " Required Bundles {{{
