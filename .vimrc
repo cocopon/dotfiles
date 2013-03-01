@@ -305,7 +305,7 @@ autocmd FileType eruby      setlocal sw=2 ts=2
 autocmd FileType html       setlocal sw=2 ts=2 indentexpr&
 autocmd FileType javascript setlocal sw=4 ts=4
 autocmd FileType php        setlocal sw=4 ts=4
-autocmd FileType python     setlocal sw=4 ts=4
+autocmd FileType python     setlocal sw=4 ts=4 expandtab
 autocmd FileType ruby       setlocal sw=2 ts=2
 autocmd FileType scss       setlocal sw=4 ts=4
 autocmd FileType text       setlocal tw=0
