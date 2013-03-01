@@ -284,8 +284,8 @@ let g:syntastic_mode_map = {
 			\ 	'passive_filetypes': [],
 			\ }
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_javascript_checker = 'jslint'
-let g:syntastic_javascript_jslint_conf = '--browser --nomen --sloppy --white --es5=false'
+let g:syntastic_javascript_checkers = ['jslint']
+let g:syntastic_javascript_jslint_args = '--browser --nomen --sloppy --white --es5=false'
 
 " EasyMotion
 let g:EasyMotion_keys = 'hfklasdfgyuiopqwertnmzxcvb'
