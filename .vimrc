@@ -172,22 +172,26 @@ source $VIMRUNTIME/menu.vim
 " Key {{{
 " Disable Ctrl+@
 imap <C-@> <Nop>
+
 " Turn off the IME when escaping Insert mode
 set noimdisable
 set iminsert=0 imsearch=-1
 set noimcmdline
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 inoremap <silent> <C-[> <C-[>:set iminsert=0<CR>
+
 " Intuitive cursor movement when `:set wrap`
 noremap j gj
 noremap gj j
 noremap k gk
 noremap gk k
+
 " Switch an active window
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
 " Emacs-like keybind
 cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
@@ -205,11 +209,13 @@ inoremap <C-h> <Backspace>
 inoremap <C-k> <C-o>D
 inoremap <C-n> <Down>
 inoremap <C-p> <Up>
+
 " Refer history in Command-line mode
 cnoremap <C-p> <Up>
 cnoremap <Up> <C-p>
 cnoremap <C-n> <Down>
 cnoremap <Down> <C-n>
+
 " For US Keyboard
 noremap ; :
 " }}}
