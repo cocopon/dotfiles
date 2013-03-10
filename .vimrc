@@ -28,6 +28,7 @@ let s:github_bundles = [
 			\ 	'thinca/vim-quickrun',
 			\ 	'thinca/vim-ref',
 			\ 	'tomtom/tcomment_vim',
+			\ 	'tpope/vim-fugitive',
 			\ 	'tpope/vim-surround',
 			\ 	'tyru/restart.vim',
 			\ 	'ujihisa/camelcasemotion',
