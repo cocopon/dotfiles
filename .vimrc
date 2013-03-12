@@ -306,7 +306,7 @@ let g:EasyMotion_leader_key = '<Space><Space>'
 
 " Arpeggio
 call arpeggio#load()
-Arpeggio nnoremap ef :Unite file_mru<CR>
+Arpeggio nnoremap ef :<C-u>Unite file_mru<CR>
 Arpeggio nnoremap ew :<C-u>e %:h<CR>
 " }}}
 
