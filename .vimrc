@@ -256,7 +256,7 @@ map <silent> e <Plug>CamelCaseMotion_e
 
 " matchit
 runtime macros/matchit.vim
-let b:match_words="\<if\>:\<end\>,\<do\>:\<end\>,\<def\>:\<end\>"
+let b:match_words = "\<if\>:\<end\>,\<do\>:\<end\>,\<def\>:\<end\>"
 
 " NeoComplCache
 let g:neocomplcache_enable_at_startup = 1
