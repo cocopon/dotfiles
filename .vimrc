@@ -20,7 +20,6 @@ let s:github_bundles = [
 			\ 	'Shougo/neosnippet',
 			\ 	'Shougo/unite.vim',
 			\ 	'Shougo/vimfiler',
-			\ 	'Shougo/vimproc',
 			\ 	'Shougo/vimshell',
 			\ 	'Shougo/vinarise',
 			\ 	'thinca/vim-editvar',
@@ -55,7 +54,6 @@ let s:other_bundles = [
 
 
 " Utilities {{{
-" Environment
 function! VimrcEnvironment()
 	let env = {}
 	let env.is_win = has('win32') || has('win64')
@@ -65,6 +63,10 @@ function! VimrcEnvironment()
 endfunction
 let s:env = VimrcEnvironment()
 
+function! s:join_path(comps)
+	return join(a:comps, s:env.path_separator)
+endfunction
+
 function! s:mkdir_silently(dir)
 	if isdirectory(a:dir)
 		return 0
@@ -72,11 +74,6 @@ function! s:mkdir_silently(dir)
 
 	call mkdir(a:dir)
 	return 1
-endfunction
-
-" Paths
-function! s:join_path(comps)
-	return join(a:comps, s:env.path_separator)
 endfunction
 
 function! VimrcDirectories()
@@ -130,10 +127,21 @@ function! s:setup_bundles()
 		call neobundle#rc(s:dirs.bundle)
 	endif
 
+	" Vimproc
+	NeoBundle 'https://github.com/Shougo/vimproc', {
+				\ 	'build': {
+				\ 		'cygwin': 'make -f make_cygwin.mak',
+				\ 		'mac': 'make -f make_mac.mak',
+				\ 		'unix': 'make -f make_unix.mak',
+				\ 	}
+				\ }
+
+	" Github Bundles
 	for bundle in s:github_bundles
 		execute printf("NeoBundle 'https://github.com/%s'", bundle)
 	endfor
 
+	" Other Bundles
 	for bundle in s:other_bundles
 		execute printf("NeoBundle '%s'", bundle)
 	endfor
