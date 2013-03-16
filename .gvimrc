@@ -7,7 +7,7 @@ if has('gui_macvim')
 	set cursorline
 	set guioptions-=T
 	set showtabline=2
-	set transparency=3
+	set transparency=0
 
 	if s:env.is_win
 		set guifont=BDF_UM+:h9
