@@ -15,6 +15,7 @@ let s:github_bundles = [
 			\ 	'mattn/calendar-vim',
 			\ 	'mattn/zencoding-vim',
 			\ 	'OrgaChem/JavaScript-syntax',
+			\ 	'rhysd/clever-f.vim',
 			\ 	'scrooloose/syntastic',
 			\ 	'Shougo/neocomplcache',
 			\ 	'Shougo/neosnippet',
