@@ -339,7 +339,7 @@ autocmd FileType xml        setlocal sw=2 ts=2
 
 
 " Misc {{{
-set completeopt=menu,menuone,preview
+set completeopt=menu,menuone
 set display=lastline
 set grepprg=grep\ -nH
 set nobackup
