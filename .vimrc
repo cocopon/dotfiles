@@ -319,6 +319,11 @@ call arpeggio#load()
 Arpeggio nnoremap ef :<C-u>Unite file_mru<CR>
 Arpeggio nnoremap ew :<C-u>e %:h<CR>
 Arpeggio nnoremap fj :<C-u>Unite outline<CR>
+
+" quickrun.vim
+let g:quickrun_config = {
+			\ 	'*': {'runner': 'vimproc'}
+			\ }
 " }}}
 
 
