@@ -10,6 +10,7 @@
 let s:github_bundles = [
 			\ 	'cocopon/todo.vim',
 			\ 	'h1mesuke/unite-outline',
+			\ 	'itchyny/thumbnail.vim',
 			\ 	'kana/vim-arpeggio',
 			\ 	'Lokaltog/vim-easymotion',
 			\ 	'mattn/calendar-vim',
