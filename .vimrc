@@ -229,6 +229,9 @@ cnoremap <Down> <C-n>
 
 " For US Keyboard
 noremap ; :
+
+" Misc
+nnoremap Y y$
 " }}}
 
 
