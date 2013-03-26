@@ -192,10 +192,9 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 inoremap <silent> <C-[> <C-[>:set iminsert=0<CR>
 
 " Intuitive cursor movement when `:set wrap`
-noremap j gj
-noremap gj j
+map <Plug>(arpeggio-default:j) <SID>j
+noremap <SID>j gj
 noremap k gk
-noremap gk k
 
 " Switch an active window
 nnoremap <C-h> <C-w>h
@@ -263,9 +262,11 @@ let g:loaded_zipPlugin = 1
 let plugin_dicwin_disable = 1
 
 " CamelCaseMotion
-map <silent> w <Plug>CamelCaseMotion_w
 map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
+map <Plug>(arpeggio-default:e) <SID>e
+map <silent> <SID>e <Plug>CamelCaseMotion_e
+map <Plug>(arpeggio-default:w) <SID>w
+map <silent> <SID>w <Plug>CamelCaseMotion_w
 
 " matchit
 runtime macros/matchit.vim
