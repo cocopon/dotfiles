@@ -320,6 +320,7 @@ let g:EasyMotion_leader_key = '<Space><Space>'
 
 " Arpeggio
 call arpeggio#load()
+let g:arpeggio_timeoutlen = 100
 Arpeggio nnoremap ef :<C-u>Unite file_mru<CR>
 Arpeggio nnoremap ew :<C-u>e %:h<CR>
 Arpeggio nnoremap fj :<C-u>Unite outline<CR>
