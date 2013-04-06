@@ -12,11 +12,9 @@ let s:github_bundles = [
 			\ 	'h1mesuke/unite-outline',
 			\ 	'itchyny/thumbnail.vim',
 			\ 	'kana/vim-arpeggio',
-			\ 	'Lokaltog/vim-easymotion',
 			\ 	'mattn/calendar-vim',
 			\ 	'mattn/zencoding-vim',
 			\ 	'OrgaChem/JavaScript-syntax',
-			\ 	'rhysd/clever-f.vim',
 			\ 	'scrooloose/syntastic',
 			\ 	'Shougo/neocomplcache',
 			\ 	'Shougo/neosnippet',
@@ -46,9 +44,7 @@ let s:github_bundles = [
 			\ 	'tomasr/molokai',
 			\ 	'vim-scripts/proton',
 			\ 	'vim-scripts/pyte',
-			\ 	'vim-scripts/rdark',
 			\ 	'vim-scripts/twilight',
-			\ 	'vim-scripts/Wombat',
 			\ 	'w0ng/vim-hybrid',
 			\ ]
 let s:other_bundles = [
@@ -316,8 +312,8 @@ let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_javascript_jslint_args = '--browser --es5=false --nomen --sloppy --vars --white'
 
 " EasyMotion
-let g:EasyMotion_keys = 'hfklasdfgyuiopqwertnmzxcvb'
-let g:EasyMotion_leader_key = '<Space><Space>'
+" let g:EasyMotion_keys = 'hfklasdfgyuiopqwertnmzxcvb'
+" let g:EasyMotion_leader_key = '<Space><Space>'
 
 " Arpeggio
 call arpeggio#load()
