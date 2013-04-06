@@ -37,6 +37,7 @@ let s:github_bundles = [
 			\ 	'vim-jp/vital.vim',
 			\ 	'vim-scripts/Align',
 			\ 	'vim-scripts/matchit.zip',
+			\ 	'yuratomo/w3m.vim',
 			\
 			\ 	'altercation/vim-colors-solarized',
 			\ 	'jonathanfilip/vim-lucius',
