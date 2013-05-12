@@ -303,13 +303,14 @@ let g:syntastic_mode_map = {
 			\ }
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_javascript_checkers = ['jslint']
-" --browser ... Tolerate standard browser globals
-" --es5 ....... Tolerate ECMA Script 5 syntax (e.g. trailling commas)
-" --nomen ..... Tolerate initial or trailing underbars in names
-" --sloppy .... Tolerate missing 'use strict' pragma
-" --vars ...... Tolerate many var statements per function
-" --white ..... Tolerate messy white space
-let g:syntastic_javascript_jslint_args = '--browser --es5=false --nomen --sloppy --vars --white'
+" --browser .... Tolerate standard browser globals
+" --es5 ........ Tolerate ECMA Script 5 syntax (e.g. trailling commas)
+" --nomen ...... Tolerate initial or trailing underbars in names
+" --plusplus ... Tolerate '++' and '--'
+" --sloppy ..... Tolerate missing 'use strict' pragma
+" --vars ....... Tolerate many var statements per function
+" --white ...... Tolerate messy white space
+let g:syntastic_javascript_jslint_args = '--browser --es5=false --nomen --plusplus --sloppy --vars --white'
 
 " EasyMotion
 " let g:EasyMotion_keys = 'hfklasdfgyuiopqwertnmzxcvb'
