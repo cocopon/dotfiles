@@ -33,7 +33,15 @@ setopt auto_pushd
 
 
 # Aliases
-alias ls="ls -G"
+case "${OSTYPE}" in
+freebsd*|darwin*)
+	alias ls="ls -FG"
+	;;
+linux*)
+	alias ls="ls -F --color"
+	;;
+esac
+
 alias ll="ls -la"
 alias la="ls -a"
 
