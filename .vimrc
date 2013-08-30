@@ -331,7 +331,8 @@ let g:quickrun_config = {
 
 
 " FileType {{{
-autocmd BufRead,BufNewFile *.as setlocal filetype=javascript
+autocmd BufRead,BufNewFile *.as  setlocal ft=javascript
+autocmd BufRead,BufNewFile *.pde setlocal ft=java sw=2 ts=2 expandtab
 autocmd FileType css        setlocal sw=4 ts=4
 autocmd FileType eruby      setlocal sw=2 ts=2
 autocmd FileType html       setlocal sw=2 ts=2 indentexpr&
