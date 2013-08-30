@@ -310,7 +310,7 @@ let g:syntastic_javascript_checkers = ['jslint']
 " --sloppy ..... Tolerate missing 'use strict' pragma
 " --vars ....... Tolerate many var statements per function
 " --white ...... Tolerate messy white space
-let g:syntastic_javascript_jslint_args = '--browser --es5=false --nomen --plusplus --sloppy --vars --white --predef=goog --predef=$'
+let g:syntastic_javascript_jslint_args = '--browser --es5=false --nomen --plusplus --sloppy --vars --white --predef=goog --predef=jQuery --predef=$'
 
 " EasyMotion
 " let g:EasyMotion_keys = 'hfklasdfgyuiopqwertnmzxcvb'
