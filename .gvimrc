@@ -1,10 +1,11 @@
 let s:env = VimrcEnvironment()
 
 " Appearance
-if has('gui_macvim')
+if has('gui')
 	colorscheme hybrid
 
 	set cursorline
+	set guioptions-=m
 	set guioptions-=T
 	set showtabline=2
 	set transparency=0
