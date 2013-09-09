@@ -8,8 +8,10 @@
 
 " Required Bundles {{{
 let s:github_bundles = [
+			\ 	'cocopon/lightline-hybrid.vim',
 			\ 	'cocopon/todo.vim',
 			\ 	'h1mesuke/unite-outline',
+			\ 	'itchyny/lightline.vim',
 			\ 	'itchyny/thumbnail.vim',
 			\ 	'kana/vim-arpeggio',
 			\ 	'mattn/calendar-vim',
@@ -326,6 +328,11 @@ Arpeggio nnoremap fj :<C-u>Unite outline<CR>
 " quickrun.vim
 let g:quickrun_config = {
 			\ 	'*': {'runner': 'vimproc'}
+			\ }
+
+" lightline
+let g:lightline = {
+			\ 	'colorscheme': 'hybrid'
 			\ }
 " }}}
 
