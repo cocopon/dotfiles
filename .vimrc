@@ -334,15 +334,15 @@ let g:quickrun_config = {
 let g:lightline = {
 			\ 	'colorscheme': 'hybrid',
 			\ 	'mode_map': {
-			\ 		'n' : '-',
-			\ 		'i' : 'I',
-			\ 		'R' : 'R',
-			\ 		'v' : 'V',
-			\ 		'V' : 'V',
-			\ 		'c' : 'C',
+			\ 		'n': '-',
+			\ 		'i': 'I',
+			\ 		'R': 'R',
+			\ 		'v': 'V',
+			\ 		'V': 'V',
+			\ 		'c': 'C',
 			\ 		"\<C-v>": 'V',
-			\ 		's' : 'S',
-			\ 		'S' : 'S',
+			\ 		's': 'S',
+			\ 		'S': 'S',
 			\ 		"\<C-s>": 'S',
 			\ 		'?': ' '
 			\ 	}
