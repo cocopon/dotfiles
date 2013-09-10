@@ -332,8 +332,22 @@ let g:quickrun_config = {
 
 " lightline
 let g:lightline = {
-			\ 	'colorscheme': 'hybrid'
+			\ 	'colorscheme': 'hybrid',
+			\ 	'mode_map': {
+			\ 		'n' : '-',
+			\ 		'i' : 'I',
+			\ 		'R' : 'R',
+			\ 		'v' : 'V',
+			\ 		'V' : 'V',
+			\ 		'c' : 'C',
+			\ 		"\<C-v>": 'V',
+			\ 		's' : 'S',
+			\ 		'S' : 'S',
+			\ 		"\<C-s>": 'S',
+			\ 		'?': ' '
+			\ 	}
 			\ }
+let g:lightline_hybrid_style = 'plain'
 " }}}
 
 
