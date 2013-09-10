@@ -2,8 +2,6 @@
 "   \ \ | |_|     |  ___| ____|
 "  _ \ \| | | | | | |   | |___ 
 " |_| \___|_|_|_|_|_|   |_____|
-"
-" Yay, it's fully automated vimrc!
 
 
 " Required Bundles {{{
