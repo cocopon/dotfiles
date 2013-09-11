@@ -6,6 +6,7 @@
 
 " Required Bundles {{{
 let s:github_bundles = [
+			\ 	'cocopon/colorswatch.vim',
 			\ 	'cocopon/lightline-hybrid.vim',
 			\ 	'cocopon/todo.vim',
 			\ 	'h1mesuke/unite-outline',
