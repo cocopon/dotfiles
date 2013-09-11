@@ -362,7 +362,7 @@ autocmd FileType python     setlocal sw=4 ts=4 expandtab
 autocmd FileType ruby       setlocal sw=2 ts=2
 autocmd FileType scss       setlocal sw=4 ts=4
 autocmd FileType text       setlocal tw=0
-autocmd FileType vim        setlocal sw=2 ts=2
+autocmd FileType vim        setlocal sw=2 ts=2 fdm=marker
 autocmd FileType xhtml      setlocal indentexpr&
 autocmd FileType xml        setlocal sw=2 ts=2
 " }}}
@@ -397,6 +397,3 @@ if filereadable(s:local_vimrc)
 	execute 'source ' . s:local_vimrc
 endif
 " }}}
-
-
-" vim: set fdm=marker:
