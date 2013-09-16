@@ -33,6 +33,7 @@ let s:github_bundles = [
 			\ 	'tyru/restart.vim',
 			\ 	'ujihisa/camelcasemotion',
 			\ 	'ujihisa/unite-colorscheme',
+			\ 	'ujihisa/unite-font',
 			\ 	'vim-jp/vital.vim',
 			\ 	'vim-scripts/Align',
 			\ 	'vim-scripts/matchit.zip',
