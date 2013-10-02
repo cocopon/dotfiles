@@ -366,6 +366,7 @@ autocmd FileType text       setlocal tw=0
 autocmd FileType vim        setlocal sw=2 ts=2 fdm=marker
 autocmd FileType xhtml      setlocal indentexpr&
 autocmd FileType xml        setlocal sw=2 ts=2
+autocmd FileType yaml       setlocal sw=2 ts=2
 " }}}
 
 
