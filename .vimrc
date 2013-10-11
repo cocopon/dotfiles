@@ -121,7 +121,6 @@ function! s:setup_bundles()
 	call s:mkdir_silently(s:dirs.bundle)
 	let exists_bundle = (glob(s:join_path([s:dirs.bundle, '*'])) != '')
 
-	set nocompatible
 	filetype off
 	if has('vim_starting')
 		execute 'set runtimepath+=' . s:dirs.neobundle
