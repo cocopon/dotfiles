@@ -331,6 +331,23 @@ let g:quickrun_config = {
 
 " lightline
 let g:lightline = {
+			\ 	'active': {
+			\ 		'left': [
+			\ 			['mode'],
+			\ 			['filename', 'readonly', 'modified']
+			\ 		],
+			\ 		'right': [
+			\ 			['lineinfo'],
+			\ 			['percent'],
+			\ 			['fileformat', 'fileencoding', 'filetype']
+			\ 		]
+			\ 	},
+			\ 	'inactive': {
+			\ 		'left': [
+			\ 			['filename', 'modified']
+			\ 		],
+			\ 		'right': []
+			\ 	},
 			\ 	'colorscheme': 'hybrid',
 			\ 	'mode_map': {
 			\ 		'n': '-',
