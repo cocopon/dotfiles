@@ -299,11 +299,11 @@ let g:vimfiler_safe_mode_by_default = 0
 " Syntastic
 let g:syntastic_mode_map = {
 			\ 	'mode': 'passive',
-			\ 	'active_filetypes': ['javascript'],
+			\ 	'active_filetypes': ['javascript', 'python'],
 			\ 	'passive_filetypes': [],
 			\ }
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_javascript_checkers = ['jslint']
+
 " --browser .... Tolerate standard browser globals
 " --es5 ........ Tolerate ECMA Script 5 syntax (e.g. trailling commas)
 " --nomen ...... Tolerate initial or trailing underbars in names
@@ -311,6 +311,7 @@ let g:syntastic_javascript_checkers = ['jslint']
 " --sloppy ..... Tolerate missing 'use strict' pragma
 " --vars ....... Tolerate many var statements per function
 " --white ...... Tolerate messy white space
+let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_javascript_jslint_args = join([
 			\ 	'--browser',
 			\ 	'--es5=false',
@@ -322,6 +323,12 @@ let g:syntastic_javascript_jslint_args = join([
 			\ 	'--predef=goog',
 			\ 	'--predef=jQuery',
 			\ 	'--predef=$'
+			\ ])
+
+" E501 ... line too long
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = join([
+			\ 	'--ignore=E501'
 			\ ])
 
 " EasyMotion
