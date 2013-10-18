@@ -235,12 +235,13 @@ nnoremap Y y$
 
 
 " Indent {{{
-set tabstop=4
-set shiftwidth=4
+set autoindent
 set list
 set listchars=eol:¬,tab:▸\ 
-set autoindent
 set nosmartindent
+set shiftround
+set shiftwidth=4
+set tabstop=4
 " }}}
 
 
