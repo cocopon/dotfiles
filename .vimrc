@@ -18,7 +18,6 @@ let s:github_bundles = [
 			\ 	'mattn/calendar-vim',
 			\ 	'mattn/emmet-vim',
 			\ 	'pangloss/vim-javascript',
-			\ 	'Rykka/riv.vim',
 			\ 	'scrooloose/syntastic',
 			\ 	'Shougo/neocomplcache',
 			\ 	'Shougo/neosnippet',
@@ -41,6 +40,7 @@ let s:github_bundles = [
 			\ 	'vim-jp/vital.vim',
 			\ 	'vim-scripts/Align',
 			\ 	'vim-scripts/matchit.zip',
+			\ 	'vim-scripts/rest.vim',
 			\ 	'yuratomo/w3m.vim',
 			\
 			\ 	'altercation/vim-colors-solarized',
@@ -407,9 +407,6 @@ autocmd FileType python let b:did_ftplugin = 1
 
 " openbrowser
 nmap gW <Plug>(openbrowser-open)
-
-" riv
-autocmd FileType rst setlocal nofoldenable
 " }}}
 
 
