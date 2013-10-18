@@ -14,6 +14,7 @@ let s:github_bundles = [
 			\ 	'itchyny/lightline.vim',
 			\ 	'itchyny/thumbnail.vim',
 			\ 	'kana/vim-arpeggio',
+			\ 	'hynek/vim-python-pep8-indent',
 			\ 	'mattn/calendar-vim',
 			\ 	'mattn/emmet-vim',
 			\ 	'pangloss/vim-javascript',
