@@ -18,6 +18,7 @@ let s:github_bundles = [
 			\ 	'mattn/calendar-vim',
 			\ 	'mattn/emmet-vim',
 			\ 	'pangloss/vim-javascript',
+			\ 	'Rykka/riv.vim',
 			\ 	'scrooloose/syntastic',
 			\ 	'Shougo/neocomplcache',
 			\ 	'Shougo/neosnippet',
@@ -347,8 +348,11 @@ Arpeggio nnoremap ew :<C-u>e %:h<CR>
 Arpeggio nnoremap fj :<C-u>Unite outline<CR>
 
 " quickrun.vim
-let g:quickrun_config = {
-			\ 	'*': {'runner': 'vimproc'}
+let g:quickrun_config = {}
+let g:quickrun_config['*'] = {'runner': 'vimproc'}
+let g:quickrun_config['rst'] = {
+			\ 	'command': 'rst2html.py',
+			\ 	'outputter': 'browser'
 			\ }
 
 " lightline
@@ -403,6 +407,9 @@ autocmd FileType python let b:did_ftplugin = 1
 
 " openbrowser
 nmap gW <Plug>(openbrowser-open)
+
+" riv
+autocmd FileType rst setlocal nofoldenable
 " }}}
 
 
