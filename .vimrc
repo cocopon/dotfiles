@@ -9,6 +9,7 @@ let s:github_bundles = [
 			\ 	'cocopon/colorswatch.vim',
 			\ 	'cocopon/lightline-hybrid.vim',
 			\ 	'cocopon/todo.vim',
+			\ 	'davidhalter/jedi-vim',
 			\ 	'h1mesuke/unite-outline',
 			\ 	'itchyny/lightline.vim',
 			\ 	'itchyny/thumbnail.vim',
@@ -382,6 +383,20 @@ let g:lightline = {
 			\ 	}
 			\ }
 let g:lightline_hybrid_style = 'plain'
+
+" jedi-vim
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+
+let g:neocomplcache_force_omni_patterns = {
+			\ 	'python': '\h\w*\|[^. \t]\.\w*'
+			\ }
+let g:neocomplcache_omni_functions = {
+			\ 	'python': 'jedi#completions'
+			\ }
+
+autocmd FileType python let b:did_ftplugin = 1
 " }}}
 
 
