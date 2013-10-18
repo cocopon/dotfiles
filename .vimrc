@@ -352,7 +352,8 @@ let g:quickrun_config = {}
 let g:quickrun_config['*'] = {'runner': 'vimproc'}
 let g:quickrun_config['rst'] = {
 			\ 	'command': 'rst2html.py',
-			\ 	'outputter': 'browser'
+			\ 	'outputter': 'browser',
+			\ 	'runner': 'system'
 			\ }
 
 " lightline
@@ -419,6 +420,7 @@ autocmd FileType html       setlocal sw=2 ts=2 indentexpr&
 autocmd FileType javascript setlocal sw=4 ts=4
 autocmd FileType php        setlocal sw=4 ts=4
 autocmd FileType python     setlocal sw=4 ts=4 expandtab
+autocmd FileType rst        setlocal indentexpr& noexpandtab
 autocmd FileType ruby       setlocal sw=2 ts=2
 autocmd FileType scss       setlocal sw=4 ts=4
 autocmd FileType text       setlocal tw=0
