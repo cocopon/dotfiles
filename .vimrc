@@ -32,6 +32,7 @@ let s:github_bundles = [
 			\ 	'tomtom/tcomment_vim',
 			\ 	'tpope/vim-fugitive',
 			\ 	'tpope/vim-surround',
+			\ 	'tyru/open-browser.vim',
 			\ 	'tyru/restart.vim',
 			\ 	'ujihisa/camelcasemotion',
 			\ 	'ujihisa/unite-colorscheme',
@@ -399,6 +400,9 @@ let g:neocomplcache_omni_functions = {
 			\ }
 
 autocmd FileType python let b:did_ftplugin = 1
+
+" openbrowser
+nmap gW <Plug>(openbrowser-open)
 " }}}
 
 
