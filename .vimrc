@@ -396,6 +396,7 @@ let g:lightline_hybrid_style = 'plain'
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
+let g:jedi#rename_command = '<leader>R'
 
 let g:neocomplcache_force_omni_patterns = {
 			\ 	'python': '\h\w*\|[^. \t]\.\w*'
