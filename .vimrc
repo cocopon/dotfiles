@@ -184,14 +184,14 @@ source $VIMRUNTIME/menu.vim
 
 " Key {{{
 " Disable Ctrl+@
-imap <C-@> <Nop>
+inoremap <C-@> <Nop>
 
 " Turn off the IME when escaping Insert mode
 set noimdisable
 set iminsert=0 imsearch=-1
 set noimcmdline
-inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
-inoremap <silent> <C-[> <C-[>:set iminsert=0<CR>
+inoremap <silent> <ESC> <ESC>:<C-u>set iminsert=0<CR>
+inoremap <silent> <C-[> <C-[>:<C-u>set iminsert=0<CR>
 
 " Intuitive cursor movement when `:set wrap`
 map <Plug>(arpeggio-default:j) <SID>j
@@ -229,7 +229,7 @@ cnoremap <C-n> <Down>
 cnoremap <Down> <C-n>
 
 " For US Keyboard
-noremap ; :
+nnoremap ; :
 
 " Misc
 nnoremap Y y$
