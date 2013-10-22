@@ -456,7 +456,7 @@ let loaded_zipPlugin = 1
 
 
 " Local Settings {{{
-let s:local_vimrc = s:dirs.runtime . '.vimrc_local'
+let s:local_vimrc = s:dirs.runtime . '/.vimrc_local'
 if filereadable(s:local_vimrc)
 	execute 'source ' . s:local_vimrc
 endif
