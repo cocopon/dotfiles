@@ -22,6 +22,7 @@ let s:github_bundles = [
 			\ 	'Shougo/neocomplcache',
 			\ 	'Shougo/neosnippet',
 			\ 	'Shougo/unite.vim',
+			\ 	'Shougo/vesting',
 			\ 	'Shougo/vimfiler',
 			\ 	'Shougo/vimshell',
 			\ 	'Shougo/vinarise',
