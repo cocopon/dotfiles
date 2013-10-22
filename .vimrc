@@ -120,7 +120,7 @@ endfunction
 
 function! s:setup_bundles()
 	call s:mkdir_silently(s:dirs.bundle)
-	let exists_bundle = (glob(s:dirs.bundle . '*') != '')
+	let exists_bundle = (glob(s:dirs.bundle . '/*') != '')
 
 	filetype off
 	if has('vim_starting')
