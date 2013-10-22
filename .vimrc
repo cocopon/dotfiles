@@ -179,9 +179,6 @@ source $VIMRUNTIME/menu.vim
 
 
 " Key {{{
-" Disable Ctrl+@
-inoremap <C-@> <Nop>
-
 " Turn off the IME when escaping Insert mode
 set noimdisable
 set iminsert=0 imsearch=-1
@@ -190,11 +187,10 @@ inoremap <silent> <ESC> <ESC>:<C-u>set iminsert=0<CR>
 inoremap <silent> <C-[> <C-[>:<C-u>set iminsert=0<CR>
 
 " Intuitive cursor movement when `:set wrap`
-map <Plug>(arpeggio-default:j) <SID>j
-noremap <SID>j gj
+noremap j gj
 noremap k gk
 
-" Switch an active window
+" Switch active window
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -224,8 +220,15 @@ cnoremap <Up> <C-p>
 cnoremap <C-n> <Down>
 cnoremap <Down> <C-n>
 
-" For US Keyboard
+" For US keyboard
 nnoremap ; :
+
+" Disable Ctrl-@ (for JIS keyboard)
+inoremap <C-@> <Nop>
+
+" File
+nnoremap <C-n> :<C-u>e %:h<CR>
+nnoremap <C-m> :<C-u>Unite file_mru<CR>
 
 " Misc
 nnoremap Y y$
@@ -262,10 +265,8 @@ let plugin_dicwin_disable = 1
 
 " CamelCaseMotion
 map <silent> b <Plug>CamelCaseMotion_b
-map <Plug>(arpeggio-default:e) <SID>e
-map <silent> <SID>e <Plug>CamelCaseMotion_e
-map <Plug>(arpeggio-default:w) <SID>w
-map <silent> <SID>w <Plug>CamelCaseMotion_w
+map <silent> e <Plug>CamelCaseMotion_e
+map <silent> w <Plug>CamelCaseMotion_w
 
 " matchit
 runtime macros/matchit.vim
@@ -332,16 +333,18 @@ let g:syntastic_python_flake8_args = join([
 			\ 	'--ignore=E501'
 			\ ])
 
-" EasyMotion
+" EasyMotion {{{
 " let g:EasyMotion_keys = 'hfklasdfgyuiopqwertnmzxcvb'
 " let g:EasyMotion_leader_key = '<Space><Space>'
+" }}}
 
-" Arpeggio
-call arpeggio#load()
-let g:arpeggio_timeoutlen = 100
-Arpeggio nnoremap ef :<C-u>Unite file_mru<CR>
-Arpeggio nnoremap ew :<C-u>e %:h<CR>
-Arpeggio nnoremap fj :<C-u>Unite outline<CR>
+" Arpeggio {{{
+" call arpeggio#load()
+" let g:arpeggio_timeoutlen = 100
+" Arpeggio nnoremap ef :<C-u>Unite file_mru<CR>
+" Arpeggio nnoremap ew :<C-u>e %:h<CR>
+" Arpeggio nnoremap fj :<C-u>Unite outline<CR>
+" }}}
 
 " quickrun.vim
 let g:quickrun_config = {}
