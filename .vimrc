@@ -63,15 +63,10 @@ let s:other_bundles = [
 function! VimrcEnvironment()
 	let env = {}
 	let env.is_win = has('win32') || has('win64')
-	let env.path_separator = env.is_win ? '\' : '/'
 
 	return env
 endfunction
 let s:env = VimrcEnvironment()
-
-function! s:join_path(comps)
-	return join(a:comps, s:env.path_separator)
-endfunction
 
 function! s:mkdir_silently(dir)
 	if isdirectory(a:dir)
@@ -84,13 +79,13 @@ endfunction
 
 function! VimrcDirectories()
 	let runtime_path = s:env.is_win 
-				\ ? s:join_path([$VIM, 'vimfiles'])
-				\ : expand(s:join_path(['~', '.vim']))
+				\ ? expand('$VIM/vimfiles')
+				\ : expand('~/.vim')
 	return {
 				\ 	'runtime': runtime_path,
-				\ 	'neobundle': s:join_path([runtime_path, 'neobundle.vim']),
-				\ 	'bundle': s:join_path([runtime_path, 'bundle']),
-				\ 	'neosnippet': s:join_path([runtime_path, '.neosnippet']),
+				\ 	'neobundle': runtime_path . '/neobundle.vim',
+				\ 	'bundle': runtime_path . '/bundle',
+				\ 	'neosnippet': runtime_path . '/.neosnippet',
 				\ }
 endfunction
 let s:dirs = VimrcDirectories()
@@ -124,7 +119,7 @@ endfunction
 
 function! s:setup_bundles()
 	call s:mkdir_silently(s:dirs.bundle)
-	let exists_bundle = (glob(s:join_path([s:dirs.bundle, '*'])) != '')
+	let exists_bundle = (glob(s:dirs.bundle . '*') != '')
 
 	filetype off
 	if has('vim_starting')
@@ -457,7 +452,7 @@ let loaded_zipPlugin = 1
 
 
 " Local Settings {{{
-let s:local_vimrc = s:join_path([s:dirs.runtime, '.vimrc_local'])
+let s:local_vimrc = s:dirs.runtime . '.vimrc_local'
 if filereadable(s:local_vimrc)
 	execute 'source ' . s:local_vimrc
 endif
