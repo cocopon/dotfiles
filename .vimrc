@@ -288,7 +288,7 @@ let g:netrw_preview = 1
 " Unite
 let g:unite_enable_start_insert = 0
 let g:unite_split_rule = 'botright'
-nnoremap <silent> ,ub :<C-u>Unite bookmark -default-action=open<CR>
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,ul :<C-u>Unite line<CR>
 nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
 nnoremap <silent> ,uo :<C-u>Unite outline<CR>
