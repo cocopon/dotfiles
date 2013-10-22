@@ -27,6 +27,7 @@ let s:github_bundles = [
 			\ 	'Shougo/vimshell',
 			\ 	'Shougo/vinarise',
 			\ 	'thinca/vim-editvar',
+			\ 	'thinca/vim-prettyprint',
 			\ 	'thinca/vim-qfreplace',
 			\ 	'thinca/vim-quickrun',
 			\ 	'thinca/vim-ref',
