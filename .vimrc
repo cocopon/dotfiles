@@ -181,6 +181,15 @@ function! s:load_bundles()
 	return 1
 endfunction
 
+function! s:is_installed_bundle(name)
+	try
+		return neobundle#is_installed(a:name)
+	catch /:E117:/
+		" Unknown function
+		return 0
+	endtry
+endfunction
+
 call s:load_neobundle()
 call s:load_bundles()
 " }}}
@@ -244,7 +253,9 @@ inoremap <C-@> <Nop>
 
 " File
 nnoremap <C-n> :<C-u>e %:h<CR>
-nnoremap <C-m> :<C-u>Unite file_mru<CR>
+if s:is_installed_bundle('unite.vim')
+	nnoremap <C-m> :<C-u>Unite file_mru<CR>
+endif
 
 " Misc
 nnoremap Y y$
@@ -280,9 +291,11 @@ let g:loaded_zipPlugin = 1
 let plugin_dicwin_disable = 1
 
 " CamelCaseMotion
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
-map <silent> w <Plug>CamelCaseMotion_w
+if s:is_installed_bundle('camelcasemotion')
+	map <silent> b <Plug>CamelCaseMotion_b
+	map <silent> e <Plug>CamelCaseMotion_e
+	map <silent> w <Plug>CamelCaseMotion_w
+endif
 
 " matchit
 runtime macros/matchit.vim
@@ -292,23 +305,27 @@ let b:match_words = "\<if\>:\<end\>,\<do\>:\<end\>,\<def\>:\<end\>"
 let g:neocomplcache_enable_at_startup = 1
 
 " NeoSnippet
-let g:neosnippet#snippets_directory = s:paths.neosnippet
-imap <C-Space> <Plug>(neosnippet_expand_or_jump)
-smap <C-Space> <Plug>(neosnippet_expand_or_jump)
-xmap <C-Space> <Plug>(neosnippet_expand_target)
+if s:is_installed_bundle('neosnippet')
+	let g:neosnippet#snippets_directory = s:paths.neosnippet
+	imap <C-Space> <Plug>(neosnippet_expand_or_jump)
+	smap <C-Space> <Plug>(neosnippet_expand_or_jump)
+	xmap <C-Space> <Plug>(neosnippet_expand_target)
+endif
 
 " Netrw
 let g:netrw_altv = 1
 let g:netrw_preview = 1
 
 " Unite
-let g:unite_enable_start_insert = 0
-let g:unite_split_rule = 'botright'
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> ,ul :<C-u>Unite line<CR>
-nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
-nnoremap <silent> ,uo :<C-u>Unite outline<CR>
-nnoremap <silent> ,ut :<C-u>Unite todo/all<CR>
+if s:is_installed_bundle('unite.vim')
+	let g:unite_enable_start_insert = 0
+	let g:unite_split_rule = 'botright'
+	nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+	nnoremap <silent> ,ul :<C-u>Unite line<CR>
+	nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+	nnoremap <silent> ,uo :<C-u>Unite outline<CR>
+	nnoremap <silent> ,ut :<C-u>Unite todo/all<CR>
+endif
 
 " Vimfiler
 let g:vimfiler_as_default_explorer = 1
@@ -423,7 +440,9 @@ let g:neocomplcache_omni_functions = {
 autocmd FileType python let b:did_ftplugin = 1
 
 " openbrowser
-nmap gW <Plug>(openbrowser-open)
+if s:is_installed_bundle('open-browser.vim')
+	nmap gW <Plug>(openbrowser-open)
+endif
 " }}}
 
 
