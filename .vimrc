@@ -78,7 +78,7 @@ function! s:mkdir_silently(dir)
 		return 0
 	endif
 
-	call mkdir(a:dir)
+	call mkdir(a:dir, 'p')
 	return 1
 endfunction
 
@@ -110,11 +110,13 @@ function! s:install_neobundle()
 endfunction
 
 function! s:install_bundles()
-	let exists_bundle_dir = s:mkdir_silently(s:paths.bundle)
+	call s:mkdir_silently(s:paths.bundle)
 
 	call s:load_bundles()
 
-	if !exists_bundle_dir
+	if exists(':Unite')
+		Unite neobundle/install:!
+	else
 		NeoBundleInstall!
 	endif
 endfunction
