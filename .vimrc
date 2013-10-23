@@ -4,6 +4,11 @@
 " |_| \___|_|_|_|_|_|   |_____|
 
 
+" First, execute the following command to install bundles:
+"
+" 	:call VimrcInstall()
+
+
 " Required Bundles {{{
 let s:github_bundles = [
 			\ 	'cocopon/colorswatch.vim',
@@ -67,7 +72,6 @@ function! VimrcEnvironment()
 
 	return env
 endfunction
-let s:env = VimrcEnvironment()
 
 function! s:mkdir_silently(dir)
 	if isdirectory(a:dir)
@@ -78,7 +82,7 @@ function! s:mkdir_silently(dir)
 	return 1
 endfunction
 
-function! VimrcDirectories()
+function! VimrcPaths()
 	let runtime_path = s:env.is_win 
 				\ ? expand('$VIM/vimfiles')
 				\ : expand('~/.vim')
@@ -89,43 +93,65 @@ function! VimrcDirectories()
 				\ 	'neosnippet': runtime_path . '/.neosnippet',
 				\ }
 endfunction
-let s:dirs = VimrcDirectories()
+
+let s:env = VimrcEnvironment()
+let s:paths = VimrcPaths()
 " }}}
 
 
-" Setup {{{
-function! s:setup_dirs()
-	let result = 0
-
-	for dir in values(s:dirs)
-		 let result = s:mkdir_silently(dir)
-
-		 if result == 0
-			 return 0
-		 endif
-	endfor
-
-	return 1
-endfunction
-
-function! s:setup_neobundle()
+" Install {{{
+function! s:install_neobundle()
 	let neobundle_url = 'https://github.com/Shougo/neobundle.vim'
-	if isdirectory(s:dirs.neobundle)
-		return 0
+	if !isdirectory(s:paths.neobundle)
+		execute printf('!git clone %s %s', neobundle_url, s:paths.neobundle)
 	endif
 
-	execute printf('!git clone %s %s', neobundle_url, s:dirs.neobundle)
-	return 1
+	call s:load_neobundle()
 endfunction
 
-function! s:setup_bundles()
-	call s:mkdir_silently(s:dirs.bundle)
-	let exists_bundle = (glob(s:dirs.bundle . '/*') != '')
+function! s:install_bundles()
+	let exists_bundle_dir = s:mkdir_silently(s:paths.bundle)
 
-	filetype off
-	if has('vim_starting')
-		execute 'set runtimepath+=' . s:dirs.neobundle
-		call neobundle#rc(s:dirs.bundle)
+	call s:load_bundles()
+
+	if !exists_bundle_dir
+		NeoBundleInstall!
+	endif
+endfunction
+
+function! VimrcInstall()
+	call s:mkdir_silently(s:paths.runtime)
+
+	call s:install_neobundle()
+	call s:install_bundles()
+
+	echo 'Restart vim to finish the installation.'
+endfunction
+" }}}
+
+
+" Load {{{
+function! s:load_neobundle()
+	if exists(':NeoBundle')
+		" Already loaded
+		return 1
+	endif
+
+	try
+		execute 'set runtimepath+=' . s:paths.neobundle
+		call neobundle#rc(s:paths.bundle)
+
+		return 1
+	catch /:E117:/
+		" E117: Unknown function
+		return 0
+	endtry
+endfunction
+
+function! s:load_bundles()
+	if !exists(':NeoBundle')
+		" NeoBundle not installed yet
+		return 0
 	endif
 
 	" Vimproc
@@ -147,27 +173,14 @@ function! s:setup_bundles()
 		execute printf("NeoBundle '%s'", bundle)
 	endfor
 
-	filetype plugin on
 	filetype indent on
+	filetype plugin on
 
-	if !exists_bundle
-		NeoBundleInstall!
-	endif
+	return 1
 endfunction
 
-function! s:setup()
-	let funcnames = [
-				\ 	'dirs',
-				\ 	'neobundle',
-				\ 	'bundles',
-				\ ]
-
-	for funcname in funcnames
-		execute printf('let s:%s_executed = s:setup_%s()', funcname, funcname)
-	endfor
-endfunction
-
-call s:setup()
+call s:load_neobundle()
+call s:load_bundles()
 " }}}
 
 
@@ -277,7 +290,7 @@ let b:match_words = "\<if\>:\<end\>,\<do\>:\<end\>,\<def\>:\<end\>"
 let g:neocomplcache_enable_at_startup = 1
 
 " NeoSnippet
-let g:neosnippet#snippets_directory = s:dirs.neosnippet
+let g:neosnippet#snippets_directory = s:paths.neosnippet
 imap <C-Space> <Plug>(neosnippet_expand_or_jump)
 smap <C-Space> <Plug>(neosnippet_expand_or_jump)
 xmap <C-Space> <Plug>(neosnippet_expand_target)
@@ -456,7 +469,7 @@ let loaded_zipPlugin = 1
 
 
 " Local Settings {{{
-let s:local_vimrc = s:dirs.runtime . '/.vimrc_local'
+let s:local_vimrc = s:paths.runtime . '/.vimrc_local'
 if filereadable(s:local_vimrc)
 	execute 'source ' . s:local_vimrc
 endif

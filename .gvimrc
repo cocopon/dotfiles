@@ -2,7 +2,11 @@ let s:env = VimrcEnvironment()
 
 " Appearance
 if has('gui')
-	colorscheme hybrid
+	try
+		colorscheme hybrid
+	catch /:E185:/
+		" Cannot find color scheme
+	endtry
 
 	set cursorline
 	set guioptions-=m
