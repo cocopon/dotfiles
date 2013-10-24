@@ -197,22 +197,23 @@ function! s:activate_packages()
 	return 1
 endfunction
 
-function! s:is_installed_bundle(name)
-	try
-		return neobundle#is_installed(a:name)
-	catch /:E117:/
-		" Unknown function
-		return 0
-	endtry
-endfunction
-
 function! s:activate_package_manager()
-	call s:activate_neobundle()
-	call s:activate_presetbundle()
-	call s:activate_packages()
+	let activate_funcs = [
+				\ 	function('s:activate_neobundle'),
+				\ 	function('s:activate_presetbundle'),
+				\ 	function('s:activate_packages'),
+				\ ]
+
+	for ActivateFunc in activate_funcs
+		if !ActivateFunc()
+			return 0
+		endif
+	endfor
+
+	return 1
 endfunction
 
-call s:activate_package_manager()
+let s:activated_bundle = s:activate_package_manager()
 " }}}
 
 
@@ -274,7 +275,7 @@ inoremap <C-@> <Nop>
 
 " File
 nnoremap <C-u> :<C-u>e %:h<CR>
-if s:is_installed_bundle('unite.vim')
+if s:activated_bundle
 	nnoremap <C-m> :<C-u>Unite file_mru<CR>
 endif
 
@@ -312,7 +313,7 @@ let g:loaded_zipPlugin = 1
 let plugin_dicwin_disable = 1
 
 " CamelCaseMotion
-if s:is_installed_bundle('camelcasemotion')
+if s:activated_bundle
 	map <silent> b <Plug>CamelCaseMotion_b
 	map <silent> e <Plug>CamelCaseMotion_e
 	map <silent> w <Plug>CamelCaseMotion_w
@@ -326,7 +327,7 @@ let b:match_words = "\<if\>:\<end\>,\<do\>:\<end\>,\<def\>:\<end\>"
 let g:neocomplcache_enable_at_startup = 1
 
 " NeoSnippet
-if s:is_installed_bundle('neosnippet')
+if s:activated_bundle
 	let g:neosnippet#snippets_directory = s:paths.neosnippet
 	imap <C-Space> <Plug>(neosnippet_expand_or_jump)
 	smap <C-Space> <Plug>(neosnippet_expand_or_jump)
@@ -338,7 +339,7 @@ let g:netrw_altv = 1
 let g:netrw_preview = 1
 
 " Unite
-if s:is_installed_bundle('unite.vim')
+if s:activated_bundle
 	let g:unite_enable_start_insert = 0
 	let g:unite_split_rule = 'botright'
 	nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
@@ -461,7 +462,7 @@ let g:neocomplcache_omni_functions = {
 autocmd FileType python let b:did_ftplugin = 1
 
 " openbrowser
-if s:is_installed_bundle('open-browser.vim')
+if s:activated_bundle
 	nmap gW <Plug>(openbrowser-open)
 endif
 " }}}
