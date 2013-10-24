@@ -6,7 +6,7 @@
 
 " First, execute the following command to install bundles:
 "
-" 	:call VimrcInstall()
+" 	:call VimrcInstallPackageManager()
 
 
 " Required Bundles {{{
@@ -99,24 +99,16 @@ let s:paths = VimrcPaths()
 
 
 " Install {{{
-function! s:install_neobundle()
-	let neobundle_url = 'https://github.com/Shougo/neobundle.vim'
-	if !isdirectory(s:paths.neobundle)
-		execute printf('!git clone %s %s', neobundle_url, s:paths.neobundle)
+function! s:clone_repository(url, local_path)
+	if isdirectory(a:local_path)
+		return
 	endif
-endfunction
 
-function! s:install_presetbundle()
-	let presetbundle_url = 'https://github.com/cocopon/presetbundle.vim'
-	if !isdirectory(s:paths.presetbundle)
-		execute printf('!git clone %s %s', presetbundle_url, s:paths.presetbundle)
-	endif
+	execute printf('!git clone %s %s', a:url, a:local_path)
 endfunction
 
 function! s:install_bundles()
 	call s:mkdir_silently(s:paths.bundle)
-
-	call s:load_bundles()
 
 	if exists(':Unite')
 		Unite neobundle/install:!
@@ -125,13 +117,17 @@ function! s:install_bundles()
 	endif
 endfunction
 
-function! VimrcInstall()
+function! VimrcInstallPackageManager()
 	call s:mkdir_silently(s:paths.runtime)
 
-	call s:install_neobundle()
-	call s:install_presetbundle()
+	call s:clone_repository(
+				\ 'https://github.com/Shougo/neobundle.vim',
+				\ s:paths.neobundle)
+	call s:clone_repository(
+				\ 'https://github.com/cocopon/presetbundle.vim',
+				\ s:paths.presetbundle)
 
-	call s:load()
+	call s:activate_package_manager()
 
 	call s:install_bundles()
 
@@ -140,10 +136,10 @@ endfunction
 " }}}
 
 
-" Load {{{
-function! s:load_neobundle()
+" Activate {{{
+function! s:activate_neobundle()
 	if exists(':NeoBundle')
-		" Already loaded
+		" Already activated
 		return 1
 	endif
 
@@ -158,9 +154,9 @@ function! s:load_neobundle()
 	endtry
 endfunction
 
-function! s:load_presetbundle()
+function! s:activate_presetbundle()
 	if exists(':PresetBundle')
-		" Already loaded
+		" Already activated
 		return 1
 	endif
 
@@ -175,9 +171,9 @@ function! s:load_presetbundle()
 	endtry
 endfunction
 
-function! s:load_bundles()
-	if !exists(':NeoBundle')
-		" NeoBundle not installed yet
+function! s:activate_packages()
+	if !exists(':NeoBundle') || !exists(':PresetBundle')
+		" Package manager not installed yet
 		return 0
 	endif
 
@@ -210,13 +206,13 @@ function! s:is_installed_bundle(name)
 	endtry
 endfunction
 
-function! s:load()
-	call s:load_neobundle()
-	call s:load_presetbundle()
-	call s:load_bundles()
+function! s:activate_package_manager()
+	call s:activate_neobundle()
+	call s:activate_presetbundle()
+	call s:activate_packages()
 endfunction
 
-call s:load()
+call s:activate_package_manager()
 " }}}
 
 
