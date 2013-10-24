@@ -4,13 +4,13 @@
 " |_| \___|_|_|_|_|_|   |_____|
 
 
-" First, execute the following command to install bundles:
+" First, execute the following command to install packages:
 "
 " 	:call VimrcInstallPackageManager()
 
 
-" Required Bundles {{{
-let s:bundles = [
+" Required Packages {{{
+let s:packages = [
 			\ 	'cocopon/colorswatch.vim',
 			\ 	'cocopon/lightline-hybrid.vim',
 			\ 	'cocopon/todo.vim',
@@ -107,7 +107,7 @@ function! s:clone_repository(url, local_path)
 	execute printf('!git clone %s %s', a:url, a:local_path)
 endfunction
 
-function! s:install_bundles()
+function! s:install_packages()
 	call s:mkdir_silently(s:paths.bundle)
 
 	if exists(':Unite')
@@ -129,7 +129,7 @@ function! VimrcInstallPackageManager()
 
 	call s:activate_package_manager()
 
-	call s:install_bundles()
+	call s:install_packages()
 
 	echo 'Restart vim to finish the installation.'
 endfunction
@@ -186,8 +186,8 @@ function! s:activate_packages()
 				\ 	}
 				\ }
 
-	" Bundles
-	for bundle in s:bundles
+	" Packages
+	for bundle in s:packages
 		execute printf("PresetBundle 'https://github.com/%s'", bundle)
 	endfor
 
