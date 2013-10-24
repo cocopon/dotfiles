@@ -64,28 +64,15 @@ let s:packages = [
 " }}}
 
 
-" Utilities {{{
+" Environment {{{
 function! VimrcEnvironment()
 	let env = {}
 	let env.is_win = has('win32') || has('win64')
 
-	return env
-endfunction
-
-function! s:mkdir_silently(dir)
-	if isdirectory(a:dir)
-		return 0
-	endif
-
-	call mkdir(a:dir, 'p')
-	return 1
-endfunction
-
-function! VimrcPaths()
-	let user_dir = s:env.is_win 
+	let user_dir = env.is_win 
 				\ ? expand('$VIM/vimfiles')
 				\ : expand('~/.vim')
-	return {
+	let env.path = {
 				\ 	'user':         user_dir,
 				\ 	'neobundle':    user_dir . '/neobundle.vim',
 				\ 	'bundle':       user_dir . '/bundle',
@@ -93,10 +80,11 @@ function! VimrcPaths()
 				\ 	'neosnippet':   user_dir . '/.neosnippet',
 				\ 	'bundle_preset': user_dir . '/bundle-preset.vim',
 				\ }
+
+	return env
 endfunction
 
 let s:env = VimrcEnvironment()
-let s:paths = VimrcPaths()
 " }}}
 
 
@@ -109,8 +97,17 @@ function! s:clone_repository(url, local_path)
 	execute printf('!git clone %s %s', a:url, a:local_path)
 endfunction
 
+function! s:mkdir_silently(dir)
+	if isdirectory(a:dir)
+		return 0
+	endif
+
+	call mkdir(a:dir, 'p')
+	return 1
+endfunction
+
 function! s:install_packages()
-	call s:mkdir_silently(s:paths.bundle)
+	call s:mkdir_silently(s:env.path.bundle)
 
 	if exists(':Unite')
 		Unite neobundle/install:!
@@ -120,14 +117,14 @@ function! s:install_packages()
 endfunction
 
 function! VimrcInstallPackageManager()
-	call s:mkdir_silently(s:paths.user)
+	call s:mkdir_silently(s:env.path.user)
 
 	call s:clone_repository(
 				\ 'https://github.com/Shougo/neobundle.vim',
-				\ s:paths.neobundle)
+				\ s:env.path.neobundle)
 	call s:clone_repository(
 				\ 'https://github.com/cocopon/bundle-preset.vim',
-				\ s:paths.bundle_preset)
+				\ s:env.path.bundle_preset)
 
 	call s:activate_package_manager()
 
@@ -146,8 +143,8 @@ function! s:activate_neobundle()
 	endif
 
 	try
-		execute 'set runtimepath+=' . s:paths.neobundle
-		call neobundle#rc(s:paths.bundle)
+		execute 'set runtimepath+=' . s:env.path.neobundle
+		call neobundle#rc(s:env.path.bundle)
 
 		return 1
 	catch /:E117:/
@@ -163,7 +160,7 @@ function! s:activate_bundle_preset()
 	endif
 
 	try
-		execute 'set runtimepath+=' . s:paths.bundle_preset
+		execute 'set runtimepath+=' . s:env.path.bundle_preset
 		call bundle_preset#rc()
 
 		return 1
@@ -318,7 +315,7 @@ let g:neocomplcache_enable_at_startup = 1
 
 " NeoSnippet
 if s:activated_bundle
-	let g:neosnippet#snippets_directory = s:paths.neosnippet
+	let g:neosnippet#snippets_directory = s:env.path.neosnippet
 	imap <C-Space> <Plug>(neosnippet_expand_or_jump)
 	smap <C-Space> <Plug>(neosnippet_expand_or_jump)
 	xmap <C-Space> <Plug>(neosnippet_expand_target)
@@ -502,7 +499,7 @@ let loaded_zipPlugin = 1
 
 
 " Local Settings {{{
-if filereadable(s:paths.local_vimrc)
-	execute 'source ' . s:paths.local_vimrc
+if filereadable(s:env.path.local_vimrc)
+	execute 'source ' . s:env.path.local_vimrc
 endif
 " }}}
