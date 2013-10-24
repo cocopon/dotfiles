@@ -73,11 +73,11 @@ function! VimrcEnvironment()
 				\ ? expand('$VIM/vimfiles')
 				\ : expand('~/.vim')
 	let env.path = {
-				\ 	'user':         user_dir,
-				\ 	'neobundle':    user_dir . '/neobundle.vim',
-				\ 	'bundle':       user_dir . '/bundle',
-				\ 	'local_vimrc':  user_dir . '/.vimrc_local',
-				\ 	'neosnippet':   user_dir . '/.neosnippet',
+				\ 	'user':          user_dir,
+				\ 	'neobundle':     user_dir . '/neobundle.vim',
+				\ 	'bundle':        user_dir . '/bundle',
+				\ 	'local_vimrc':   user_dir . '/.vimrc_local',
+				\ 	'neosnippet':    user_dir . '/.neosnippet',
 				\ 	'bundle_preset': user_dir . '/bundle-preset.vim',
 				\ }
 
