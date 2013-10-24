@@ -88,6 +88,7 @@ function! VimrcPaths()
 				\ 	'runtime': runtime_path,
 				\ 	'neobundle': runtime_path . '/neobundle.vim',
 				\ 	'bundle': runtime_path . '/bundle',
+				\ 	'local_vimrc': runtime_path . '/.vimrc_local',
 				\ 	'neosnippet': runtime_path . '/.neosnippet',
 				\ 	'presetbundle': runtime_path . '/presetbundle.vim',
 				\ }
@@ -512,8 +513,7 @@ let loaded_zipPlugin = 1
 
 
 " Local Settings {{{
-let s:local_vimrc = s:paths.runtime . '/.vimrc_local'
-if filereadable(s:local_vimrc)
-	execute 'source ' . s:local_vimrc
+if filereadable(s:paths.local_vimrc)
+	execute 'source ' . s:paths.local_vimrc
 endif
 " }}}
