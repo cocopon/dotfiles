@@ -174,14 +174,17 @@ function! s:activate_presetbundle()
 endfunction
 
 function! s:activate_packages()
-	if !exists(':NeoBundle') || !exists(':PresetBundle')
+	if !exists(':NeoBundle')
 		" Package manager not installed yet
 		return 0
 	endif
 
-	" Packages
+	let command = exists(':PresetBundle')
+				\ ? 'PresetBundle'
+				\ : 'NeoBundle'
+
 	for package in s:packages
-		execute printf("PresetBundle 'https://github.com/%s'", package)
+		execute printf("%s 'https://github.com/%s'", command, package)
 	endfor
 
 	filetype indent on
@@ -191,19 +194,13 @@ function! s:activate_packages()
 endfunction
 
 function! s:activate_package_manager()
-	let activate_funcs = [
-				\ 	function('s:activate_neobundle'),
-				\ 	function('s:activate_presetbundle'),
-				\ 	function('s:activate_packages'),
-				\ ]
+	if !s:activate_neobundle()
+		return 0
+	endif
 
-	for ActivateFunc in activate_funcs
-		if !ActivateFunc()
-			return 0
-		endif
-	endfor
+	call s:activate_presetbundle()
 
-	return 1
+	return s:activate_packages()
 endfunction
 
 let s:activated_bundle = s:activate_package_manager()
