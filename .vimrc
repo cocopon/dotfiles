@@ -82,16 +82,16 @@ function! s:mkdir_silently(dir)
 endfunction
 
 function! VimrcPaths()
-	let runtime_path = s:env.is_win 
+	let user_dir = s:env.is_win 
 				\ ? expand('$VIM/vimfiles')
 				\ : expand('~/.vim')
 	return {
-				\ 	'runtime': runtime_path,
-				\ 	'neobundle': runtime_path . '/neobundle.vim',
-				\ 	'bundle': runtime_path . '/bundle',
-				\ 	'local_vimrc': runtime_path . '/.vimrc_local',
-				\ 	'neosnippet': runtime_path . '/.neosnippet',
-				\ 	'presetbundle': runtime_path . '/presetbundle.vim',
+				\ 	'user':         user_dir,
+				\ 	'neobundle':    user_dir . '/neobundle.vim',
+				\ 	'bundle':       user_dir . '/bundle',
+				\ 	'local_vimrc':  user_dir . '/.vimrc_local',
+				\ 	'neosnippet':   user_dir . '/.neosnippet',
+				\ 	'presetbundle': user_dir . '/presetbundle.vim',
 				\ }
 endfunction
 
@@ -120,7 +120,7 @@ function! s:install_packages()
 endfunction
 
 function! VimrcInstallPackageManager()
-	call s:mkdir_silently(s:paths.runtime)
+	call s:mkdir_silently(s:paths.user)
 
 	call s:clone_repository(
 				\ 'https://github.com/Shougo/neobundle.vim',
@@ -180,8 +180,8 @@ function! s:activate_packages()
 	endif
 
 	" Packages
-	for bundle in s:packages
-		execute printf("PresetBundle 'https://github.com/%s'", bundle)
+	for package in s:packages
+		execute printf("PresetBundle 'https://github.com/%s'", package)
 	endfor
 
 	filetype indent on
