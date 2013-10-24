@@ -10,7 +10,7 @@
 
 
 " Required Bundles {{{
-let s:github_bundles = [
+let s:bundles = [
 			\ 	'cocopon/colorswatch.vim',
 			\ 	'cocopon/lightline-hybrid.vim',
 			\ 	'cocopon/todo.vim',
@@ -59,8 +59,6 @@ let s:github_bundles = [
 			\ 	'vim-scripts/pyte',
 			\ 	'vim-scripts/twilight',
 			\ 	'w0ng/vim-hybrid',
-			\ ]
-let s:other_bundles = [
 			\ ]
 " }}}
 
@@ -165,14 +163,9 @@ function! s:load_bundles()
 				\ 	}
 				\ }
 
-	" Github Bundles
-	for bundle in s:github_bundles
+	" Bundles
+	for bundle in s:bundles
 		execute printf("NeoBundle 'https://github.com/%s'", bundle)
-	endfor
-
-	" Other Bundles
-	for bundle in s:other_bundles
-		execute printf("NeoBundle '%s'", bundle)
 	endfor
 
 	filetype indent on
