@@ -89,6 +89,7 @@ function! VimrcPaths()
 				\ 	'neobundle': runtime_path . '/neobundle.vim',
 				\ 	'bundle': runtime_path . '/bundle',
 				\ 	'neosnippet': runtime_path . '/.neosnippet',
+				\ 	'presetbundle': runtime_path . '/presetbundle.vim',
 				\ }
 endfunction
 
@@ -103,8 +104,13 @@ function! s:install_neobundle()
 	if !isdirectory(s:paths.neobundle)
 		execute printf('!git clone %s %s', neobundle_url, s:paths.neobundle)
 	endif
+endfunction
 
-	call s:load_neobundle()
+function! s:install_presetbundle()
+	let presetbundle_url = 'https://github.com/cocopon/presetbundle.vim'
+	if !isdirectory(s:paths.presetbundle)
+		execute printf('!git clone %s %s', presetbundle_url, s:paths.presetbundle)
+	endif
 endfunction
 
 function! s:install_bundles()
@@ -123,6 +129,10 @@ function! VimrcInstall()
 	call s:mkdir_silently(s:paths.runtime)
 
 	call s:install_neobundle()
+	call s:install_presetbundle()
+
+	call s:load()
+
 	call s:install_bundles()
 
 	echo 'Restart vim to finish the installation.'
@@ -148,6 +158,23 @@ function! s:load_neobundle()
 	endtry
 endfunction
 
+function! s:load_presetbundle()
+	if exists(':PresetBundle')
+		" Already loaded
+		return 1
+	endif
+
+	try
+		execute 'set runtimepath+=' . s:paths.presetbundle
+		call presetbundle#rc()
+
+		return 1
+	catch /:E117:/
+		" E117: Unknown function
+		return 0
+	endtry
+endfunction
+
 function! s:load_bundles()
 	if !exists(':NeoBundle')
 		" NeoBundle not installed yet
@@ -165,7 +192,7 @@ function! s:load_bundles()
 
 	" Bundles
 	for bundle in s:bundles
-		execute printf("NeoBundle 'https://github.com/%s'", bundle)
+		execute printf("PresetBundle 'https://github.com/%s'", bundle)
 	endfor
 
 	filetype indent on
@@ -183,8 +210,13 @@ function! s:is_installed_bundle(name)
 	endtry
 endfunction
 
-call s:load_neobundle()
-call s:load_bundles()
+function! s:load()
+	call s:load_neobundle()
+	call s:load_presetbundle()
+	call s:load_bundles()
+endfunction
+
+call s:load()
 " }}}
 
 
