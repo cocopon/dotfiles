@@ -239,13 +239,13 @@ cnoremap <C-n> <Down>
 cnoremap <Down> <C-n>
 
 " For US keyboard
-nnoremap ; :
+noremap ; :
 
 " Disable Ctrl-@ (for JIS keyboard)
 inoremap <C-@> <Nop>
 
 " File
-nnoremap <C-n> :<C-u>e %:h<CR>
+nnoremap <C-u> :<C-u>e %:h<CR>
 if s:is_installed_bundle('unite.vim')
 	nnoremap <C-m> :<C-u>Unite file_mru<CR>
 endif
