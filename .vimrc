@@ -91,7 +91,7 @@ function! VimrcPaths()
 				\ 	'bundle':       user_dir . '/bundle',
 				\ 	'local_vimrc':  user_dir . '/.vimrc_local',
 				\ 	'neosnippet':   user_dir . '/.neosnippet',
-				\ 	'presetbundle': user_dir . '/presetbundle.vim',
+				\ 	'bundle_preset': user_dir . '/bundle-preset.vim',
 				\ }
 endfunction
 
@@ -126,8 +126,8 @@ function! VimrcInstallPackageManager()
 				\ 'https://github.com/Shougo/neobundle.vim',
 				\ s:paths.neobundle)
 	call s:clone_repository(
-				\ 'https://github.com/cocopon/presetbundle.vim',
-				\ s:paths.presetbundle)
+				\ 'https://github.com/cocopon/bundle-preset.vim',
+				\ s:paths.bundle_preset)
 
 	call s:activate_package_manager()
 
@@ -156,15 +156,15 @@ function! s:activate_neobundle()
 	endtry
 endfunction
 
-function! s:activate_presetbundle()
+function! s:activate_bundle_preset()
 	if exists(':PresetBundle')
 		" Already activated
 		return 1
 	endif
 
 	try
-		execute 'set runtimepath+=' . s:paths.presetbundle
-		call presetbundle#rc()
+		execute 'set runtimepath+=' . s:paths.bundle_preset
+		call bundle_preset#rc()
 
 		return 1
 	catch /:E117:/
@@ -198,7 +198,7 @@ function! s:activate_package_manager()
 		return 0
 	endif
 
-	call s:activate_presetbundle()
+	call s:activate_bundle_preset()
 
 	return s:activate_packages()
 endfunction
