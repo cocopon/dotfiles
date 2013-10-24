@@ -29,6 +29,7 @@ let s:packages = [
 			\ 	'Shougo/unite.vim',
 			\ 	'Shougo/vesting',
 			\ 	'Shougo/vimfiler',
+			\ 	'Shougo/vimproc',
 			\ 	'Shougo/vimshell',
 			\ 	'Shougo/vinarise',
 			\ 	'thinca/vim-editvar',
@@ -177,15 +178,6 @@ function! s:activate_packages()
 		" Package manager not installed yet
 		return 0
 	endif
-
-	" Vimproc
-	NeoBundle 'https://github.com/Shougo/vimproc', {
-				\ 	'build': {
-				\ 		'cygwin': 'make -f make_cygwin.mak',
-				\ 		'mac': 'make -f make_mac.mak',
-				\ 		'unix': 'make -f make_unix.mak',
-				\ 	}
-				\ }
 
 	" Packages
 	for bundle in s:packages
