@@ -89,14 +89,6 @@ let s:env = VimrcEnvironment()
 
 
 " Install {{{
-function! s:clone_repository(url, local_path)
-	if isdirectory(a:local_path)
-		return
-	endif
-
-	execute printf('!git clone %s %s', a:url, a:local_path)
-endfunction
-
 function! s:mkdir_silently(dir)
 	if isdirectory(a:dir)
 		return 0
@@ -114,6 +106,14 @@ function! s:install_packages()
 	else
 		NeoBundleInstall!
 	endif
+endfunction
+
+function! s:clone_repository(url, local_path)
+	if isdirectory(a:local_path)
+		return
+	endif
+
+	execute printf('!git clone %s %s', a:url, a:local_path)
 endfunction
 
 function! VimrcInstallPackageManager()
@@ -136,32 +136,15 @@ endfunction
 
 
 " Activate {{{
-function! s:activate_neobundle()
-	if exists(':NeoBundle')
+function! s:activate_plugin(path, func, defined_command, ...)
+	if exists(a:defined_command)
 		" Already activated
 		return 1
 	endif
 
 	try
-		execute 'set runtimepath+=' . s:env.path.neobundle
-		call neobundle#rc(s:env.path.bundle)
-
-		return 1
-	catch /:E117:/
-		" E117: Unknown function
-		return 0
-	endtry
-endfunction
-
-function! s:activate_bundle_preset()
-	if exists(':PresetBundle')
-		" Already activated
-		return 1
-	endif
-
-	try
-		execute 'set runtimepath+=' . s:env.path.bundle_preset
-		call bundle_preset#rc()
+		execute 'set runtimepath+=' . a:path
+		call call(a:func, a:000[3:])
 
 		return 1
 	catch /:E117:/
@@ -191,11 +174,18 @@ function! s:activate_packages()
 endfunction
 
 function! s:activate_package_manager()
-	if !s:activate_neobundle()
+	if !s:activate_plugin(
+				\ s:env.path.neobundle,
+				\ 'neobundle#rc',
+				\ ':NeoBundle',
+				\ s:env.path.bundle)
 		return 0
 	endif
 
-	call s:activate_bundle_preset()
+	call s:activate_plugin(
+				\ s:env.path.bundle_preset,
+				\ 'bundle_preset#rc',
+				\ ':PresetBundle')
 
 	return s:activate_packages()
 endfunction
