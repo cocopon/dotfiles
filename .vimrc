@@ -299,7 +299,7 @@ let g:loaded_zipPlugin = 1
 " Disable unused kaoriya plugins
 let plugin_dicwin_disable = 1
 
-" CamelCaseMotion
+" camelcasemotion
 if s:activated_bundle
 	map <silent> b <Plug>CamelCaseMotion_b
 	map <silent> e <Plug>CamelCaseMotion_e
@@ -310,10 +310,10 @@ endif
 runtime macros/matchit.vim
 let b:match_words = "\<if\>:\<end\>,\<do\>:\<end\>,\<def\>:\<end\>"
 
-" NeoComplCache
+" neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 
-" NeoSnippet
+" neosnippet
 if s:activated_bundle
 	let g:neosnippet#snippets_directory = s:env.path.neosnippet
 	imap <C-Space> <Plug>(neosnippet_expand_or_jump)
@@ -321,11 +321,11 @@ if s:activated_bundle
 	xmap <C-Space> <Plug>(neosnippet_expand_target)
 endif
 
-" Netrw
+" netrw
 let g:netrw_altv = 1
 let g:netrw_preview = 1
 
-" Unite
+" unite
 if s:activated_bundle
 	let g:unite_enable_start_insert = 0
 	let g:unite_split_rule = 'botright'
@@ -336,11 +336,11 @@ if s:activated_bundle
 	nnoremap <silent> ,ut :<C-u>Unite todo/all<CR>
 endif
 
-" Vimfiler
+" vimfiler
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
 
-" Syntastic
+" syntastic
 let g:syntastic_mode_map = {
 			\ 	'mode': 'passive',
 			\ 	'active_filetypes': ['javascript', 'python'],
@@ -375,12 +375,12 @@ let g:syntastic_python_flake8_args = join([
 			\ 	'--ignore=E501'
 			\ ])
 
-" EasyMotion {{{
+" easymotion {{{
 " let g:EasyMotion_keys = 'hfklasdfgyuiopqwertnmzxcvb'
 " let g:EasyMotion_leader_key = '<Space><Space>'
 " }}}
 
-" Arpeggio {{{
+" arpeggio {{{
 " call arpeggio#load()
 " let g:arpeggio_timeoutlen = 100
 " Arpeggio nnoremap ef :<C-u>Unite file_mru<CR>
@@ -388,7 +388,7 @@ let g:syntastic_python_flake8_args = join([
 " Arpeggio nnoremap fj :<C-u>Unite outline<CR>
 " }}}
 
-" quickrun.vim
+" quickrun
 let g:quickrun_config = {}
 let g:quickrun_config['*'] = {'runner': 'vimproc'}
 let g:quickrun_config['rst'] = {
@@ -433,7 +433,7 @@ let g:lightline = {
 			\ }
 let g:lightline_hybrid_style = 'plain'
 
-" jedi-vim
+" jedi
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
@@ -448,7 +448,7 @@ let g:neocomplcache_omni_functions = {
 
 autocmd FileType python let b:did_ftplugin = 1
 
-" openbrowser
+" open-browser
 if s:activated_bundle
 	nmap gW <Plug>(openbrowser-open)
 endif
