@@ -375,19 +375,6 @@ let g:syntastic_python_flake8_args = join([
 			\ 	'--ignore=E501'
 			\ ])
 
-" easymotion {{{
-" let g:EasyMotion_keys = 'hfklasdfgyuiopqwertnmzxcvb'
-" let g:EasyMotion_leader_key = '<Space><Space>'
-" }}}
-
-" arpeggio {{{
-" call arpeggio#load()
-" let g:arpeggio_timeoutlen = 100
-" Arpeggio nnoremap ef :<C-u>Unite file_mru<CR>
-" Arpeggio nnoremap ew :<C-u>e %:h<CR>
-" Arpeggio nnoremap fj :<C-u>Unite outline<CR>
-" }}}
-
 " quickrun
 let g:quickrun_config = {}
 let g:quickrun_config['*'] = {'runner': 'vimproc'}
