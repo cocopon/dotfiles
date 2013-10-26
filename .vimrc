@@ -190,7 +190,7 @@ function! s:activate_package_manager()
 	return s:activate_packages()
 endfunction
 
-let s:activated_bundle = s:activate_package_manager()
+let s:bundle_activated = s:activate_package_manager()
 " }}}
 
 
@@ -252,7 +252,7 @@ inoremap <C-@> <Nop>
 
 " File
 nnoremap <C-g> :<C-u>e %:h<CR>
-if s:activated_bundle
+if s:bundle_activated
 	nnoremap <C-u> :<C-u>Unite file_mru<CR>
 endif
 
@@ -290,7 +290,7 @@ let g:loaded_zipPlugin = 1
 let plugin_dicwin_disable = 1
 
 " camelcasemotion
-if s:activated_bundle
+if s:bundle_activated
 	map <silent> b <Plug>CamelCaseMotion_b
 	map <silent> e <Plug>CamelCaseMotion_e
 	map <silent> w <Plug>CamelCaseMotion_w
@@ -304,7 +304,7 @@ let b:match_words = "\<if\>:\<end\>,\<do\>:\<end\>,\<def\>:\<end\>"
 let g:neocomplcache_enable_at_startup = 1
 
 " neosnippet
-if s:activated_bundle
+if s:bundle_activated
 	let g:neosnippet#snippets_directory = s:env.path.neosnippet
 	imap <C-Space> <Plug>(neosnippet_expand_or_jump)
 	smap <C-Space> <Plug>(neosnippet_expand_or_jump)
@@ -316,7 +316,7 @@ let g:netrw_altv = 1
 let g:netrw_preview = 1
 
 " unite
-if s:activated_bundle
+if s:bundle_activated
 	let g:unite_enable_start_insert = 0
 	let g:unite_split_rule = 'botright'
 	nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
@@ -426,7 +426,7 @@ let g:neocomplcache_omni_functions = {
 autocmd FileType python let b:did_ftplugin = 1
 
 " open-browser
-if s:activated_bundle
+if s:bundle_activated
 	nmap gW <Plug>(openbrowser-open)
 endif
 " }}}
@@ -480,3 +480,8 @@ if filereadable(s:env.path.local_vimrc)
 	execute 'source ' . s:env.path.local_vimrc
 endif
 " }}}
+
+
+unlet s:bundle_activated
+unlet s:env
+unlet s:packages
