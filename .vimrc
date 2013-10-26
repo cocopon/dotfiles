@@ -263,7 +263,7 @@ inoremap <C-@> <Nop>
 " File
 nnoremap <C-g> :<C-u>e %:h<CR>
 if s:activated_bundle
-	nnoremap <C-h> :<C-u>Unite file_mru<CR>
+	nnoremap <C-u> :<C-u>Unite file_mru<CR>
 endif
 
 " Misc
