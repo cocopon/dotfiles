@@ -296,10 +296,6 @@ if s:bundle_activated
 	map <silent> w <Plug>CamelCaseMotion_w
 endif
 
-" matchit
-runtime macros/matchit.vim
-let b:match_words = "\<if\>:\<end\>,\<do\>:\<end\>,\<def\>:\<end\>"
-
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 
