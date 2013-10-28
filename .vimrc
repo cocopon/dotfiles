@@ -327,30 +327,26 @@ let g:loaded_zipPlugin = 1
 " Disable unused kaoriya plugins
 let g:plugin_dicwin_disable = 1
 
-" camelcasemotion
 if s:bundle_activated
+	" camelcasemotion
 	map <silent> b <Plug>CamelCaseMotion_b
 	map <silent> e <Plug>CamelCaseMotion_e
 	map <silent> w <Plug>CamelCaseMotion_w
-endif
 
-" neocomplcache
-let g:neocomplcache_enable_at_startup = 1
+	" neocomplcache
+	let g:neocomplcache_enable_at_startup = 1
 
-" neosnippet
-if s:bundle_activated
+	" neosnippet
 	let g:neosnippet#snippets_directory = s:env.path.neosnippet
 	imap <C-Space> <Plug>(neosnippet_expand_or_jump)
 	smap <C-Space> <Plug>(neosnippet_expand_or_jump)
 	xmap <C-Space> <Plug>(neosnippet_expand_target)
-endif
 
-" netrw
-let g:netrw_altv = 1
-let g:netrw_preview = 1
+	" netrw
+	let g:netrw_altv = 1
+	let g:netrw_preview = 1
 
-" unite
-if s:bundle_activated
+	" unite
 	let g:unite_enable_start_insert = 0
 	let g:unite_split_rule = 'botright'
 	nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
@@ -358,109 +354,105 @@ if s:bundle_activated
 	nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
 	nnoremap <silent> ,uo :<C-u>Unite outline<CR>
 	nnoremap <silent> ,ut :<C-u>Unite todo/all<CR>
-endif
 
-" vimfiler
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_safe_mode_by_default = 0
+	" vimfiler
+	let g:vimfiler_as_default_explorer = 1
+	let g:vimfiler_safe_mode_by_default = 0
 
-" syntastic
-let g:syntastic_mode_map = {
-			\ 	'mode': 'passive',
-			\ 	'active_filetypes': ['javascript', 'python'],
-			\ 	'passive_filetypes': [],
-			\ }
-let g:syntastic_auto_loc_list = 0
+	" syntastic
+	let g:syntastic_mode_map = {
+				\ 	'mode': 'passive',
+				\ 	'active_filetypes': ['javascript', 'python'],
+				\ 	'passive_filetypes': [],
+				\ }
+	let g:syntastic_auto_loc_list = 0
+	" --browser .... Tolerate standard browser globals
+	" --es5 ........ Tolerate ECMA Script 5 syntax (e.g. trailling commas)
+	" --nomen ...... Tolerate initial or trailing underbars in names
+	" --plusplus ... Tolerate '++' and '--'
+	" --sloppy ..... Tolerate missing 'use strict' pragma
+	" --vars ....... Tolerate many var statements per function
+	" --white ...... Tolerate messy white space
+	let g:syntastic_javascript_checkers = ['jslint']
+	let g:syntastic_javascript_jslint_args = join([
+				\ 	'--browser',
+				\ 	'--es5=false',
+				\ 	'--nomen',
+				\ 	'--plusplus',
+				\ 	'--sloppy',
+				\ 	'--vars',
+				\ 	'--white',
+				\ 	'--predef=goog',
+				\ 	'--predef=jQuery',
+				\ 	'--predef=$'
+				\ ])
+	" E501 ... line too long
+	let g:syntastic_python_checkers = ['flake8']
+	let g:syntastic_python_flake8_args = join([
+				\ 	'--ignore=E501'
+				\ ])
 
-" --browser .... Tolerate standard browser globals
-" --es5 ........ Tolerate ECMA Script 5 syntax (e.g. trailling commas)
-" --nomen ...... Tolerate initial or trailing underbars in names
-" --plusplus ... Tolerate '++' and '--'
-" --sloppy ..... Tolerate missing 'use strict' pragma
-" --vars ....... Tolerate many var statements per function
-" --white ...... Tolerate messy white space
-let g:syntastic_javascript_checkers = ['jslint']
-let g:syntastic_javascript_jslint_args = join([
-			\ 	'--browser',
-			\ 	'--es5=false',
-			\ 	'--nomen',
-			\ 	'--plusplus',
-			\ 	'--sloppy',
-			\ 	'--vars',
-			\ 	'--white',
-			\ 	'--predef=goog',
-			\ 	'--predef=jQuery',
-			\ 	'--predef=$'
-			\ ])
+	" quickrun
+	let g:quickrun_config = {}
+	let g:quickrun_config['*'] = {'runner': 'vimproc'}
+	let g:quickrun_config['rst'] = {
+				\ 	'command': 'rst2html.py',
+				\ 	'outputter': 'browser',
+				\ 	'runner': 'system'
+				\ }
 
-" E501 ... line too long
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args = join([
-			\ 	'--ignore=E501'
-			\ ])
+	" lightline
+	let g:lightline = {
+				\ 	'active': {
+				\ 		'left': [
+				\ 			['mode'],
+				\ 			['filename', 'readonly', 'modified']
+				\ 		],
+				\ 		'right': [
+				\ 			['lineinfo'],
+				\ 			['percent'],
+				\ 			['fileformat', 'fileencoding', 'filetype']
+				\ 		]
+				\ 	},
+				\ 	'inactive': {
+				\ 		'left': [
+				\ 			['filename', 'modified']
+				\ 		],
+				\ 		'right': []
+				\ 	},
+				\ 	'colorscheme': 'hybrid',
+				\ 	'mode_map': {
+				\ 		'n': '-',
+				\ 		'i': 'I',
+				\ 		'R': 'R',
+				\ 		'v': 'V',
+				\ 		'V': 'V',
+				\ 		'c': 'C',
+				\ 		"\<C-v>": 'V',
+				\ 		's': 'S',
+				\ 		'S': 'S',
+				\ 		"\<C-s>": 'S',
+				\ 		'?': ' '
+				\ 	}
+				\ }
+	let g:lightline_hybrid_style = 'plain'
 
-" quickrun
-let g:quickrun_config = {}
-let g:quickrun_config['*'] = {'runner': 'vimproc'}
-let g:quickrun_config['rst'] = {
-			\ 	'command': 'rst2html.py',
-			\ 	'outputter': 'browser',
-			\ 	'runner': 'system'
-			\ }
+	" jedi
+	let g:jedi#auto_vim_configuration = 0
+	let g:jedi#popup_on_dot = 0
+	let g:jedi#popup_select_first = 0
+	let g:jedi#rename_command = '<leader>R'
 
-" lightline
-let g:lightline = {
-			\ 	'active': {
-			\ 		'left': [
-			\ 			['mode'],
-			\ 			['filename', 'readonly', 'modified']
-			\ 		],
-			\ 		'right': [
-			\ 			['lineinfo'],
-			\ 			['percent'],
-			\ 			['fileformat', 'fileencoding', 'filetype']
-			\ 		]
-			\ 	},
-			\ 	'inactive': {
-			\ 		'left': [
-			\ 			['filename', 'modified']
-			\ 		],
-			\ 		'right': []
-			\ 	},
-			\ 	'colorscheme': 'hybrid',
-			\ 	'mode_map': {
-			\ 		'n': '-',
-			\ 		'i': 'I',
-			\ 		'R': 'R',
-			\ 		'v': 'V',
-			\ 		'V': 'V',
-			\ 		'c': 'C',
-			\ 		"\<C-v>": 'V',
-			\ 		's': 'S',
-			\ 		'S': 'S',
-			\ 		"\<C-s>": 'S',
-			\ 		'?': ' '
-			\ 	}
-			\ }
-let g:lightline_hybrid_style = 'plain'
+	let g:neocomplcache_force_omni_patterns = {
+				\ 	'python': '\h\w*\|[^. \t]\.\w*'
+				\ }
+	let g:neocomplcache_omni_functions = {
+				\ 	'python': 'jedi#completions'
+				\ }
 
-" jedi
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#popup_select_first = 0
-let g:jedi#rename_command = '<leader>R'
+	autocmd FileType python let b:did_ftplugin = 1
 
-let g:neocomplcache_force_omni_patterns = {
-			\ 	'python': '\h\w*\|[^. \t]\.\w*'
-			\ }
-let g:neocomplcache_omni_functions = {
-			\ 	'python': 'jedi#completions'
-			\ }
-
-autocmd FileType python let b:did_ftplugin = 1
-
-" open-browser
-if s:bundle_activated
+	" open-browser
 	nmap gW <Plug>(openbrowser-open)
 endif
 " }}}
