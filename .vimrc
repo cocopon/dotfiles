@@ -280,6 +280,44 @@ set smartcase
 " }}}
 
 
+" FileType {{{
+autocmd BufRead,BufNewFile *.as  setlocal ft=javascript
+autocmd BufRead,BufNewFile *.pde setlocal ft=java sw=2 ts=2 expandtab
+autocmd FileType css        setlocal sw=4 ts=4
+autocmd FileType eruby      setlocal sw=2 ts=2
+autocmd FileType html       setlocal sw=2 ts=2 indentexpr&
+autocmd FileType javascript setlocal sw=4 ts=4
+autocmd FileType php        setlocal sw=4 ts=4
+autocmd FileType python     setlocal sw=4 ts=4 expandtab
+autocmd FileType rst        setlocal indentexpr&
+autocmd FileType ruby       setlocal sw=2 ts=2
+autocmd FileType scss       setlocal sw=4 ts=4
+autocmd FileType text       setlocal tw=0
+autocmd FileType vim        setlocal sw=2 ts=2 fdm=marker
+autocmd FileType xhtml      setlocal indentexpr&
+autocmd FileType xml        setlocal sw=2 ts=2
+autocmd FileType yaml       setlocal sw=2 ts=2
+" }}}
+
+
+" Misc {{{
+set completeopt=menu,menuone
+set display=lastline
+set grepprg=grep\ -nH
+set nobackup
+set noswapfile
+set nrformats-=octal
+set number
+set scrolloff=8
+set shortmess=aTI
+set sidescroll=1
+set sidescrolloff=16
+if has('virtualedit')
+	set virtualedit=block
+endif
+" }}}
+
+
 " Plugins {{{
 " Disable unused plugins
 let g:loaded_gzip = 1
@@ -424,44 +462,6 @@ autocmd FileType python let b:did_ftplugin = 1
 " open-browser
 if s:bundle_activated
 	nmap gW <Plug>(openbrowser-open)
-endif
-" }}}
-
-
-" FileType {{{
-autocmd BufRead,BufNewFile *.as  setlocal ft=javascript
-autocmd BufRead,BufNewFile *.pde setlocal ft=java sw=2 ts=2 expandtab
-autocmd FileType css        setlocal sw=4 ts=4
-autocmd FileType eruby      setlocal sw=2 ts=2
-autocmd FileType html       setlocal sw=2 ts=2 indentexpr&
-autocmd FileType javascript setlocal sw=4 ts=4
-autocmd FileType php        setlocal sw=4 ts=4
-autocmd FileType python     setlocal sw=4 ts=4 expandtab
-autocmd FileType rst        setlocal indentexpr&
-autocmd FileType ruby       setlocal sw=2 ts=2
-autocmd FileType scss       setlocal sw=4 ts=4
-autocmd FileType text       setlocal tw=0
-autocmd FileType vim        setlocal sw=2 ts=2 fdm=marker
-autocmd FileType xhtml      setlocal indentexpr&
-autocmd FileType xml        setlocal sw=2 ts=2
-autocmd FileType yaml       setlocal sw=2 ts=2
-" }}}
-
-
-" Misc {{{
-set completeopt=menu,menuone
-set display=lastline
-set grepprg=grep\ -nH
-set nobackup
-set noswapfile
-set nrformats-=octal
-set number
-set scrolloff=8
-set shortmess=aTI
-set sidescroll=1
-set sidescrolloff=16
-if has('virtualedit')
-	set virtualedit=block
 endif
 " }}}
 
