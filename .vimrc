@@ -196,9 +196,13 @@ let s:bundle_activated = s:activate_package_manager()
 
 " Encoding {{{
 set enc=utf-8
-source $VIMRUNTIME/delmenu.vim
-set langmenu=ja_JP.utf-8
-source $VIMRUNTIME/menu.vim
+
+" Reset langmenu to fix garbled characters
+if s:env.is_win
+	source $VIMRUNTIME/delmenu.vim
+	set langmenu=ja_JP.utf-8
+	source $VIMRUNTIME/menu.vim
+endif
 " }}}
 
 
