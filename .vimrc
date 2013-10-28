@@ -261,25 +261,6 @@ nnoremap Y y$
 " }}}
 
 
-" Indent {{{
-set autoindent
-set list
-set listchars=eol:¬,tab:▸\ 
-set nosmartindent
-set shiftround
-set shiftwidth=4
-set tabstop=4
-" }}}
-
-
-" Search {{{
-set hlsearch
-set ignorecase
-set incsearch
-set smartcase
-" }}}
-
-
 " FileType {{{
 autocmd BufRead,BufNewFile *.as  setlocal ft=javascript
 autocmd BufRead,BufNewFile *.pde setlocal ft=java sw=2 ts=2 expandtab
@@ -304,17 +285,37 @@ autocmd FileType yaml       setlocal sw=2 ts=2
 set completeopt=menu,menuone
 set display=lastline
 set grepprg=grep\ -nH
-set nobackup
-set noswapfile
 set nrformats-=octal
 set number
-set scrolloff=8
 set shortmess=aTI
-set sidescroll=1
-set sidescrolloff=16
 if has('virtualedit')
 	set virtualedit=block
 endif
+
+" Backup
+set nobackup
+set noswapfile
+
+" Indent
+set autoindent
+set list
+set listchars=eol:¬,tab:▸\ 
+set noexpandtab
+set nosmartindent
+set shiftround
+set shiftwidth=4
+set tabstop=4
+
+" Scroll
+set scrolloff=8
+set sidescroll=1
+set sidescrolloff=16
+
+" Search
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
 " }}}
 
 
