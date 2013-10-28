@@ -281,13 +281,13 @@ set smartcase
 
 
 " Plugins {{{
-" Disable archive plugins
+" Disable unused plugins
 let g:loaded_gzip = 1
 let g:loaded_zip = 1
 let g:loaded_zipPlugin = 1
 
 " Disable unused kaoriya plugins
-let plugin_dicwin_disable = 1
+let g:plugin_dicwin_disable = 1
 
 " camelcasemotion
 if s:bundle_activated
@@ -467,11 +467,6 @@ set sidescrolloff=16
 if has('virtualedit')
 	set virtualedit=block
 endif
-
-" Disable archive plugins
-let loaded_gzip = 1
-let loaded_zip = 1
-let loaded_zipPlugin = 1
 " }}}
 
 
