@@ -251,9 +251,9 @@ noremap ; :
 inoremap <C-@> <Nop>
 
 " File
-nnoremap <C-g> :<C-u>e %:h<CR>
+nnoremap <C-u> :<C-u>e %:h<CR>
 if s:bundle_activated
-	nnoremap <C-u> :<C-u>Unite file_mru<CR>
+	nnoremap <C-g> :<C-u>Unite file_mru<CR>
 endif
 
 " Misc
