@@ -328,80 +328,21 @@ let g:loaded_zipPlugin = 1
 let g:plugin_dicwin_disable = 1
 
 if s:bundle_activated
-	" camelcasemotion
+	" camelcasemotion {{{
 	map <silent> b <Plug>CamelCaseMotion_b
 	map <silent> e <Plug>CamelCaseMotion_e
 	map <silent> w <Plug>CamelCaseMotion_w
+	" }}}
 
-	" neocomplcache
-	let g:neocomplcache_enable_at_startup = 1
+	" jedi {{{
+	let g:jedi#auto_vim_configuration = 0
+	let g:jedi#popup_on_dot = 0
+	let g:jedi#popup_select_first = 0
+	let g:jedi#rename_command = '<leader>R'
+	autocmd FileType python let b:did_ftplugin = 1
+	" }}}
 
-	" neosnippet
-	let g:neosnippet#snippets_directory = s:env.path.neosnippet
-	imap <C-Space> <Plug>(neosnippet_expand_or_jump)
-	smap <C-Space> <Plug>(neosnippet_expand_or_jump)
-	xmap <C-Space> <Plug>(neosnippet_expand_target)
-
-	" netrw
-	let g:netrw_altv = 1
-	let g:netrw_preview = 1
-
-	" unite
-	let g:unite_enable_start_insert = 0
-	let g:unite_split_rule = 'botright'
-	nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-	nnoremap <silent> ,ul :<C-u>Unite line<CR>
-	nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
-	nnoremap <silent> ,uo :<C-u>Unite outline<CR>
-	nnoremap <silent> ,ut :<C-u>Unite todo/all<CR>
-
-	" vimfiler
-	let g:vimfiler_as_default_explorer = 1
-	let g:vimfiler_safe_mode_by_default = 0
-
-	" syntastic
-	let g:syntastic_mode_map = {
-				\ 	'mode': 'passive',
-				\ 	'active_filetypes': ['javascript', 'python'],
-				\ 	'passive_filetypes': [],
-				\ }
-	let g:syntastic_auto_loc_list = 0
-	" --browser .... Tolerate standard browser globals
-	" --es5 ........ Tolerate ECMA Script 5 syntax (e.g. trailling commas)
-	" --nomen ...... Tolerate initial or trailing underbars in names
-	" --plusplus ... Tolerate '++' and '--'
-	" --sloppy ..... Tolerate missing 'use strict' pragma
-	" --vars ....... Tolerate many var statements per function
-	" --white ...... Tolerate messy white space
-	let g:syntastic_javascript_checkers = ['jslint']
-	let g:syntastic_javascript_jslint_args = join([
-				\ 	'--browser',
-				\ 	'--es5=false',
-				\ 	'--nomen',
-				\ 	'--plusplus',
-				\ 	'--sloppy',
-				\ 	'--vars',
-				\ 	'--white',
-				\ 	'--predef=goog',
-				\ 	'--predef=jQuery',
-				\ 	'--predef=$'
-				\ ])
-	" E501 ... line too long
-	let g:syntastic_python_checkers = ['flake8']
-	let g:syntastic_python_flake8_args = join([
-				\ 	'--ignore=E501'
-				\ ])
-
-	" quickrun
-	let g:quickrun_config = {}
-	let g:quickrun_config['*'] = {'runner': 'vimproc'}
-	let g:quickrun_config['rst'] = {
-				\ 	'command': 'rst2html.py',
-				\ 	'outputter': 'browser',
-				\ 	'runner': 'system'
-				\ }
-
-	" lightline
+	" lightline {{{
 	let g:lightline = {
 				\ 	'active': {
 				\ 		'left': [
@@ -436,24 +377,97 @@ if s:bundle_activated
 				\ 	}
 				\ }
 	let g:lightline_hybrid_style = 'plain'
+	" }}}
 
-	" jedi
-	let g:jedi#auto_vim_configuration = 0
-	let g:jedi#popup_on_dot = 0
-	let g:jedi#popup_select_first = 0
-	let g:jedi#rename_command = '<leader>R'
+	" neocomplcache {{{
+	let g:neocomplcache_enable_at_startup = 1
 
+	" neocomplcache + jedi
 	let g:neocomplcache_force_omni_patterns = {
 				\ 	'python': '\h\w*\|[^. \t]\.\w*'
 				\ }
 	let g:neocomplcache_omni_functions = {
 				\ 	'python': 'jedi#completions'
 				\ }
+	" }}}
 
-	autocmd FileType python let b:did_ftplugin = 1
+	" neosnippet {{{
+	let g:neosnippet#snippets_directory = s:env.path.neosnippet
+	imap <C-Space> <Plug>(neosnippet_expand_or_jump)
+	smap <C-Space> <Plug>(neosnippet_expand_or_jump)
+	xmap <C-Space> <Plug>(neosnippet_expand_target)
+	" }}}
 
-	" open-browser
+	" netrw {{{
+	let g:netrw_altv = 1
+	let g:netrw_preview = 1
+	" }}}
+
+	" open-browser {{{
 	nmap gW <Plug>(openbrowser-open)
+	" }}}
+
+	" quickrun {{{
+	let g:quickrun_config = {}
+	let g:quickrun_config['*'] = {'runner': 'vimproc'}
+	let g:quickrun_config['rst'] = {
+				\ 	'command': 'rst2html.py',
+				\ 	'outputter': 'browser',
+				\ 	'runner': 'system'
+				\ }
+	" }}}
+
+	" syntastic {{{
+	let g:syntastic_mode_map = {
+				\ 	'mode': 'passive',
+				\ 	'active_filetypes': ['javascript', 'python'],
+				\ 	'passive_filetypes': [],
+				\ }
+	let g:syntastic_auto_loc_list = 0
+
+	" --browser .... Tolerate standard browser globals
+	" --es5 ........ Tolerate ECMA Script 5 syntax (e.g. trailling commas)
+	" --nomen ...... Tolerate initial or trailing underbars in names
+	" --plusplus ... Tolerate '++' and '--'
+	" --sloppy ..... Tolerate missing 'use strict' pragma
+	" --vars ....... Tolerate many var statements per function
+	" --white ...... Tolerate messy white space
+	let g:syntastic_javascript_checkers = ['jslint']
+	let g:syntastic_javascript_jslint_args = join([
+				\ 	'--browser',
+				\ 	'--es5=false',
+				\ 	'--nomen',
+				\ 	'--plusplus',
+				\ 	'--sloppy',
+				\ 	'--vars',
+				\ 	'--white',
+				\ 	'--predef=goog',
+				\ 	'--predef=jQuery',
+				\ 	'--predef=$'
+				\ ])
+
+	" E501 ... line too long
+	let g:syntastic_python_checkers = ['flake8']
+	let g:syntastic_python_flake8_args = join([
+				\ 	'--ignore=E501'
+				\ ])
+	" }}}
+
+	" unite {{{
+	let g:unite_enable_start_insert = 0
+	let g:unite_split_rule = 'botright'
+	nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+	nnoremap <silent> ,ul :<C-u>Unite line<CR>
+	nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+	nnoremap <silent> ,uo :<C-u>Unite outline<CR>
+	nnoremap <silent> ,ut :<C-u>Unite todo/all<CR>
+
+	" }}}
+
+	" vimfiler {{{
+	let g:vimfiler_as_default_explorer = 1
+	let g:vimfiler_safe_mode_by_default = 0
+	" }}}
 endif
 " }}}
 
