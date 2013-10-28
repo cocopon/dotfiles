@@ -319,13 +319,10 @@ set smartcase
 
 
 " Plugins {{{
-" Disable unused plugins
-let g:loaded_gzip = 1
-let g:loaded_zip = 1
-let g:loaded_zipPlugin = 1
-
-" Disable unused kaoriya plugins
-let g:plugin_dicwin_disable = 1
+" netrw {{{
+let g:netrw_altv = 1
+let g:netrw_preview = 1
+" }}}
 
 if s:bundle_activated
 	" camelcasemotion {{{
@@ -398,11 +395,6 @@ if s:bundle_activated
 	xmap <C-Space> <Plug>(neosnippet_expand_target)
 	" }}}
 
-	" netrw {{{
-	let g:netrw_altv = 1
-	let g:netrw_preview = 1
-	" }}}
-
 	" open-browser {{{
 	nmap gW <Plug>(openbrowser-open)
 	" }}}
@@ -470,6 +462,14 @@ if s:bundle_activated
 	let g:vimfiler_safe_mode_by_default = 0
 	" }}}
 endif
+
+" Disable unused plugins
+let g:loaded_gzip = 1
+let g:loaded_zip = 1
+let g:loaded_zipPlugin = 1
+
+" Disable unused kaoriya plugins
+let g:plugin_dicwin_disable = 1
 " }}}
 
 
