@@ -252,9 +252,6 @@ inoremap <C-@> <Nop>
 
 " File
 nnoremap <C-u> :<C-u>e %:h<CR>
-if s:bundle_activated
-	nnoremap <C-g> :<C-u>Unite file_mru<CR>
-endif
 
 " Misc
 nnoremap Y y$
@@ -462,6 +459,7 @@ if s:bundle_activated
 	nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
 	nnoremap <silent> ,uo :<C-u>Unite outline<CR>
 	nnoremap <silent> ,ut :<C-u>Unite todo/all<CR>
+	nnoremap <C-g> :<C-u>Unite file_mru<CR>
 
 	" }}}
 
