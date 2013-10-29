@@ -194,23 +194,8 @@ let s:bundle_activated = s:activate_package_manager()
 " }}}
 
 
-" Encoding {{{
-set enc=utf-8
-
-" Reset langmenu to fix garbled characters
-if s:env.is_win
-	source $VIMRUNTIME/delmenu.vim
-	set langmenu=ja_JP.utf-8
-	source $VIMRUNTIME/menu.vim
-endif
-" }}}
-
-
 " Key {{{
 " Turn off the IME when escaping from Insert mode
-set noimdisable
-set iminsert=0 imsearch=-1
-set noimcmdline
 inoremap <silent> <ESC> <ESC>:<C-u>set iminsert=0<CR>
 inoremap <silent> <C-[> <C-[>:<C-u>set iminsert=0<CR>
 
@@ -294,6 +279,15 @@ endif
 " Backup
 set nobackup
 set noswapfile
+
+" Encoding
+set encoding=utf-8
+
+" IME
+set iminsert=0
+set imsearch=-1
+set noimcmdline
+set noimdisable
 
 " Indent
 set autoindent
