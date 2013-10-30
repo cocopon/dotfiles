@@ -448,10 +448,10 @@ if s:bundle_activated
 	let g:unite_split_rule = 'botright'
 	nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 	nnoremap <silent> ,ul :<C-u>Unite line<CR>
-	nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+	nnoremap <silent> ,um :<C-u>Unite file_mru:all<CR>
 	nnoremap <silent> ,uo :<C-u>Unite outline<CR>
 	nnoremap <silent> ,ut :<C-u>Unite todo/all<CR>
-	nnoremap <C-g> :<C-u>Unite file_mru<CR>
+	nnoremap <C-g> :<C-u>Unite file_mru:all<CR>
 
 	" }}}
 
