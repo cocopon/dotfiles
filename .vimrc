@@ -325,6 +325,10 @@ if s:bundle_activated
 	map <silent> w <Plug>CamelCaseMotion_w
 	" }}}
 
+	" colorswatch {{{
+	let g:colorswatch_exclusion_pattern = 'LightLine.\+'
+	" }}}
+
 	" jedi {{{
 	let g:jedi#auto_vim_configuration = 0
 	let g:jedi#popup_on_dot = 0
