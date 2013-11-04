@@ -276,6 +276,7 @@ set shortmess=aTI
 if has('virtualedit')
 	set virtualedit=block
 endif
+set visualbell t_vb=
 
 " Backup
 set nobackup
