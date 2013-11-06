@@ -77,8 +77,8 @@ function! VimrcEnvironment()
 				\ 	'user':          user_dir,
 				\ 	'neobundle':     user_dir . '/neobundle.vim',
 				\ 	'bundle':        user_dir . '/bundle',
+				\ 	'setting':       user_dir . '/setting',
 				\ 	'local_vimrc':   user_dir . '/.vimrc_local',
-				\ 	'neosnippet':    user_dir . '/.neosnippet',
 				\ 	'bundle_preset': user_dir . '/bundle-preset.vim',
 				\ }
 
@@ -119,6 +119,7 @@ endfunction
 
 function! VimrcInstallPackageManager()
 	call s:mkdir_silently(s:env.path.user)
+	call s:mkdir_silently(s:env.path.setting)
 
 	call s:clone_repository(
 				\ 'https://github.com/Shougo/neobundle.vim',
@@ -389,7 +390,7 @@ if s:bundle_activated
 	" }}}
 
 	" neosnippet {{{
-	let g:neosnippet#snippets_directory = s:env.path.neosnippet
+	let g:neosnippet#snippets_directory = s:env.path.setting . '/neosnippet'
 	imap <C-Space> <Plug>(neosnippet_expand_or_jump)
 	smap <C-Space> <Plug>(neosnippet_expand_or_jump)
 	xmap <C-Space> <Plug>(neosnippet_expand_target)
@@ -407,6 +408,10 @@ if s:bundle_activated
 				\ 	'outputter': 'browser',
 				\ 	'runner': 'system'
 				\ }
+	" }}}
+
+	" ref {{{
+	let g:ref_cache_dir = s:env.path.setting . '/ref'
 	" }}}
 
 	" syntastic {{{
@@ -461,6 +466,11 @@ if s:bundle_activated
 	let g:vimfiler_as_default_explorer = 1
 	let g:vimfiler_enable_auto_cd = 1
 	let g:vimfiler_safe_mode_by_default = 0
+	let g:vimfiler_data_directory = s:env.path.setting . '/vimfiler'
+	" }}}
+
+	" vimshell {{{
+	let g:vimshell_temporary_directory = s:env.path.setting . '/vimshell'
 	" }}}
 endif
 
