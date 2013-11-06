@@ -459,7 +459,6 @@ if s:bundle_activated
 	nnoremap ,uo :<C-u>Unite outline<CR>
 	nnoremap ,ut :<C-u>Unite todo/all<CR>
 	nnoremap <C-g> :<C-u>Unite file_mru:all<CR>
-
 	" }}}
 
 	" vimfiler {{{
@@ -467,6 +466,12 @@ if s:bundle_activated
 	let g:vimfiler_enable_auto_cd = 1
 	let g:vimfiler_safe_mode_by_default = 0
 	let g:vimfiler_data_directory = s:env.path.setting . '/vimfiler'
+
+	function! s:disable_vimfiler_mappings()
+		unmap <buffer> <C-j>
+		unmap <buffer> <C-l>
+	endfunction
+	autocmd FileType vimfiler call s:disable_vimfiler_mappings()
 	" }}}
 
 	" vimshell {{{
