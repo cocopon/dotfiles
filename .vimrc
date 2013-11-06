@@ -453,11 +453,11 @@ if s:bundle_activated
 	" unite {{{
 	let g:unite_enable_start_insert = 0
 	let g:unite_split_rule = 'botright'
-	nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-	nnoremap <silent> ,ul :<C-u>Unite line<CR>
-	nnoremap <silent> ,um :<C-u>Unite file_mru:all<CR>
-	nnoremap <silent> ,uo :<C-u>Unite outline<CR>
-	nnoremap <silent> ,ut :<C-u>Unite todo/all<CR>
+	nnoremap ,ub :<C-u>Unite buffer<CR>
+	nnoremap ,ul :<C-u>Unite line<CR>
+	nnoremap ,um :<C-u>Unite file_mru:all<CR>
+	nnoremap ,uo :<C-u>Unite outline<CR>
+	nnoremap ,ut :<C-u>Unite todo/all<CR>
 	nnoremap <C-g> :<C-u>Unite file_mru:all<CR>
 
 	" }}}
