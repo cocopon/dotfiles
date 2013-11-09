@@ -1,6 +1,6 @@
-"   __  __ _ _____ _____ _____ 
+"   __  __ _ _____ _____ _____
 "   \ \ | |_|     |  ___| ____|
-"  _ \ \| | | | | | |   | |___ 
+"  _ \ \| | | | | | |   | |___
 " |_| \___|_|_|_|_|_|   |_____|
 
 
@@ -71,7 +71,7 @@ function! VimrcEnvironment()
 	let env = {}
 	let env.is_win = has('win32') || has('win64')
 
-	let user_dir = env.is_win 
+	let user_dir = env.is_win
 				\ ? expand('$VIM/vimfiles')
 				\ : expand('~/.vim')
 	let env.path = {
