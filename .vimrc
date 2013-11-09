@@ -403,7 +403,10 @@ if s:bundle_activated
 
 	" quickrun {{{
 	let g:quickrun_config = {}
-	let g:quickrun_config['*'] = {'runner': 'vimproc'}
+	let g:quickrun_config['_'] = {
+				\ 	'runner': 'vimproc',
+				\ 	'runner/vimproc/updatetime': 40
+				\ }
 	let g:quickrun_config['rst'] = {
 				\ 	'command': 'rst2html.py',
 				\ 	'outputter': 'browser',
