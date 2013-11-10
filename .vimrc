@@ -474,6 +474,8 @@ if s:bundle_activated
 	function! s:disable_vimfiler_mappings()
 		unmap <buffer> <C-j>
 		unmap <buffer> <C-l>
+		map <buffer> D <Plug>(vimfiler_switch_to_drive)
+		map <buffer> L <Plug>(vimfiler_redraw_screen)
 	endfunction
 	autocmd FileType vimfiler call s:disable_vimfiler_mappings()
 	" }}}
