@@ -236,6 +236,9 @@ cnoremap <Up> <C-p>
 cnoremap <C-n> <Down>
 cnoremap <Down> <C-n>
 
+" Open parent directory, or current directory if not saved yet
+nnoremap <silent> <C-u> :<C-u>execute 'e ' . ((strlen(bufname('')) == 0) ? '.' : '%:h')<CR>
+
 " For JIS keyboard
 inoremap <C-@> <Nop>
 
@@ -243,7 +246,6 @@ inoremap <C-@> <Nop>
 noremap ; :
 
 " Misc
-nnoremap <C-u> :<C-u>e %:h<CR>
 nnoremap Y y$
 " }}}
 
