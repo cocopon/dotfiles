@@ -473,13 +473,13 @@ if s:bundle_activated
 	let g:vimfiler_safe_mode_by_default = 0
 	let g:vimfiler_data_directory = s:env.path.setting . '/vimfiler'
 
-	function! s:disable_vimfiler_mappings()
+	function! s:change_vimfiler_mapping()
 		unmap <buffer> <C-j>
 		unmap <buffer> <C-l>
 		map <buffer> D <Plug>(vimfiler_switch_to_drive)
 		map <buffer> L <Plug>(vimfiler_redraw_screen)
 	endfunction
-	autocmd FileType vimfiler call s:disable_vimfiler_mappings()
+	autocmd FileType vimfiler call s:change_vimfiler_mapping()
 	" }}}
 
 	" vimshell {{{
