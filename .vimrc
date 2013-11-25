@@ -32,6 +32,7 @@ let s:packages = [
 			\ 	'kana/vim-textobj-user',
 			\ 	'mattn/calendar-vim',
 			\ 	'mattn/emmet-vim',
+			\ 	'nanotech/jellybeans.vim',
 			\ 	'pangloss/vim-javascript',
 			\ 	'scrooloose/syntastic',
 			\ 	'thinca/vim-editvar',
@@ -52,17 +53,8 @@ let s:packages = [
 			\ 	'vim-scripts/Align',
 			\ 	'vim-scripts/matchit.zip',
 			\ 	'vim-scripts/rest.vim',
-			\ 	'yuratomo/w3m.vim',
-			\
-			\ 	'altercation/vim-colors-solarized',
-			\ 	'jonathanfilip/vim-lucius',
-			\ 	'jpo/vim-railscasts-theme',
-			\ 	'nanotech/jellybeans.vim',
-			\ 	'tomasr/molokai',
-			\ 	'vim-scripts/proton',
-			\ 	'vim-scripts/pyte',
-			\ 	'vim-scripts/twilight',
 			\ 	'w0ng/vim-hybrid',
+			\ 	'yuratomo/w3m.vim',
 			\ ]
 " }}}
 
