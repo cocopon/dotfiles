@@ -41,6 +41,7 @@ let s:packages = [
 			\ 	'thinca/vim-ref',
 			\ 	'tomtom/tcomment_vim',
 			\ 	'tpope/vim-fugitive',
+			\ 	'tpope/vim-markdown',
 			\ 	'tpope/vim-surround',
 			\ 	'tyru/open-browser.vim',
 			\ 	'tyru/restart.vim',
