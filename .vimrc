@@ -20,6 +20,7 @@ let s:packages = [
 			\ 	'Shougo/vimshell',
 			\ 	'Shougo/vinarise',
 			\ 	'cocopon/colorswatch.vim',
+			\ 	'cocopon/googkit.vim',
 			\ 	'cocopon/lightline-hybrid.vim',
 			\ 	'cocopon/snapbuffer.vim',
 			\ 	'cocopon/todo.vim',
