@@ -4,7 +4,7 @@
 " |_| \___|_|_|_|_|_|   |_____|
 
 
-" First, execute the following command to install packages:
+" Execute the following command to install packages:
 "
 " 	:call VimrcInstallPackageManager()
 
