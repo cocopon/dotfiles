@@ -231,7 +231,7 @@ cnoremap <C-n> <Down>
 cnoremap <Down> <C-n>
 
 " Open parent directory, or current directory if not saved yet
-nnoremap <silent> <C-u> :<C-u>execute 'e ' . ((strlen(bufname('')) == 0) ? '.' : '%:h')<CR>
+nnoremap <silent> <C-u> :execute 'e ' . ((strlen(bufname('')) == 0) ? '.' : '%:h')<CR>
 
 " For JIS keyboard
 inoremap <C-@> <Nop>
@@ -455,12 +455,12 @@ if s:bundle_activated
 	let g:unite_data_directory = s:env.path.setting . '/unite'
 	let g:unite_enable_start_insert = 0
 	let g:unite_split_rule = 'botright'
-	nnoremap ,ub :<C-u>Unite buffer<CR>
-	nnoremap ,ul :<C-u>Unite line<CR>
-	nnoremap ,um :<C-u>Unite file_mru:all<CR>
-	nnoremap ,uo :<C-u>Unite outline<CR>
-	nnoremap ,ut :<C-u>Unite todo/all<CR>
-	nnoremap <C-g> :<C-u>Unite file_mru:all<CR>
+	nnoremap ,ub :Unite buffer<CR>
+	nnoremap ,ul :Unite line<CR>
+	nnoremap ,um :Unite file_mru:all<CR>
+	nnoremap ,uo :Unite outline<CR>
+	nnoremap ,ut :Unite todo/all<CR>
+	nnoremap <C-g> :Unite file_mru:all<CR>
 	" }}}
 
 	" vimfiler {{{
