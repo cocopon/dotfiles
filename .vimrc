@@ -376,6 +376,7 @@ if s:bundle_activated
 
 	" neocomplcache {{{
 	let g:neocomplcache_enable_at_startup = 1
+	let g:neocomplcache_temporary_dir = s:env.path.setting . '/neocomplcache'
 
 	" neocomplcache + jedi
 	let g:neocomplcache_force_omni_patterns = {
@@ -451,6 +452,7 @@ if s:bundle_activated
 	" }}}
 
 	" unite {{{
+	let g:unite_data_directory = s:env.path.setting . '/unite'
 	let g:unite_enable_start_insert = 0
 	let g:unite_split_rule = 'botright'
 	nnoremap ,ub :<C-u>Unite buffer<CR>
