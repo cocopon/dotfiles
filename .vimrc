@@ -22,6 +22,7 @@ let s:packages = [
 			\ 	'cocopon/colorswatch.vim',
 			\ 	'cocopon/googkit.vim',
 			\ 	'cocopon/lightline-hybrid.vim',
+			\ 	'cocopon/po-mini.vim',
 			\ 	'cocopon/snapbuffer.vim',
 			\ 	'cocopon/todo.vim',
 			\ 	'davidhalter/jedi-vim',
