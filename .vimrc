@@ -428,6 +428,7 @@ if s:bundle_activated
 	" --nomen ...... Tolerate initial or trailing underbars in names
 	" --plusplus ... Tolerate '++' and '--'
 	" --sloppy ..... Tolerate missing 'use strict' pragma
+	" --sub ........ Tolerate dot notation
 	" --vars ....... Tolerate many var statements per function
 	" --white ...... Tolerate messy white space
 	let g:syntastic_javascript_checkers = ['jslint']
@@ -437,6 +438,7 @@ if s:bundle_activated
 				\ 	'--nomen',
 				\ 	'--plusplus',
 				\ 	'--sloppy',
+				\ 	'--sub',
 				\ 	'--vars',
 				\ 	'--white',
 				\ 	'--predef=goog',
