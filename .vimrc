@@ -485,6 +485,8 @@ endif
 
 " Disable unused plugins
 let g:loaded_gzip = 1
+let g:loaded_tar = 1
+let g:loaded_tarPlugin = 1
 let g:loaded_zip = 1
 let g:loaded_zipPlugin = 1
 
