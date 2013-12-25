@@ -24,6 +24,7 @@ let s:packages = [
 			\ 	'cocopon/lightline-hybrid.vim',
 			\ 	'cocopon/po-mini.vim',
 			\ 	'cocopon/snapbuffer.vim',
+			\ 	'cocopon/svss.vim',
 			\ 	'cocopon/todo.vim',
 			\ 	'davidhalter/jedi-vim',
 			\ 	'h1mesuke/unite-outline',
@@ -411,6 +412,10 @@ if s:bundle_activated
 
 	" ref {{{
 	let g:ref_cache_dir = s:env.path.setting . '/ref'
+	" }}}
+
+	" svss {{{
+	let g:svss_auto_source = 1
 	" }}}
 
 	" syntastic {{{
