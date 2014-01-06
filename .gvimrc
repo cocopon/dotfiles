@@ -24,7 +24,6 @@ if has('gui')
 	endif
 
 	" Misc
-	set cursorline
 	set guioptions-=m
 	set guioptions-=T
 	set showtabline=2

@@ -273,6 +273,9 @@ if has('virtualedit')
 	set virtualedit=block
 endif
 
+" Appearance
+set cursorline
+
 " Backup
 set nobackup
 set noswapfile
