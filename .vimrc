@@ -21,6 +21,7 @@ let s:packages = [
 			\ 	'Shougo/vinarise',
 			\ 	'cocopon/colorswatch.vim',
 			\ 	'cocopon/googkit.vim',
+			\ 	'cocopon/iceberg.vim',
 			\ 	'cocopon/lightline-hybrid.vim',
 			\ 	'cocopon/po-mini.vim',
 			\ 	'cocopon/snapbuffer.vim',
@@ -55,6 +56,7 @@ let s:packages = [
 			\ 	'w0ng/vim-hybrid',
 			\ 	'yuratomo/w3m.vim',
 			\ ]
+let s:colorscheme = 'hybrid'
 " }}}
 
 
@@ -508,6 +510,31 @@ endif
 " }}}
 
 
+" Color Scheme {{{
+function! VimrcSetColorScheme(colo)
+	execute 'colorscheme ' . a:colo
+
+	if has('gui_running')
+		call lightline#colorscheme()
+	endif
+endfunction
+
+if s:bundle_activated
+	if !has('gui_running')
+		syntax enable
+		call VimrcSetColorScheme(s:colorscheme)
+	else
+		augroup vimrc-colorscheme
+			autocmd!
+			execute printf('autocmd GUIEnter * call VimrcSetColorScheme("%s")',
+						\ s:colorscheme)
+		augroup END
+	endif
+endif
+" }}}
+
+
 unlet s:bundle_activated
+unlet s:colorscheme
 unlet s:env
 unlet s:packages
