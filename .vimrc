@@ -266,17 +266,16 @@ autocmd FileType yaml       setlocal sw=2 ts=2
 
 " Misc {{{
 set completeopt=menu,menuone
+set cursorline
 set display=lastline
 set grepprg=grep\ -nH
+set laststatus=2
 set nrformats-=octal
 set number
 set shortmess=aTI
 if has('virtualedit')
 	set virtualedit=block
 endif
-
-" Appearance
-set cursorline
 
 " Backup
 set nobackup
