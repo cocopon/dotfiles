@@ -531,9 +531,3 @@ if s:bundle_activated
 	endif
 endif
 " }}}
-
-
-unlet s:bundle_activated
-unlet s:colorscheme
-unlet s:env
-unlet s:packages
