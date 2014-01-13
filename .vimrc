@@ -12,7 +12,6 @@
 " Required Packages {{{
 let s:packages = [
 			\ 	'Shougo/neocomplcache',
-			\ 	'Shougo/neosnippet',
 			\ 	'Shougo/unite.vim',
 			\ 	'Shougo/vesting',
 			\ 	'Shougo/vimfiler',
@@ -386,13 +385,6 @@ if s:bundle_activated
 	let g:neocomplcache_omni_functions = {
 				\ 	'python': 'jedi#completions'
 				\ }
-	" }}}
-
-	" neosnippet {{{
-	let g:neosnippet#snippets_directory = s:env.path.setting . '/neosnippet'
-	imap <C-Space> <Plug>(neosnippet_expand_or_jump)
-	smap <C-Space> <Plug>(neosnippet_expand_or_jump)
-	xmap <C-Space> <Plug>(neosnippet_expand_target)
 	" }}}
 
 	" open-browser {{{
