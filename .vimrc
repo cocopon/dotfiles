@@ -21,15 +21,14 @@ let s:packages = [
 			\ 	'cocopon/colorswatch.vim',
 			\ 	'cocopon/googkit.vim',
 			\ 	'cocopon/iceberg.vim',
-			\ 	'cocopon/lightline-hybrid.vim',
 			\ 	'cocopon/po-mini.vim',
+			\ 	'cocopon/shadeline.vim',
 			\ 	'cocopon/snapbuffer.vim',
 			\ 	'cocopon/svss.vim',
 			\ 	'cocopon/todo.vim',
 			\ 	'davidhalter/jedi-vim',
 			\ 	'h1mesuke/unite-outline',
 			\ 	'hynek/vim-python-pep8-indent',
-			\ 	'itchyny/lightline.vim',
 			\ 	'itchyny/thumbnail.vim',
 			\ 	'kana/vim-textobj-indent',
 			\ 	'kana/vim-textobj-user',
@@ -325,53 +324,12 @@ if s:bundle_activated
 	map <silent> w <Plug>CamelCaseMotion_w
 	" }}}
 
-	" colorswatch {{{
-	let g:colorswatch_exclusion_pattern = 'LightLine.\+'
-	" }}}
-
 	" jedi {{{
 	let g:jedi#auto_vim_configuration = 0
 	let g:jedi#popup_on_dot = 0
 	let g:jedi#popup_select_first = 0
 	let g:jedi#rename_command = '<leader>R'
 	autocmd FileType python let b:did_ftplugin = 1
-	" }}}
-
-	" lightline {{{
-	let g:lightline = {
-				\ 	'active': {
-				\ 		'left': [
-				\ 			['mode'],
-				\ 			['filename', 'readonly', 'modified']
-				\ 		],
-				\ 		'right': [
-				\ 			['lineinfo'],
-				\ 			['percent'],
-				\ 			['fileformat', 'fileencoding', 'filetype']
-				\ 		]
-				\ 	},
-				\ 	'inactive': {
-				\ 		'left': [
-				\ 			['filename', 'modified']
-				\ 		],
-				\ 		'right': []
-				\ 	},
-				\ 	'colorscheme': 'hybrid',
-				\ 	'mode_map': {
-				\ 		'n': '-',
-				\ 		'i': 'I',
-				\ 		'R': 'R',
-				\ 		'v': 'V',
-				\ 		'V': 'V',
-				\ 		'c': 'C',
-				\ 		"\<C-v>": 'V',
-				\ 		's': 'S',
-				\ 		'S': 'S',
-				\ 		"\<C-s>": 'S',
-				\ 		'?': ' '
-				\ 	}
-				\ }
-	let g:lightline_hybrid_style = 'plain'
 	" }}}
 
 	" neocomplcache {{{
@@ -406,6 +364,30 @@ if s:bundle_activated
 
 	" ref {{{
 	let g:ref_cache_dir = s:env.path.setting . '/ref'
+	" }}}
+
+	" shadeline {{{
+	let g:shadeline = {}
+	let g:shadeline.active = {
+				\ 	'left': [
+				\ 		'fname',
+				\ 		' ',
+				\ 		'flags',
+				\ 	],
+				\ 	'right': [
+				\ 		'<',
+				\ 		['ff', 'fenc', 'ft'],
+				\ 		' ',
+				\ 		'ruler',
+				\ 	],
+				\ }
+	let g:shadeline.inactive = {
+				\ 	'left': [
+				\ 		'fname',
+				\ 		' ',
+				\ 		'flags',
+				\ 	],
+				\ }
 	" }}}
 
 	" svss {{{
@@ -504,10 +486,6 @@ endif
 " Color Scheme {{{
 function! VimrcSetColorScheme(colo)
 	execute 'colorscheme ' . a:colo
-
-	if has('gui_running')
-		call lightline#colorscheme()
-	endif
 endfunction
 
 if s:bundle_activated
