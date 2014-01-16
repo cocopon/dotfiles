@@ -369,20 +369,17 @@ if s:bundle_activated
 	let g:shadeline.active = {
 				\ 	'left': [
 				\ 		'fname',
-				\ 		' ',
 				\ 		'flags',
 				\ 	],
 				\ 	'right': [
 				\ 		'<',
 				\ 		['ff', 'fenc', 'ft'],
-				\ 		' ',
 				\ 		'ruler',
 				\ 	],
 				\ }
 	let g:shadeline.inactive = {
 				\ 	'left': [
 				\ 		'fname',
-				\ 		' ',
 				\ 		'flags',
 				\ 	],
 				\ }
