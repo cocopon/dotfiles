@@ -4,9 +4,9 @@
 " [_] \___|_|_|_|_|_|  \____|
 
 
-" Execute the following command to install packages:
+" Execute the following command to install plugins:
 "
-" 	:call VimrcInstallPackageManager()
+" 	:call VimrcInstallPluginManager()
 
 
 " Environment {{{
@@ -43,8 +43,8 @@ let s:supports = VimrcSupports()
 " }}}
 
 
-" Required Packages {{{
-let s:packages = [
+" Required Plugins {{{
+let s:plugins = [
 			\ 	'Shougo/unite.vim',
 			\ 	'Shougo/vesting',
 			\ 	'Shougo/vimfiler',
@@ -102,7 +102,7 @@ function! s:mkdir_silently(dir)
 	return 1
 endfunction
 
-function! s:install_packages()
+function! s:install_plugins()
 	call s:mkdir_silently(s:env.path.bundle)
 
 	if exists(':Unite')
@@ -120,7 +120,7 @@ function! s:clone_repository(url, local_path)
 	execute printf('!git clone %s %s', a:url, a:local_path)
 endfunction
 
-function! VimrcInstallPackageManager()
+function! VimrcInstallPluginManager()
 	call s:mkdir_silently(s:env.path.user)
 	call s:mkdir_silently(s:env.path.setting)
 
@@ -131,9 +131,9 @@ function! VimrcInstallPackageManager()
 				\ 'https://github.com/cocopon/bundle-preset.vim',
 				\ s:env.path.bundle_preset)
 
-	call s:activate_package_manager()
+	call s:activate_plugin_manager()
 
-	call s:install_packages()
+	call s:install_plugins()
 
 	echo 'Restart vim to finish the installation.'
 endfunction
@@ -158,9 +158,9 @@ function! s:activate_plugin(path, func, defined_command, ...)
 	endtry
 endfunction
 
-function! s:activate_packages()
+function! s:activate_plugins()
 	if !exists(':NeoBundle')
-		" Package manager not installed yet
+		" Plugin manager not installed yet
 		return 0
 	endif
 
@@ -168,8 +168,8 @@ function! s:activate_packages()
 				\ ? 'PresetBundle'
 				\ : 'NeoBundle'
 
-	for package in s:packages
-		execute printf("%s 'https://github.com/%s'", command, package)
+	for plugin in s:plugins
+		execute printf("%s 'https://github.com/%s'", command, plugin)
 	endfor
 
 	filetype indent on
@@ -178,7 +178,7 @@ function! s:activate_packages()
 	return 1
 endfunction
 
-function! s:activate_package_manager()
+function! s:activate_plugin_manager()
 	if !s:activate_plugin(
 				\ s:env.path.neobundle,
 				\ 'neobundle#rc',
@@ -192,10 +192,10 @@ function! s:activate_package_manager()
 				\ 'bundle_preset#rc',
 				\ ':PresetBundle')
 
-	return s:activate_packages()
+	return s:activate_plugins()
 endfunction
 
-let s:bundle_activated = s:activate_package_manager()
+let s:bundle_activated = s:activate_plugin_manager()
 " }}}
 
 
