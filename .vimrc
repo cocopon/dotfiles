@@ -502,19 +502,14 @@ endif
 
 
 " Color Scheme {{{
-function! VimrcSetColorScheme(colo)
-	execute 'colorscheme ' . a:colo
-endfunction
-
 if s:bundle_activated
 	if !has('gui_running')
 		syntax enable
-		call VimrcSetColorScheme(s:colorscheme)
+		execute printf('colorscheme %s', s:colorscheme)
 	else
-		augroup vimrc-colorscheme
+		augroup vimrc_colorscheme
 			autocmd!
-			execute printf('autocmd GUIEnter * call VimrcSetColorScheme("%s")',
-						\ s:colorscheme)
+			execute printf('autocmd GUIEnter * colorscheme %s', s:colorscheme)
 		augroup END
 	endif
 endif
