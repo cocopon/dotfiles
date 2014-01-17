@@ -9,9 +9,42 @@
 " 	:call VimrcInstallPackageManager()
 
 
+" Environment {{{
+function! VimrcEnvironment()
+	let env = {}
+	let env.is_win = has('win32') || has('win64')
+
+	let user_dir = env.is_win
+				\ ? expand('$VIM/vimfiles')
+				\ : expand('~/.vim')
+	let env.path = {
+				\ 	'user':          user_dir,
+				\ 	'neobundle':     user_dir . '/neobundle.vim',
+				\ 	'bundle':        user_dir . '/bundle',
+				\ 	'setting':       user_dir . '/setting',
+				\ 	'local_vimrc':   user_dir . '/.vimrc_local',
+				\ 	'bundle_preset': user_dir . '/bundle-preset.vim',
+				\ }
+
+	return env
+endfunction
+
+function! VimrcSupports()
+	let supports = {}
+
+	let supports.neocomplete = has('lua')
+				\ && (v:version > 703 || (v:version == 703 && has('patch885')))
+
+	return supports
+endfunction
+
+let s:env = VimrcEnvironment()
+let s:supports = VimrcSupports()
+" }}}
+
+
 " Required Packages {{{
 let s:packages = [
-			\ 	'Shougo/neocomplcache',
 			\ 	'Shougo/unite.vim',
 			\ 	'Shougo/vesting',
 			\ 	'Shougo/vimfiler',
@@ -51,32 +84,11 @@ let s:packages = [
 			\ 	'vim-scripts/rest.vim',
 			\ 	'w0ng/vim-hybrid',
 			\ 	'yuratomo/w3m.vim',
+			\ 	s:supports.neocomplete
+			\ 		? 'Shougo/neocomplete.vim'
+			\ 		: 'Shougo/neocomplcache',
 			\ ]
 let s:colorscheme = 'hybrid'
-" }}}
-
-
-" Environment {{{
-function! VimrcEnvironment()
-	let env = {}
-	let env.is_win = has('win32') || has('win64')
-
-	let user_dir = env.is_win
-				\ ? expand('$VIM/vimfiles')
-				\ : expand('~/.vim')
-	let env.path = {
-				\ 	'user':          user_dir,
-				\ 	'neobundle':     user_dir . '/neobundle.vim',
-				\ 	'bundle':        user_dir . '/bundle',
-				\ 	'setting':       user_dir . '/setting',
-				\ 	'local_vimrc':   user_dir . '/.vimrc_local',
-				\ 	'bundle_preset': user_dir . '/bundle-preset.vim',
-				\ }
-
-	return env
-endfunction
-
-let s:env = VimrcEnvironment()
 " }}}
 
 
@@ -269,9 +281,7 @@ set laststatus=2
 set nrformats-=octal
 set number
 set shortmess=aTI
-if has('virtualedit')
-	set virtualedit=block
-endif
+set virtualedit=block
 
 " Backup
 set nobackup
@@ -330,17 +340,30 @@ if s:bundle_activated
 	autocmd FileType python let b:did_ftplugin = 1
 	" }}}
 
-	" neocomplcache {{{
-	let g:neocomplcache_enable_at_startup = 1
-	let g:neocomplcache_temporary_dir = s:env.path.setting . '/neocomplcache'
+	" neocomplcache/neocomplete {{{
+	if s:supports.neocomplete
+		let g:neocomplete#enable_at_startup = 1
+		let g:neocomplete#data_directory = s:env.path.setting . '/neocomplete'
 
-	" neocomplcache + jedi
-	let g:neocomplcache_force_omni_patterns = {
-				\ 	'python': '\h\w*\|[^. \t]\.\w*'
-				\ }
-	let g:neocomplcache_omni_functions = {
-				\ 	'python': 'jedi#completions'
-				\ }
+		" neocomplete + jedi
+		let g:neocomplete#force_omni_input_patterns = {
+					\ 	'python': '\h\w*\|[^. \t]\.\w*'
+					\ }
+		let g:neocomplete#sources#omni#functions = {
+					\ 	'python': 'jedi#completions'
+					\ }
+	else
+		let g:neocomplcache_enable_at_startup = 1
+		let g:neocomplcache_temporary_dir = s:env.path.setting . '/neocomplcache'
+
+		" neocomplcache + jedi
+		let g:neocomplcache_force_omni_patterns = {
+					\ 	'python': '\h\w*\|[^. \t]\.\w*'
+					\ }
+		let g:neocomplcache_omni_functions = {
+					\ 	'python': 'jedi#completions'
+					\ }
+	endif
 	" }}}
 
 	" open-browser {{{
