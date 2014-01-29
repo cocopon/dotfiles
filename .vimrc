@@ -420,29 +420,10 @@ if s:bundle_activated
 				\ }
 	let g:syntastic_auto_loc_list = 0
 
-	" --browser .... Tolerate standard browser globals
-	" --es5 ........ Tolerate ECMA Script 5 syntax (e.g. trailling commas)
-	" --nomen ...... Tolerate initial or trailing underbars in names
-	" --plusplus ... Tolerate '++' and '--'
-	" --sloppy ..... Tolerate missing 'use strict' pragma
-	" --sub ........ Tolerate dot notation
-	" --vars ....... Tolerate many var statements per function
-	" --white ...... Tolerate messy white space
-	let g:syntastic_javascript_checkers = ['jslint']
-	let g:syntastic_javascript_jslint_args = join([
-				\ 	'--browser',
-				\ 	'--es5=false',
-				\ 	'--nomen',
-				\ 	'--plusplus',
-				\ 	'--sloppy',
-				\ 	'--sub',
-				\ 	'--vars',
-				\ 	'--white',
-				\ 	'--predef=goog',
-				\ 	'--predef=jQuery',
-				\ 	'--predef=$'
-				\ ])
+	" javascript
+	let g:syntastic_javascript_checkers = ['jshint']
 
+	" python
 	" E501 ... line too long
 	let g:syntastic_python_checkers = ['flake8']
 	let g:syntastic_python_flake8_args = join([
