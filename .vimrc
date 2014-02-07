@@ -21,7 +21,7 @@ function! VimrcEnvironment()
 				\ 	'user':          user_dir,
 				\ 	'neobundle':     user_dir . '/neobundle.vim',
 				\ 	'bundle':        user_dir . '/bundle',
-				\ 	'setting':       user_dir . '/setting',
+				\ 	'data':          user_dir . '/data',
 				\ 	'local_vimrc':   user_dir . '/.vimrc_local',
 				\ 	'bundle_preset': user_dir . '/bundle-preset.vim',
 				\ }
@@ -123,7 +123,7 @@ endfunction
 
 function! VimrcInstallPluginManager()
 	call s:mkdir_silently(s:env.path.user)
-	call s:mkdir_silently(s:env.path.setting)
+	call s:mkdir_silently(s:env.path.data)
 
 	call s:clone_repository(
 				\ 'https://github.com/Shougo/neobundle.vim',
@@ -344,7 +344,7 @@ if s:bundle_activated
 	" neocomplcache/neocomplete {{{
 	if s:supports.neocomplete
 		let g:neocomplete#enable_at_startup = 1
-		let g:neocomplete#data_directory = s:env.path.setting . '/neocomplete'
+		let g:neocomplete#data_directory = s:env.path.data . '/neocomplete'
 
 		" neocomplete + jedi
 		let g:neocomplete#force_omni_input_patterns = {
@@ -355,7 +355,7 @@ if s:bundle_activated
 					\ }
 	else
 		let g:neocomplcache_enable_at_startup = 1
-		let g:neocomplcache_temporary_dir = s:env.path.setting . '/neocomplcache'
+		let g:neocomplcache_temporary_dir = s:env.path.data . '/neocomplcache'
 
 		" neocomplcache + jedi
 		let g:neocomplcache_force_omni_patterns = {
@@ -385,7 +385,7 @@ if s:bundle_activated
 	" }}}
 
 	" ref {{{
-	let g:ref_cache_dir = s:env.path.setting . '/ref'
+	let g:ref_cache_dir = s:env.path.data . '/ref'
 	" }}}
 
 	" shadeline {{{
@@ -433,7 +433,7 @@ if s:bundle_activated
 	" }}}
 
 	" unite {{{
-	let g:unite_data_directory = s:env.path.setting . '/unite'
+	let g:unite_data_directory = s:env.path.data . '/unite'
 	let g:unite_enable_start_insert = 0
 	let g:unite_split_rule = 'botright'
 	nnoremap ,ub :Unite buffer<CR>
@@ -448,7 +448,7 @@ if s:bundle_activated
 	let g:vimfiler_as_default_explorer = 1
 	let g:vimfiler_enable_auto_cd = 1
 	let g:vimfiler_safe_mode_by_default = 0
-	let g:vimfiler_data_directory = s:env.path.setting . '/vimfiler'
+	let g:vimfiler_data_directory = s:env.path.data . '/vimfiler'
 
 	function! s:change_vimfiler_mapping()
 		unmap <buffer> <C-j>
@@ -460,7 +460,7 @@ if s:bundle_activated
 	" }}}
 
 	" vimshell {{{
-	let g:vimshell_temporary_directory = s:env.path.setting . '/vimshell'
+	let g:vimshell_temporary_directory = s:env.path.data . '/vimshell'
 	" }}}
 endif
 
