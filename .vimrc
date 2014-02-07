@@ -59,6 +59,7 @@ let s:plugins = [
 			\ 	'cocopon/svss.vim',
 			\ 	'cocopon/todo.vim',
 			\ 	'davidhalter/jedi-vim',
+			\ 	'groenewege/vim-less',
 			\ 	'h1mesuke/unite-outline',
 			\ 	'hynek/vim-python-pep8-indent',
 			\ 	'itchyny/thumbnail.vim',
