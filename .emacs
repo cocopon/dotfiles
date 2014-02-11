@@ -73,6 +73,7 @@
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (load-theme 'misterioso t))
+(set-face-attribute 'mode-line nil :box nil)
 
 ; Local Settings
 (if (file-exists-p "~/.emacs.d/.emacs_local")
