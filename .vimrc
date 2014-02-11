@@ -99,7 +99,7 @@ let s:colorscheme = 'hybrid'
 " }}}
 
 
-" Install {{{
+" Installing {{{
 function! s:mkdir_silently(dir)
 	if isdirectory(a:dir)
 		return 0
@@ -147,7 +147,7 @@ endfunction
 " }}}
 
 
-" Activate {{{
+" Activating {{{
 function! s:activate_plugin(path, func, defined_command, ...)
 	if exists(a:defined_command)
 		" Already activated
@@ -206,7 +206,7 @@ let s:bundle_activated = s:activate_plugin_manager()
 " }}}
 
 
-" Key {{{
+" Mapping {{{
 " Turn off the IME when escaping from Insert mode
 inoremap <silent> <ESC> <ESC>:<C-u>set iminsert=0<CR>
 
@@ -258,7 +258,7 @@ nnoremap Y y$
 " }}}
 
 
-" FileType {{{
+" File Types {{{
 augroup vimrc_filetype
 	autocmd!
 	autocmd BufRead,BufNewFile *.as     setlocal ft=javascript
