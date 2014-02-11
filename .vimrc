@@ -9,6 +9,12 @@
 " 	:call VimrcInstallPluginManager()
 
 
+" Encoding {{{
+set encoding=utf-8
+scriptencoding utf-8
+" }}}
+
+
 " Environment {{{
 function! VimrcEnvironment()
 	let env = {}
@@ -291,9 +297,6 @@ set virtualedit=block
 " Backup
 set nobackup
 set noswapfile
-
-" Encoding
-set encoding=utf-8
 
 " IME
 set iminsert=0
