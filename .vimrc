@@ -51,6 +51,7 @@ let s:supports = VimrcSupports()
 
 " Required Plugins {{{
 let s:plugins = [
+			\ 	'Shougo/unite-outline',
 			\ 	'Shougo/unite.vim',
 			\ 	'Shougo/vesting',
 			\ 	'Shougo/vimfiler',
@@ -66,7 +67,6 @@ let s:plugins = [
 			\ 	'cocopon/todo.vim',
 			\ 	'davidhalter/jedi-vim',
 			\ 	'groenewege/vim-less',
-			\ 	'h1mesuke/unite-outline',
 			\ 	'hynek/vim-python-pep8-indent',
 			\ 	'itchyny/thumbnail.vim',
 			\ 	'kana/vim-textobj-indent',
