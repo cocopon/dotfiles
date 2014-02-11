@@ -209,7 +209,6 @@ let s:bundle_activated = s:activate_plugin_manager()
 " Key {{{
 " Turn off the IME when escaping from Insert mode
 inoremap <silent> <ESC> <ESC>:<C-u>set iminsert=0<CR>
-inoremap <silent> <C-[> <C-[>:<C-u>set iminsert=0<CR>
 
 " Intuitive cursor movement in wrapped line
 noremap j gj
