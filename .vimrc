@@ -254,23 +254,26 @@ nnoremap Y y$
 
 
 " FileType {{{
-autocmd BufRead,BufNewFile *.as     setlocal ft=javascript
-autocmd BufRead,BufNewFile *.gradle setlocal ft=groovy
-autocmd BufRead,BufNewFile *.pde    setlocal ft=java sw=2 ts=2 expandtab
-autocmd FileType css        setlocal sw=4 ts=4
-autocmd FileType eruby      setlocal sw=2 ts=2
-autocmd FileType html       setlocal sw=2 ts=2 indentexpr&
-autocmd FileType javascript setlocal sw=4 ts=4
-autocmd FileType php        setlocal sw=4 ts=4
-autocmd FileType python     setlocal sw=4 ts=4 expandtab
-autocmd FileType rst        setlocal indentexpr&
-autocmd FileType ruby       setlocal sw=2 ts=2
-autocmd FileType scss       setlocal sw=4 ts=4
-autocmd FileType text       setlocal tw=0
-autocmd FileType vim        setlocal sw=2 ts=2 fdm=marker
-autocmd FileType xhtml      setlocal sw=2 ts=2 indentexpr&
-autocmd FileType xml        setlocal sw=2 ts=2
-autocmd FileType yaml       setlocal sw=2 ts=2
+augroup vimrc_filetype
+	autocmd!
+	autocmd BufRead,BufNewFile *.as     setlocal ft=javascript
+	autocmd BufRead,BufNewFile *.gradle setlocal ft=groovy
+	autocmd BufRead,BufNewFile *.pde    setlocal ft=java sw=2 ts=2 expandtab
+	autocmd FileType css        setlocal sw=4 ts=4
+	autocmd FileType eruby      setlocal sw=2 ts=2
+	autocmd FileType html       setlocal sw=2 ts=2 indentexpr&
+	autocmd FileType javascript setlocal sw=4 ts=4
+	autocmd FileType php        setlocal sw=4 ts=4
+	autocmd FileType python     setlocal sw=4 ts=4 expandtab
+	autocmd FileType rst        setlocal indentexpr&
+	autocmd FileType ruby       setlocal sw=2 ts=2
+	autocmd FileType scss       setlocal sw=4 ts=4
+	autocmd FileType text       setlocal tw=0
+	autocmd FileType vim        setlocal sw=2 ts=2 fdm=marker
+	autocmd FileType xhtml      setlocal sw=2 ts=2 indentexpr&
+	autocmd FileType xml        setlocal sw=2 ts=2
+	autocmd FileType yaml       setlocal sw=2 ts=2
+augroup END
 " }}}
 
 
@@ -339,7 +342,10 @@ if s:bundle_activated
 	let g:jedi#popup_on_dot = 0
 	let g:jedi#popup_select_first = 0
 	let g:jedi#rename_command = '<leader>R'
-	autocmd FileType python let b:did_ftplugin = 1
+	augroup vimrc_jedi
+		autocmd!
+		autocmd FileType python let b:did_ftplugin = 1
+	augroup END
 	" }}}
 
 	" neocomplcache/neocomplete {{{
@@ -457,7 +463,10 @@ if s:bundle_activated
 		map <buffer> D <Plug>(vimfiler_switch_to_drive)
 		map <buffer> L <Plug>(vimfiler_redraw_screen)
 	endfunction
-	autocmd FileType vimfiler call s:change_vimfiler_mapping()
+	augroup vimrc_vimfiler
+		autocmd!
+		autocmd FileType vimfiler call s:change_vimfiler_mapping()
+	augroup END
 	" }}}
 
 	" vimshell {{{
