@@ -465,6 +465,7 @@ if s:bundle_activated
 		map <buffer> D <Plug>(vimfiler_switch_to_drive)
 		map <buffer> L <Plug>(vimfiler_redraw_screen)
 	endfunction
+
 	augroup vimrc_vimfiler
 		autocmd!
 		autocmd FileType vimfiler call s:change_vimfiler_mapping()
@@ -473,6 +474,20 @@ if s:bundle_activated
 
 	" vimshell {{{
 	let g:vimshell_temporary_directory = s:env.path.data . '/vimshell'
+
+	function! s:change_vimshell_mapping()
+		unmap <buffer> <C-l>
+		map <buffer> L <Plug>(vimshell_clear)
+		if s:supports.neocomplete
+			imap <buffer> <C-p> <Plug>(vimshell_history_neocomplete)
+			imap <buffer> <C-n> <Plug>(vimshell_history_neocomplete)
+		endif
+	endfunction
+
+	augroup vimrc_vimshell
+		autocmd!
+		autocmd FileType vimshell call s:change_vimshell_mapping()
+	augroup END
 	" }}}
 endif
 
