@@ -227,7 +227,7 @@ cnoremap <C-d> <Del>
 cnoremap <C-e> <End>
 cnoremap <C-f> <Right>
 cnoremap <C-h> <Backspace>
-cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
+cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos() - 2]<CR>
 inoremap <C-a> <Home>
 inoremap <C-b> <Left>
 inoremap <C-d> <Del>
@@ -357,10 +357,10 @@ if s:bundle_activated
 
 		" neocomplete + jedi
 		let g:neocomplete#force_omni_input_patterns = {
-					\ 	'python': '\h\w*\|[^. \t]\.\w*'
+					\ 	'python': '\h\w*\|[^. \t]\.\w*',
 					\ }
 		let g:neocomplete#sources#omni#functions = {
-					\ 	'python': 'jedi#completions'
+					\ 	'python': 'jedi#completions',
 					\ }
 	else
 		let g:neocomplcache_enable_at_startup = 1
@@ -368,10 +368,10 @@ if s:bundle_activated
 
 		" neocomplcache + jedi
 		let g:neocomplcache_force_omni_patterns = {
-					\ 	'python': '\h\w*\|[^. \t]\.\w*'
+					\ 	'python': '\h\w*\|[^. \t]\.\w*',
 					\ }
 		let g:neocomplcache_omni_functions = {
-					\ 	'python': 'jedi#completions'
+					\ 	'python': 'jedi#completions',
 					\ }
 	endif
 	" }}}
@@ -384,12 +384,12 @@ if s:bundle_activated
 	let g:quickrun_config = {}
 	let g:quickrun_config['_'] = {
 				\ 	'runner': 'vimproc',
-				\ 	'runner/vimproc/updatetime': 40
+				\ 	'runner/vimproc/updatetime': 40,
 				\ }
 	let g:quickrun_config['rst'] = {
 				\ 	'command': 'rst2html.py',
 				\ 	'outputter': 'browser',
-				\ 	'runner': 'system'
+				\ 	'runner': 'system',
 				\ }
 	" }}}
 
@@ -437,7 +437,7 @@ if s:bundle_activated
 	" E501 ... line too long
 	let g:syntastic_python_checkers = ['flake8']
 	let g:syntastic_python_flake8_args = join([
-				\ 	'--ignore=E501'
+				\ 	'--ignore=E501',
 				\ ])
 	" }}}
 
