@@ -95,7 +95,7 @@ let s:plugins = [
 			\ 		? 'Shougo/neocomplete.vim'
 			\ 		: 'Shougo/neocomplcache',
 			\ ]
-let s:colorscheme = 'hybrid'
+let s:colorscheme = 'iceberg'
 " }}}
 
 
