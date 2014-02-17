@@ -51,6 +51,7 @@ let s:supports = VimrcSupports()
 
 " Required Plugins {{{
 let s:plugins = [
+			\ 	'Shougo/neomru.vim',
 			\ 	'Shougo/unite-outline',
 			\ 	'Shougo/unite.vim',
 			\ 	'Shougo/vesting',
@@ -376,6 +377,11 @@ if s:bundle_activated
 	endif
 	" }}}
 
+	" neomru {{{
+	let g:neomru#file_mru_path = s:env.path.data . '/neomru/file'
+	let g:neomru#directory_mru_path = s:env.path.data . '/neomru/directory'
+	" }}}
+
 	" open-browser {{{
 	nmap gW <Plug>(openbrowser-open)
 	" }}}
@@ -447,10 +453,10 @@ if s:bundle_activated
 	let g:unite_split_rule = 'botright'
 	nnoremap ,ub :Unite buffer<CR>
 	nnoremap ,ul :Unite line<CR>
-	nnoremap ,um :Unite file_mru:all<CR>
+	nnoremap ,um :Unite neomru/file<CR>
 	nnoremap ,uo :Unite outline<CR>
 	nnoremap ,ut :Unite todo/all<CR>
-	nnoremap <C-g> :Unite file_mru:all<CR>
+	nnoremap <C-g> :Unite neomru/file<CR>
 	" }}}
 
 	" vimfiler {{{
