@@ -457,6 +457,15 @@ if s:bundle_activated
 	nnoremap ,uo :Unite outline<CR>
 	nnoremap ,ut :Unite todo/all<CR>
 	nnoremap <C-g> :Unite neomru/file<CR>
+
+	function! s:change_unite_mapping()
+		unmap <buffer> <C-k>
+	endfunction
+
+	augroup vimrc_unite
+		autocmd!
+		autocmd FileType unite call s:change_unite_mapping()
+	augroup END
 	" }}}
 
 	" vimfiler {{{
