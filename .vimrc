@@ -493,9 +493,10 @@ if s:bundle_activated
 	function! s:change_vimshell_mapping()
 		unmap <buffer> <C-l>
 		map <buffer> L <Plug>(vimshell_clear)
-		if s:supports.neocomplete
-			imap <buffer> <C-p> <Plug>(vimshell_history_neocomplete)
-			imap <buffer> <C-n> <Plug>(vimshell_history_neocomplete)
+
+		if !s:supports.neocomplete
+			imap <buffer> <C-p> <Plug>(vimshell_history_unite)
+			imap <buffer> <C-n> <Plug>(vimshell_history_unite)
 		endif
 	endfunction
 
