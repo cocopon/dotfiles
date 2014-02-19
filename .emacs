@@ -18,16 +18,23 @@
 (global-set-key (kbd "<C-tab>") 'other-window)
 (global-set-key (kbd "<C-S-tab>") (lambda () (interactive) (other-window -1)))
 
-; linum
-(when (require 'linum nil 'noerror)
-  (global-linum-mode t)
-  (setq linum-format "%5d"))
-
 ; package
 (when (require 'package nil 'noerror)
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
   (package-initialize)
   (add-to-list 'load-path "~/.emacs.d/site-lisp"))
+
+; Packages
+(defvar my-packages
+  '(
+    auto-complete
+    undo-tree
+    ))
+
+(defun my-install-packages ()
+  (interactive)
+  (dolist (package my-packages)
+    (package-install package)))
 
 ; auto-complete
 (when (require 'auto-complete nil 'noerror)
@@ -37,6 +44,11 @@
   (setq ac-use-menu-map t)
   (define-key ac-menu-map (kbd "C-n") 'ac-next)
   (define-key ac-menu-map (kbd "C-p") 'ac-previous))
+
+; linum
+(when (require 'linum nil 'noerror)
+  (global-linum-mode t)
+  (setq linum-format "%5d"))
 
 ; undo-tree
 (when (require 'undo-tree nil 'noerror)
