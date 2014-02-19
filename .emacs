@@ -29,6 +29,7 @@
 (defvar my-packages
   '(
     auto-complete
+    csv-mode
     undo-tree
     ))
 
