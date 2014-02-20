@@ -27,7 +27,7 @@
 
 ; Parenthesis
 (show-paren-mode 1)
-(setq show-paren-style 'expression)
+(setq show-paren-style 'parenthesis)
 
 ; Misc
 (fset 'yes-or-no-p 'y-or-n-p)
