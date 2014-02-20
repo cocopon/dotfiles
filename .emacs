@@ -21,6 +21,24 @@
 (global-set-key (kbd "<C-tab>") 'other-window)
 (global-set-key (kbd "<C-S-tab>") (lambda () (interactive) (other-window -1)))
 
+; Backup
+(setq delete-auto-save-files t)
+(setq make-backup-files nil)
+
+; Parenthesis
+(show-paren-mode 1)
+(setq show-paren-style 'expression)
+
+; Misc
+(fset 'yes-or-no-p 'y-or-n-p)
+(setq scroll-margin 0
+      scroll-step 1)
+(setq kill-whole-line t)
+(setq vc-follow-symlinks t)
+(setq-default show-trailing-whitespace t)
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
 ; package
 (when (require 'package nil 'noerror)
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
@@ -54,6 +72,13 @@
   (define-key ac-menu-map (kbd "C-n") 'ac-next)
   (define-key ac-menu-map (kbd "C-p") 'ac-previous))
 
+; cua-mode
+(cua-mode t)
+(setq cua-enable-cua-keys nil)
+
+; iswitchb-mode
+(iswitchb-mode t)
+
 ; linum
 (when (require 'linum nil 'noerror)
   (global-linum-mode t)
@@ -63,31 +88,6 @@
 (when (require 'undo-tree nil 'noerror)
   (global-undo-tree-mode t)
   (global-set-key (kbd "C-x C-/") 'undo-tree-redo))
-
-; cua-mode
-(cua-mode t)
-(setq cua-enable-cua-keys nil)
-
-; iswitchb-mode
-(iswitchb-mode t)
-
-; Backup
-(setq delete-auto-save-files t)
-(setq make-backup-files nil)
-
-; Parenthesis
-(show-paren-mode 1)
-(setq show-paren-style 'expression)
-
-; Misc
-(fset 'yes-or-no-p 'y-or-n-p)
-(setq scroll-margin 0
-      scroll-step 1)
-(setq kill-whole-line t)
-(setq vc-follow-symlinks t)
-(setq-default show-trailing-whitespace t)
-(put 'downcase-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
 
 ; Gui
 (when (display-graphic-p)
