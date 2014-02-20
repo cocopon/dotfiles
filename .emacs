@@ -16,6 +16,8 @@
 (set-default-coding-systems 'utf-8)
 
 ; Key
+(define-key minibuffer-local-map (kbd "C-n") 'next-history-element)
+(define-key minibuffer-local-map (kbd "C-p") 'previous-history-element)
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "C-m") 'newline-and-indent)
 (global-set-key (kbd "<C-tab>") 'other-window)
