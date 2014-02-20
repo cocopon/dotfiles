@@ -1,3 +1,5 @@
+(require 'cl)
+
 ; Startup
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message "")
@@ -22,10 +24,10 @@
 ; package
 (when (require 'package nil 'noerror)
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
   (package-initialize)
   (add-to-list 'load-path "~/.emacs.d/site-lisp"))
 
-; Packages
 (defvar my-packages
   '(
     auto-complete
@@ -35,8 +37,13 @@
 
 (defun my-install-packages ()
   (interactive)
-  (dolist (package my-packages)
-    (package-install package)))
+  (let ((packages (loop for package in my-packages
+			     when (not (package-installed-p package))
+			     collect package)))
+    (when packages
+      (package-refresh-contents)
+      (dolist (package packages)
+	(package-install package)))))
 
 ; auto-complete
 (when (require 'auto-complete nil 'noerror)
