@@ -50,6 +50,7 @@
   '(
     auto-complete
     csv-mode
+    popwin
     undo-tree
     ))
 
@@ -83,6 +84,10 @@
 (when (require 'linum nil 'noerror)
   (global-linum-mode t)
   (setq linum-format "%5d"))
+
+; popwin
+(when (require 'popwin nil 'noerror)
+  (setq display-buffer-function 'popwin:display-buffer))
 
 ; undo-tree
 (when (require 'undo-tree nil 'noerror)
