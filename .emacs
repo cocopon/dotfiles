@@ -4,7 +4,7 @@
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message "")
 
-; Lauguage
+; Language
 (set-language-environment "Japanese")
 (set-locale-environment nil)
 
