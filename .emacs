@@ -85,7 +85,7 @@
 ; linum
 (when (require 'linum nil 'noerror)
   (global-linum-mode t)
-  (setq linum-format "%5d"))
+  (setq linum-format "%4d"))
 
 ; popwin
 (when (require 'popwin nil 'noerror)
