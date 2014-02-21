@@ -94,7 +94,8 @@
 ; undo-tree
 (when (require 'undo-tree nil 'noerror)
   (global-undo-tree-mode t)
-  (global-set-key (kbd "C-x C-/") 'undo-tree-redo))
+  (global-set-key (kbd "M-/") 'undo-tree-redo)
+  (global-set-key (kbd "M-_") 'undo-tree-redo))
 
 ; zlc
 (when (require 'zlc nil 'noerror)
