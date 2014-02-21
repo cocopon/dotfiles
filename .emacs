@@ -16,6 +16,7 @@
 (set-default-coding-systems 'utf-8)
 
 ; Key
+(define-key isearch-mode-map (kbd "C-h") 'isearch-delete-char)
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "C-m") 'newline-and-indent)
 (global-set-key (kbd "<C-tab>") 'other-window)
