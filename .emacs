@@ -118,7 +118,8 @@
   (tool-bar-mode -1)
 
   ; Theme
-  (load-theme 'solarized-dark t)
+  (ignore-errors
+    (load-theme 'solarized-dark t))
 
   ; Font
   (set-face-attribute 'default nil
