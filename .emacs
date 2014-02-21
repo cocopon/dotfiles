@@ -38,6 +38,7 @@
 (iswitchb-mode t)
 
 ; Hooks
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (setq indent-tabs-mode nil)))
