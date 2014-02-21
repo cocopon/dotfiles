@@ -37,6 +37,11 @@
 ; iswitchb-mode
 (iswitchb-mode t)
 
+; Hooks
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)))
+
 ; Misc
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq scroll-margin 0
@@ -69,12 +74,12 @@
 (defun my-install-packages ()
   (interactive)
   (let ((packages (loop for package in my-packages
-			     when (not (package-installed-p package))
-			     collect package)))
+                        when (not (package-installed-p package))
+                        collect package)))
     (when packages
       (package-refresh-contents)
       (dolist (package packages)
-	(package-install package)))))
+        (package-install package)))))
 
 ; auto-complete
 (when (require 'auto-complete nil 'noerror)
@@ -110,9 +115,9 @@
 (when (require 'whitespace nil 'noerror)
   (global-whitespace-mode t)
   (setq whitespace-display-mappings
-	'((tab-mark ?\t [?\u00BB ?\t] [?\\ ?\t])))
+        '((tab-mark ?\t [?\u00BB ?\t] [?\\ ?\t])))
   (setq whitespace-style
-	'(tabs tab-mark))
+        '(tabs tab-mark))
   (setq-default show-trailing-whitespace t))
 
 ; zlc
@@ -133,10 +138,10 @@
 
   ; Font
   (set-face-attribute 'default nil
-		      :family "Ricty"
-		      :height 135)
+                      :family "Ricty"
+                      :height 135)
   (set-fontset-font nil 'japanese-jisx0208
-		    (font-spec :family "Ricty"))
+                    (font-spec :family "Ricty"))
 
   ; Misc
   (global-hl-line-mode t)
