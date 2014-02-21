@@ -16,8 +16,6 @@
 (set-default-coding-systems 'utf-8)
 
 ; Key
-(define-key minibuffer-local-map (kbd "C-n") 'next-history-element)
-(define-key minibuffer-local-map (kbd "C-p") 'previous-history-element)
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "C-m") 'newline-and-indent)
 (global-set-key (kbd "<C-tab>") 'other-window)
@@ -55,6 +53,7 @@
     markdown-mode
     popwin
     undo-tree
+    zlc
     ))
 
 (defun my-install-packages ()
@@ -96,6 +95,12 @@
 (when (require 'undo-tree nil 'noerror)
   (global-undo-tree-mode t)
   (global-set-key (kbd "C-x C-/") 'undo-tree-redo))
+
+; zlc
+(when (require 'zlc nil 'noerror)
+  (zlc-mode t)
+  (define-key minibuffer-local-map (kbd "C-n") 'zlc-select-next)
+  (define-key minibuffer-local-map (kbd "C-p") 'zlc-select-previous))
 
 ; Gui
 (when (display-graphic-p)
