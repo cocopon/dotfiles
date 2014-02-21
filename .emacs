@@ -27,7 +27,7 @@
 (setq make-backup-files nil)
 
 ; Parenthesis
-(show-paren-mode 1)
+(show-paren-mode t)
 (setq show-paren-style 'parenthesis)
 
 ; cua-mode
@@ -123,6 +123,7 @@
 		    (font-spec :family "Ricty"))
 
   ; Misc
+  (global-hl-line-mode t)
   (set-face-attribute 'mode-line nil :box nil))
 
 ; Local Settings
