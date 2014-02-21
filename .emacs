@@ -37,6 +37,15 @@
 ; iswitchb-mode
 (iswitchb-mode t)
 
+; whitespace
+(when (require 'whitespace nil 'noerror)
+  (global-whitespace-mode t)
+  (setq whitespace-display-mappings
+	'((tab-mark ?\t [?\u00BB ?\t] [?\\ ?\t])))
+  (setq whitespace-style
+	'(tabs tab-mark))
+  (setq-default show-trailing-whitespace t))
+
 ; Misc
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq scroll-margin 0
@@ -44,7 +53,6 @@
 (setq kill-whole-line t)
 (setq vc-follow-symlinks t)
 (setq-default cursor-type 'bar)
-(setq-default show-trailing-whitespace t)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
