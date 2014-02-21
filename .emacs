@@ -61,6 +61,7 @@
     color-theme-solarized
     csv-mode
     markdown-mode
+    org
     popwin
     undo-tree
     zlc
@@ -89,6 +90,10 @@
 (when (require 'linum nil 'noerror)
   (global-linum-mode t)
   (setq linum-format "%4d"))
+
+; org
+(when (require 'org nil 'noerror)
+  (add-to-list 'auto-mode-alist '("\\.org$" . org-mode)))
 
 ; popwin
 (when (require 'popwin nil 'noerror)
