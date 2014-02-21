@@ -29,6 +29,13 @@
 (show-paren-mode 1)
 (setq show-paren-style 'parenthesis)
 
+; cua-mode
+(cua-mode t)
+(setq cua-enable-cua-keys nil)
+
+; iswitchb-mode
+(iswitchb-mode t)
+
 ; Misc
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq scroll-margin 0
@@ -74,13 +81,6 @@
   (setq ac-use-menu-map t)
   (define-key ac-menu-map (kbd "C-n") 'ac-next)
   (define-key ac-menu-map (kbd "C-p") 'ac-previous))
-
-; cua-mode
-(cua-mode t)
-(setq cua-enable-cua-keys nil)
-
-; iswitchb-mode
-(iswitchb-mode t)
 
 ; linum
 (when (require 'linum nil 'noerror)
