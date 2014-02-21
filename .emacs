@@ -57,6 +57,7 @@
 (defvar my-packages
   '(
     auto-complete
+    color-theme-solarized
     csv-mode
     markdown-mode
     popwin
@@ -111,7 +112,7 @@
   (tool-bar-mode -1)
 
   ; Theme
-  (load-theme 'misterioso t)
+  (load-theme 'solarized-dark t)
 
   ; Font
   (set-face-attribute 'default nil
