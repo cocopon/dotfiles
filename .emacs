@@ -52,6 +52,7 @@
   '(
     auto-complete
     csv-mode
+    markdown-mode
     popwin
     undo-tree
     ))
