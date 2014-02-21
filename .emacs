@@ -39,6 +39,7 @@
 
 ; Misc
 (fset 'yes-or-no-p 'y-or-n-p)
+(setq cursor-type 'bar)
 (setq scroll-margin 0
       scroll-step 1)
 (setq kill-whole-line t)
