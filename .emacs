@@ -81,9 +81,10 @@
   (global-auto-complete-mode t)
   (require 'auto-complete-config)
   (ac-config-default)
-  (setq ac-use-menu-map t)
   (define-key ac-menu-map (kbd "C-n") 'ac-next)
-  (define-key ac-menu-map (kbd "C-p") 'ac-previous))
+  (define-key ac-menu-map (kbd "C-p") 'ac-previous)
+  (setcdr (assq 'auto-complete-mode minor-mode-alist) '(""))
+  (setq ac-use-menu-map t))
 
 ; linum
 (when (require 'linum nil 'noerror)
@@ -102,7 +103,8 @@
 (when (require 'undo-tree nil 'noerror)
   (global-undo-tree-mode t)
   (global-set-key (kbd "M-/") 'undo-tree-redo)
-  (global-set-key (kbd "M-_") 'undo-tree-redo))
+  (global-set-key (kbd "M-_") 'undo-tree-redo)
+  (setq undo-tree-mode-lighter ""))
 
 ; whitespace
 (when (require 'whitespace nil 'noerror)
