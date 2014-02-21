@@ -20,7 +20,10 @@
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "C-m") 'newline-and-indent)
 (global-set-key (kbd "<C-tab>") 'other-window)
-(global-set-key (kbd "<C-S-tab>") (lambda () (interactive) (other-window -1)))
+(global-set-key (kbd "<C-S-tab>")
+                (lambda ()
+                  (interactive)
+                  (other-window -1)))
 
 ; Backup
 (setq delete-auto-save-files t)
@@ -69,8 +72,7 @@
     org
     popwin
     undo-tree
-    zlc
-    ))
+    zlc))
 
 (defun my-install-packages ()
   (interactive)
