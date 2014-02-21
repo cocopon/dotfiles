@@ -99,10 +99,22 @@
 
 ; Gui
 (when (display-graphic-p)
+  ; Bars
   (menu-bar-mode -1)
   (tool-bar-mode -1)
-  (load-theme 'misterioso t))
-(set-face-attribute 'mode-line nil :box nil)
+
+  ; Theme
+  (load-theme 'misterioso t)
+
+  ; Font
+  (set-face-attribute 'default nil
+		      :family "Ricty"
+		      :height 135)
+  (set-fontset-font nil 'japanese-jisx0208
+		    (font-spec :family "Ricty"))
+
+  ; Misc
+  (set-face-attribute 'mode-line nil :box nil))
 
 ; Local Settings
 (if (file-exists-p "~/.emacs.d/.emacs_local")
