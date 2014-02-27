@@ -57,15 +57,16 @@
             (setq indent-tabs-mode nil)))
 
 ; Misc
+(column-number-mode t)
 (fset 'yes-or-no-p 'y-or-n-p)
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
 (setq confirm-kill-emacs 'y-or-n-p)
 (setq scroll-margin 0
       scroll-step 1)
 (setq kill-whole-line t)
 (setq vc-follow-symlinks t)
 (setq-default cursor-type 'bar)
-(put 'downcase-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
 
 ; package
 (when (require 'package nil 'noerror)
