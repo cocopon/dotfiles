@@ -51,6 +51,7 @@ let s:supports = VimrcSupports()
 
 " Required Plugins {{{
 let s:plugins = [
+			\ 	'AndrewRadev/linediff.vim',
 			\ 	'Shougo/neomru.vim',
 			\ 	'Shougo/unite-outline',
 			\ 	'Shougo/unite.vim',
