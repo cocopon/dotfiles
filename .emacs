@@ -68,6 +68,11 @@
 (setq vc-follow-symlinks t)
 (setq-default cursor-type 'bar)
 
+; System Specific Settings
+(when (eq window-system 'ns)
+  (global-set-key [ns-drag-file] 'ns-find-file)
+  (setq ns-pop-up-frames nil))
+
 ; package
 (when (require 'package nil 'noerror)
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
