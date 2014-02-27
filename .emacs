@@ -79,6 +79,7 @@
     auto-complete
     color-theme-solarized
     csv-mode
+    fill-column-indicator
     markdown-mode
     org
     popwin
@@ -104,6 +105,10 @@
   (define-key ac-menu-map (kbd "C-p") 'ac-previous)
   (setcdr (assq 'auto-complete-mode minor-mode-alist) '(""))
   (setq ac-use-menu-map t))
+
+; fill-column-indicator
+(require 'fill-column-indicator nil 'noerror)
+
 
 ; linum
 (when (require 'linum nil 'noerror)
