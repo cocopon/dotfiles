@@ -76,6 +76,7 @@ let s:plugins = [
 			\ 	'nanotech/jellybeans.vim',
 			\ 	'pangloss/vim-javascript',
 			\ 	'scrooloose/syntastic',
+			\ 	'stephpy/vim-yaml',
 			\ 	'thinca/vim-prettyprint',
 			\ 	'thinca/vim-qfreplace',
 			\ 	'thinca/vim-quickrun',
