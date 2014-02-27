@@ -108,7 +108,8 @@
   (setq ac-use-menu-map t))
 
 ; fill-column-indicator
-(require 'fill-column-indicator nil 'noerror)
+(when (require 'fill-column-indicator nil 'noerror)
+  (setq-default fci-rule-column 80))
 
 
 ; linum
