@@ -58,6 +58,7 @@
 
 ; Misc
 (fset 'yes-or-no-p 'y-or-n-p)
+(setq confirm-kill-emacs 'y-or-n-p)
 (setq scroll-margin 0
       scroll-step 1)
 (setq kill-whole-line t)
