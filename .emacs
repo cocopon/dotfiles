@@ -131,8 +131,7 @@
   (setq whitespace-display-mappings
         '((tab-mark ?\t [?\u00BB ?\t] [?\\ ?\t])))
   (setq whitespace-style
-        '(tabs tab-mark))
-  (setq-default show-trailing-whitespace t))
+        '(tabs tab-mark)))
 
 ; zlc
 (when (require 'zlc nil 'noerror)
