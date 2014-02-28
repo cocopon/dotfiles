@@ -82,6 +82,7 @@
 
 (defvar my-packages
   '(
+    all
     auto-complete
     color-theme-solarized
     csv-mode
@@ -128,7 +129,9 @@
 
 ; popwin
 (when (require 'popwin nil 'noerror)
-  (setq display-buffer-function 'popwin:display-buffer))
+  (setq display-buffer-function 'popwin:display-buffer)
+  (setq popwin:popup-window-position 'bottom)
+  (push '("*All*") popwin:special-display-config))
 
 ; undo-tree
 (when (require 'undo-tree nil 'noerror)
