@@ -67,6 +67,7 @@
 (setq kill-whole-line t)
 (setq vc-follow-symlinks t)
 (setq-default cursor-type 'bar)
+(setq-default truncate-lines t)
 
 ; System Specific Settings
 (when (eq window-system 'ns)
