@@ -162,11 +162,18 @@
     (load-theme 'solarized-dark t))
 
   ; Font
-  (set-face-attribute 'default nil
-                      :family "Ricty"
-                      :height 135)
-  (set-fontset-font nil 'japanese-jisx0208
-                    (font-spec :family "Ricty"))
+  (cond ((eq window-system 'w32)
+         (set-face-attribute 'default nil
+                             :family "BDF UM+ OUTLINE"
+                             :height 100)
+         (set-fontset-font nil 'japanese-jisx0208
+                           (font-spec :family "BDF UM+ OUTLINE")))
+        ((eq window-system 'ns)
+         (set-face-attribute 'default nil
+                             :family "Ricty"
+                             :height 135)
+         (set-fontset-font nil 'japanese-jisx0208
+                           (font-spec :family "Ricty"))))
 
   ; Misc
   (global-hl-line-mode t)
