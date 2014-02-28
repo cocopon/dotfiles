@@ -3,6 +3,10 @@
 ; Startup
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message "")
+(when (display-graphic-p)
+  (menu-bar-mode -1)
+  (tool-bar-mode -1))
+
 
 ; Language
 (set-language-environment "Japanese")
@@ -157,10 +161,6 @@
 
 ; Gui
 (when (display-graphic-p)
-  ; Bars
-  (menu-bar-mode -1)
-  (tool-bar-mode -1)
-
   ; Theme
   (ignore-errors
     (load-theme 'solarized-dark t))
