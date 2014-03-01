@@ -258,6 +258,7 @@ noremap ; :
 
 " Misc
 nnoremap Y y$
+nnoremap K <Nop>
 " }}}
 
 
