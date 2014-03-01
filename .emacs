@@ -40,6 +40,7 @@
                   (other-window 1)))
 
 ; Backup
+(setq auto-save-default nil)
 (setq delete-auto-save-files t)
 (setq make-backup-files nil)
 
