@@ -462,7 +462,11 @@ if s:bundle_activated
 	nnoremap <C-g> :Unite neomru/file<CR>
 
 	function! s:change_unite_mapping()
-		unmap <buffer> <C-k>
+		try
+			unmap <buffer> <C-k>
+		catch /:E31:/
+			" E31: No such mapping
+		endtry
 	endfunction
 
 	augroup vimrc_unite
