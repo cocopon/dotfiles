@@ -294,6 +294,7 @@ set grepprg=grep\ -nH
 set laststatus=2
 set nrformats-=octal
 set number
+set numberwidth=5
 set shortmess=aTI
 set virtualedit=block
 
