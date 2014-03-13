@@ -73,6 +73,7 @@ let s:plugins = [
 			\ 	'itchyny/thumbnail.vim',
 			\ 	'kana/vim-textobj-indent',
 			\ 	'kana/vim-textobj-user',
+			\ 	'kchmck/vim-coffee-script',
 			\ 	'mattn/emmet-vim',
 			\ 	'nanotech/jellybeans.vim',
 			\ 	'pangloss/vim-javascript',
