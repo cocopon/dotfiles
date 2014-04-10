@@ -25,11 +25,12 @@ function! VimrcEnvironment()
 				\ : expand('~/.vim')
 	let env.path = {
 				\ 	'user':          user_dir,
-				\ 	'neobundle':     user_dir . '/neobundle.vim',
 				\ 	'bundle':        user_dir . '/bundle',
+				\ 	'bundle_preset': user_dir . '/bundle-preset.vim',
 				\ 	'data':          user_dir . '/data',
 				\ 	'local_vimrc':   user_dir . '/.vimrc_local',
-				\ 	'bundle_preset': user_dir . '/bundle-preset.vim',
+				\ 	'neobundle':     user_dir . '/neobundle.vim',
+				\ 	'tmp':           user_dir . '/tmp',
 				\ }
 
 	return env
@@ -78,6 +79,7 @@ let s:plugins = [
 			\ 	'nanotech/jellybeans.vim',
 			\ 	'pangloss/vim-javascript',
 			\ 	'scrooloose/syntastic',
+			\ 	'sophacles/vim-processing',
 			\ 	'stephpy/vim-yaml',
 			\ 	'thinca/vim-prettyprint',
 			\ 	'thinca/vim-qfreplace',
@@ -268,7 +270,6 @@ augroup vimrc_filetype
 	autocmd!
 	autocmd BufRead,BufNewFile *.as     setlocal ft=javascript
 	autocmd BufRead,BufNewFile *.gradle setlocal ft=groovy
-	autocmd BufRead,BufNewFile *.pde    setlocal ft=java sw=2 ts=2 expandtab
 	autocmd FileType css        setlocal sw=4 ts=4
 	autocmd FileType eruby      setlocal sw=2 ts=2
 	autocmd FileType html       setlocal sw=2 ts=2 indentexpr&
@@ -401,6 +402,10 @@ if s:bundle_activated
 				\ 	'command': 'rst2html.py',
 				\ 	'outputter': 'browser',
 				\ 	'runner': 'system',
+				\ }
+	let g:quickrun_config['processing'] = {
+				\ 	'command': 'processing-java',
+				\ 	'exec': '%c --sketch=%s:p:h/ --output=' . s:env.path.tmp . '/processing --run --force',
 				\ }
 	" }}}
 
