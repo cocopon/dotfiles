@@ -1,0 +1,7 @@
+" Mapping
+inoremap <C-e> <C-o>$
+
+" Search
+set ignorecase
+set incsearch
+set smartcase
