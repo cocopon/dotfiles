@@ -270,6 +270,7 @@ augroup vimrc_filetype
 	autocmd!
 	autocmd BufRead,BufNewFile *.as     setlocal ft=javascript
 	autocmd BufRead,BufNewFile *.gradle setlocal ft=groovy
+	autocmd FileType coffee     setlocal sw=2 ts=2 expandtab
 	autocmd FileType css        setlocal sw=4 ts=4
 	autocmd FileType eruby      setlocal sw=2 ts=2
 	autocmd FileType html       setlocal sw=2 ts=2 indentexpr&
@@ -441,7 +442,11 @@ if s:bundle_activated
 	" syntastic {{{
 	let g:syntastic_mode_map = {
 				\ 	'mode': 'passive',
-				\ 	'active_filetypes': ['javascript', 'python'],
+				\ 	'active_filetypes': [
+				\ 		'coffee',
+				\ 		'javascript',
+				\ 		'python',
+				\ 	],
 				\ 	'passive_filetypes': [],
 				\ }
 	let g:syntastic_auto_loc_list = 0
