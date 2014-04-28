@@ -268,8 +268,9 @@ nnoremap K <Nop>
 " File Types {{{
 augroup vimrc_filetype
 	autocmd!
-	autocmd BufRead,BufNewFile *.as     setlocal ft=javascript
-	autocmd BufRead,BufNewFile *.gradle setlocal ft=groovy
+	autocmd BufRead,BufNewFile *.as      setlocal ft=javascript
+	autocmd BufRead,BufNewFile *.gradle  setlocal ft=groovy
+	autocmd BufRead,BufNewFile *.podspec setlocal ft=ruby
 	autocmd FileType coffee     setlocal sw=2 ts=2 expandtab
 	autocmd FileType css        setlocal sw=4 ts=4
 	autocmd FileType eruby      setlocal sw=2 ts=2
