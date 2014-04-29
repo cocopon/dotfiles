@@ -1,0 +1,6 @@
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore
+[user]
+	name = cocopon
+	email = cocopon@me.com
