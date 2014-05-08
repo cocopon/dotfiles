@@ -305,6 +305,7 @@ set virtualedit=block
 " Backup
 set nobackup
 set noswapfile
+set noundofile
 
 " IME
 set iminsert=0
