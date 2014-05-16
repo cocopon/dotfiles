@@ -6,7 +6,7 @@
 
 " Execute the following command to install plugins:
 "
-" 	:call VimrcInstallPluginManager()
+" 	:call VimrcSetup()
 
 
 " Encoding {{{
@@ -31,6 +31,7 @@ function! VimrcEnvironment()
 				\ 	'local_vimrc':   user_dir . '/.vimrc_local',
 				\ 	'neobundle':     user_dir . '/neobundle.vim',
 				\ 	'tmp':           user_dir . '/tmp',
+				\ 	'undo':          user_dir . '/data/undo',
 				\ }
 
 	return env
@@ -106,8 +107,15 @@ let s:colorscheme = 'iceberg'
 " }}}
 
 
+" Setup {{{
+function! VimrcSetup()
+	call s:install_plugin_manager()
+endfunction
+" }}}
+
+
 " Installing {{{
-function! s:mkdir_silently(dir)
+function! s:mkdir_if_needed(dir)
 	if isdirectory(a:dir)
 		return 0
 	endif
@@ -117,7 +125,7 @@ function! s:mkdir_silently(dir)
 endfunction
 
 function! s:install_plugins()
-	call s:mkdir_silently(s:env.path.bundle)
+	call s:mkdir_if_needed(s:env.path.bundle)
 
 	if exists(':Unite')
 		Unite neobundle/install:!
@@ -134,9 +142,9 @@ function! s:clone_repository(url, local_path)
 	execute printf('!git clone %s %s', a:url, a:local_path)
 endfunction
 
-function! VimrcInstallPluginManager()
-	call s:mkdir_silently(s:env.path.user)
-	call s:mkdir_silently(s:env.path.data)
+function! s:install_plugin_manager()
+	call s:mkdir_if_needed(s:env.path.user)
+	call s:mkdir_if_needed(s:env.path.data)
 
 	call s:clone_repository(
 				\ 'https://github.com/Shougo/neobundle.vim',
@@ -208,7 +216,12 @@ function! s:activate_plugin_manager()
 
 	return s:activate_plugins()
 endfunction
+" }}}
 
+
+" Initializing {{{
+call s:mkdir_if_needed(s:env.path.tmp)
+call s:mkdir_if_needed(s:env.path.undo)
 let s:bundle_activated = s:activate_plugin_manager()
 " }}}
 
@@ -307,7 +320,8 @@ set virtualedit=block
 " Backup
 set nobackup
 set noswapfile
-set noundofile
+execute 'set undodir=' . s:env.path.undo
+set undofile
 
 " IME
 set iminsert=0
@@ -367,7 +381,6 @@ if s:bundle_activated
 		let g:neocomplete#enable_at_startup = 1
 		let g:neocomplete#data_directory = s:env.path.data . '/neocomplete'
 
-		" neocomplete + jedi
 		let g:neocomplete#force_omni_input_patterns = {
 					\ 	'python': '\h\w*\|[^. \t]\.\w*',
 					\ }
@@ -378,7 +391,6 @@ if s:bundle_activated
 		let g:neocomplcache_enable_at_startup = 1
 		let g:neocomplcache_temporary_dir = s:env.path.data . '/neocomplcache'
 
-		" neocomplcache + jedi
 		let g:neocomplcache_force_omni_patterns = {
 					\ 	'python': '\h\w*\|[^. \t]\.\w*',
 					\ }
