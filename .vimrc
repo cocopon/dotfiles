@@ -55,6 +55,7 @@ let s:supports = VimrcSupports()
 let s:plugins = [
 			\ 	'AndrewRadev/linediff.vim',
 			\ 	'Shougo/neomru.vim',
+			\ 	'Shougo/neosnippet.vim',
 			\ 	'Shougo/unite-outline',
 			\ 	'Shougo/unite.vim',
 			\ 	'Shougo/vesting',
@@ -65,6 +66,7 @@ let s:plugins = [
 			\ 	'cocopon/colorswatch.vim',
 			\ 	'cocopon/googkit.vim',
 			\ 	'cocopon/iceberg.vim',
+			\ 	'cocopon/neosnippet-snippets-cocopon',
 			\ 	'cocopon/shadeline.vim',
 			\ 	'cocopon/snapbuffer.vim',
 			\ 	'cocopon/svss.vim',
@@ -403,6 +405,15 @@ if s:bundle_activated
 	" neomru {{{
 	let g:neomru#file_mru_path = s:env.path.data . '/neomru/file'
 	let g:neomru#directory_mru_path = s:env.path.data . '/neomru/directory'
+	" }}}
+
+	" neosnippet {{{
+	let g:neosnippet#disable_runtime_snippets = {
+				\ 	'_': 1
+				\ }
+	let g:neosnippet#data_directory = s:env.path.data . '/neosnippet'
+	let g:neosnippet#snippets_directory = s:env.path.bundle . '/neosnippet-snippets-cocopon/snippets'
+	imap <C-Space> <Plug>(neosnippet_expand_or_jump)
 	" }}}
 
 	" open-browser {{{
