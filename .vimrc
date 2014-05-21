@@ -103,7 +103,7 @@ let s:plugins = [
 			\ 	'yuratomo/w3m.vim',
 			\ 	s:supports.neocomplete
 			\ 		? 'Shougo/neocomplete.vim'
-			\ 		: 'Shougo/neocomplcache',
+			\ 		: 'Shougo/neocomplcache.vim',
 			\ ]
 let s:colorscheme = 'iceberg'
 " }}}
