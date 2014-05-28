@@ -1,9 +1,5 @@
-# Bind
 bind generic g move-first-line
 bind generic G move-last-line
-bind generic ^f move-page-down
-bind generic ^b move-page-up
-
-# Set
-set show-rev-graph = yes
-
+bind generic <Ctrl-f> move-page-down
+bind generic <Ctrl-b> move-page-up
+bind main G move-last-line
