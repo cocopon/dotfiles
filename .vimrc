@@ -81,6 +81,7 @@ let s:plugins = [
 			\ 	'kchmck/vim-coffee-script',
 			\ 	'mattn/emmet-vim',
 			\ 	'nanotech/jellybeans.vim',
+			\ 	'osyo-manga/unite-quickfix',
 			\ 	'pangloss/vim-javascript',
 			\ 	'scrooloose/syntastic',
 			\ 	'sophacles/vim-processing',
