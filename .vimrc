@@ -448,6 +448,7 @@ if s:bundle_activated
 				\ 	'left': [
 				\ 		'fname',
 				\ 		'flags',
+				\ 		'ShadelineItemGitBranch',
 				\ 	],
 				\ 	'right': [
 				\ 		'<',
@@ -461,6 +462,13 @@ if s:bundle_activated
 				\ 		'flags',
 				\ 	],
 				\ }
+
+	function! ShadelineItemGitBranch()
+		let name = exists('*fugitive#head')
+					\ ? fugitive#head()
+					\ : ''
+		return empty(name) ? '' : printf('(%s)', name)
+	endfunction
 	" }}}
 
 	" svss {{{
