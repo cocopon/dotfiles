@@ -509,6 +509,11 @@ if s:bundle_activated
 	nnoremap ,ut :Unite todo/all<CR>
 	nnoremap <C-g> :Unite neomru/file<CR>
 
+	" Reverse prompt direction as default
+	call unite#custom#profile('default', 'context', {
+				\ 	'prompt_direction': 'top'
+				\ })
+
 	function! s:change_unite_mapping()
 		try
 			unmap <buffer> <C-k>
