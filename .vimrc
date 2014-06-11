@@ -500,8 +500,6 @@ if s:bundle_activated
 
 	" unite {{{
 	let g:unite_data_directory = s:env.path.data . '/unite'
-	let g:unite_enable_start_insert = 0
-	let g:unite_split_rule = 'botright'
 	nnoremap ,ub :Unite buffer<CR>
 	nnoremap ,ul :Unite line<CR>
 	nnoremap ,um :Unite neomru/file<CR>
@@ -511,7 +509,9 @@ if s:bundle_activated
 
 	" Reverse prompt direction as default
 	call unite#custom#profile('default', 'context', {
-				\ 	'prompt_direction': 'top'
+				\ 	'direction': 'botright',
+				\ 	'enable_start_insert': 0,
+				\ 	'prompt_direction': 'top',
 				\ })
 
 	function! s:change_unite_mapping()
