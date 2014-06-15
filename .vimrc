@@ -134,7 +134,7 @@ function! s:install_plugins()
 	if exists(':Unite')
 		Unite neobundle/install:!
 	else
-		NeoBundleInstall!
+		NeoBundleUpdate
 	endif
 endfunction
 
