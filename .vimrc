@@ -86,6 +86,7 @@ let s:plugins = [
 			\ 	'scrooloose/syntastic',
 			\ 	'sophacles/vim-processing',
 			\ 	'stephpy/vim-yaml',
+			\ 	'syngan/vim-vimlint',
 			\ 	'thinca/vim-prettyprint',
 			\ 	'thinca/vim-qfreplace',
 			\ 	'thinca/vim-quickrun',
@@ -482,6 +483,7 @@ if s:bundle_activated
 				\ 		'coffee',
 				\ 		'javascript',
 				\ 		'python',
+				\ 		'vim',
 				\ 	],
 				\ 	'passive_filetypes': [],
 				\ }
