@@ -83,6 +83,7 @@ let s:plugins = [
 			\ 	'nanotech/jellybeans.vim',
 			\ 	'osyo-manga/unite-quickfix',
 			\ 	'pangloss/vim-javascript',
+			\ 	'rking/ag.vim',
 			\ 	'scrooloose/syntastic',
 			\ 	'sophacles/vim-processing',
 			\ 	'stephpy/vim-yaml',
