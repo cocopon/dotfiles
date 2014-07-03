@@ -92,6 +92,7 @@ let s:plugins = [
 			\ 	'thinca/vim-quickrun',
 			\ 	'thinca/vim-ref',
 			\ 	'tomtom/tcomment_vim',
+			\ 	'toyamarinyon/vim-swift',
 			\ 	'tpope/vim-fugitive',
 			\ 	'tpope/vim-markdown',
 			\ 	'tpope/vim-surround',
