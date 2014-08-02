@@ -296,7 +296,7 @@ augroup vimrc_filetype
 	autocmd FileType css        setlocal sw=4 ts=4
 	autocmd FileType eruby      setlocal sw=2 ts=2
 	autocmd FileType html       setlocal sw=2 ts=2 indentexpr&
-	autocmd FileType javascript setlocal sw=4 ts=4
+	autocmd FileType javascript setlocal sw=2 ts=2
 	autocmd FileType php        setlocal sw=4 ts=4
 	autocmd FileType python     setlocal sw=4 ts=4 expandtab
 	autocmd FileType rst        setlocal indentexpr&
