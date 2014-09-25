@@ -295,6 +295,7 @@ augroup vimrc_filetype
 	autocmd FileType coffee     setlocal sw=2 ts=2 expandtab
 	autocmd FileType css        setlocal sw=4 ts=4
 	autocmd FileType eruby      setlocal sw=2 ts=2
+	autocmd FileType gitcommit  setlocal nocursorline spell
 	autocmd FileType html       setlocal sw=2 ts=2 indentexpr&
 	autocmd FileType javascript setlocal sw=2 ts=2
 	autocmd FileType php        setlocal sw=4 ts=4
