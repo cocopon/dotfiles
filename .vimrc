@@ -79,6 +79,7 @@ let s:plugins = [
 			\ 	'kana/vim-textobj-user',
 			\ 	'kannokanno/previm',
 			\ 	'kchmck/vim-coffee-script',
+			\ 	'koron/codic-vim',
 			\ 	'mattn/emmet-vim',
 			\ 	'nanotech/jellybeans.vim',
 			\ 	'osyo-manga/unite-quickfix',
