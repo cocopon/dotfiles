@@ -291,6 +291,7 @@ augroup vimrc_filetype
 	autocmd!
 	autocmd BufNewFile,BufRead *.as      setlocal ft=javascript
 	autocmd BufNewFile,BufRead *.gradle  setlocal ft=groovy
+	autocmd BufNewFile,BufRead *.pde     setlocal ft=processing
 	autocmd BufNewFile,BufRead *.podspec setlocal ft=ruby
 	autocmd BufNewFile,BufRead Podfile   setlocal ft=ruby
 	autocmd FileType apache     setlocal sw=2 ts=2
