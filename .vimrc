@@ -131,9 +131,15 @@ function! s:install_plugins()
 
 	if exists(':Unite')
 		Unite neobundle/install:!
-	else
-		NeoBundleUpdate
+		return 1
 	endif
+
+	if exists(':NeoBundleUpdate')
+		NeoBundleUpdate
+		return 1
+	endif
+
+	return 0
 endfunction
 
 function! s:clone_repository(url, local_path)
@@ -155,11 +161,16 @@ function! s:install_plugin_manager()
 				\ 'https://github.com/cocopon/bundle-preset.vim',
 				\ s:env.path.bundle_preset)
 
-	call s:activate_plugin_manager()
+	if !s:activate_plugin_manager()
+		return 0
+	endif
 
-	call s:install_plugins()
+	if !s:install_plugins()
+		return 0
+	endif
 
 	echo 'Restart vim to finish the installation.'
+	return 1
 endfunction
 " }}}
 
