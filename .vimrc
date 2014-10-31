@@ -170,15 +170,9 @@ endfunction
 
 
 " Activating {{{
-function! s:activate_plugin(path, func, defined_command, ...)
-	if exists(a:defined_command)
-		" Already activated
-		return 1
-	endif
-
+function! s:load_plugin(path)
 	try
 		execute 'set runtimepath+=' . a:path
-		call call(a:func, a:000[3:])
 
 		return 1
 	catch /:E117:/
@@ -201,27 +195,40 @@ function! s:activate_plugins()
 		execute printf("%s 'https://github.com/%s'", command, plugin)
 	endfor
 
-	filetype indent on
-	filetype plugin on
-
 	return 1
 endfunction
 
-function! s:activate_plugin_manager()
-	if !s:activate_plugin(
-				\ s:env.path.neobundle,
-				\ 'neobundle#rc',
-				\ ':NeoBundle',
-				\ s:env.path.bundle)
-		return 0
+function! s:activate_plugin_manager_internal()
+	" Activate NeoBundle
+	if !exists(':NeoBundle')
+		execute 'set runtimepath+=' . s:env.path.neobundle
 	endif
+	call neobundle#begin(s:env.path.bundle)
 
-	call s:activate_plugin(
-				\ s:env.path.bundle_preset,
-				\ 'bundle_preset#rc',
-				\ ':PresetBundle')
+	try
+		" Activate PresetBundle
+		if !exists(':PresetBundle')
+			execute 'set runtimepath+=' . s:env.path.bundle_preset
+		endif
+		call bundle_preset#rc()
 
-	return s:activate_plugins()
+		" Activate plugins
+		return s:activate_plugins()
+	finally
+		call neobundle#end()
+		filetype indent on
+		filetype plugin on
+	endtry
+endfunction
+
+function! s:activate_plugin_manager()
+	try
+		return s:activate_plugin_manager_internal()
+	catch /:E117:/
+		" E117: Unknown function
+		" Plugin manager not installed yet
+		return 0
+	endtry
 endfunction
 " }}}
 
