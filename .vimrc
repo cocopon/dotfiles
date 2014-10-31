@@ -58,7 +58,6 @@ let s:plugins = [
 			\ 	'Shougo/neosnippet.vim',
 			\ 	'Shougo/unite-outline',
 			\ 	'Shougo/unite.vim',
-			\ 	'Shougo/vesting',
 			\ 	'Shougo/vimfiler',
 			\ 	'Shougo/vimproc',
 			\ 	'Shougo/vimshell',
@@ -68,9 +67,7 @@ let s:plugins = [
 			\ 	'cocopon/iceberg.vim',
 			\ 	'cocopon/neosnippet-snippets-cocopon',
 			\ 	'cocopon/shadeline.vim',
-			\ 	'cocopon/snapbuffer.vim',
 			\ 	'cocopon/svss.vim',
-			\ 	'cocopon/todo.vim',
 			\ 	'davidhalter/jedi-vim',
 			\ 	'groenewege/vim-less',
 			\ 	'hynek/vim-python-pep8-indent',
@@ -79,7 +76,6 @@ let s:plugins = [
 			\ 	'kana/vim-textobj-user',
 			\ 	'kannokanno/previm',
 			\ 	'kchmck/vim-coffee-script',
-			\ 	'koron/codic-vim',
 			\ 	'mattn/emmet-vim',
 			\ 	'nanotech/jellybeans.vim',
 			\ 	'osyo-manga/unite-quickfix',
@@ -88,7 +84,6 @@ let s:plugins = [
 			\ 	'scrooloose/syntastic',
 			\ 	'sophacles/vim-processing',
 			\ 	'stephpy/vim-yaml',
-			\ 	'syngan/vim-vimlint',
 			\ 	'thinca/vim-prettyprint',
 			\ 	'thinca/vim-qfreplace',
 			\ 	'thinca/vim-quickrun',
@@ -519,7 +514,6 @@ if s:bundle_activated
 	nnoremap ,ul :Unite line<CR>
 	nnoremap ,um :Unite neomru/file<CR>
 	nnoremap ,uo :Unite outline<CR>
-	nnoremap ,ut :Unite todo/all<CR>
 	nnoremap <C-g> :Unite neomru/file<CR>
 
 	call unite#custom#profile('default', 'context', {
