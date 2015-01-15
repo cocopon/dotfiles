@@ -4,9 +4,9 @@
 " [_] \___|_|_|_|_|_|  \____|
 
 
-" Execute the following command to install plugins:
+" Execute the following command to bring the full power:
 "
-" 	:call VimrcSetup()
+" 	:call VimrcSetUp()
 
 
 " Encoding {{{
@@ -110,7 +110,7 @@ let s:colorscheme = 'iceberg'
 
 
 " Setup {{{
-function! VimrcSetup()
+function! VimrcSetUp()
 	call s:install_plugin_manager()
 endfunction
 " }}}
