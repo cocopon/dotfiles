@@ -317,7 +317,7 @@ augroup vimrc_filetype
 	autocmd FileType php        setlocal sw=4 ts=4
 	autocmd FileType python     setlocal sw=4 ts=4 expandtab
 	autocmd FileType rst        setlocal indentexpr&
-	autocmd FileType ruby       setlocal sw=2 ts=2
+	autocmd FileType ruby       setlocal sw=2 ts=2 expandtab
 	autocmd FileType scss       setlocal sw=4 ts=4
 	autocmd FileType text       setlocal tw=0
 	autocmd FileType vim        setlocal sw=2 ts=2 fdm=marker
