@@ -72,6 +72,7 @@ let s:plugins = [
 			\ 	'groenewege/vim-less',
 			\ 	'hynek/vim-python-pep8-indent',
 			\ 	'itchyny/thumbnail.vim',
+			\ 	'kana/vim-niceblock',
 			\ 	'kana/vim-textobj-indent',
 			\ 	'kana/vim-textobj-user',
 			\ 	'kannokanno/previm',
@@ -435,6 +436,10 @@ if s:bundle_activated
 	let g:neosnippet#data_directory = s:env.path.data . '/neosnippet'
 	let g:neosnippet#snippets_directory = s:env.path.bundle . '/neosnippet-snippets-cocopon/snippets'
 	imap <C-Space> <Plug>(neosnippet_expand_or_jump)
+	" }}}
+
+	" niceblock {{{
+	xnoremap <expr> r niceblock#force_blockwise('r')
 	" }}}
 
 	" open-browser {{{
