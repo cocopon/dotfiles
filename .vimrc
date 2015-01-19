@@ -282,8 +282,11 @@ cnoremap <Up> <C-p>
 cnoremap <C-n> <Down>
 cnoremap <Down> <C-n>
 
-" Open parent directory, or current directory if not saved yet
+" Open the parent directory, or the current directory if not saved yet
 nnoremap <silent> <C-u> :execute 'e ' . ((strlen(bufname('')) == 0) ? '.' : '%:h')<CR>
+
+" Insert escaped '/' while inputting a search pattern
+cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 
 " For JIS keyboard
 inoremap <C-@> <Nop>
