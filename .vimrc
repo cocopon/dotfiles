@@ -303,28 +303,28 @@ nnoremap K <Nop>
 " File Types {{{
 augroup vimrc_filetype
 	autocmd!
-	autocmd BufNewFile,BufRead *.as      setlocal ft=javascript
-	autocmd BufNewFile,BufRead *.gradle  setlocal ft=groovy
-	autocmd BufNewFile,BufRead *.pde     setlocal ft=processing
-	autocmd BufNewFile,BufRead *.podspec setlocal ft=ruby
-	autocmd BufNewFile,BufRead Podfile   setlocal ft=ruby
-	autocmd FileType apache     setlocal sw=2 ts=2
-	autocmd FileType coffee     setlocal sw=2 ts=2 expandtab
-	autocmd FileType css        setlocal sw=4 ts=4
-	autocmd FileType eruby      setlocal sw=2 ts=2
+	autocmd BufNewFile,BufRead *.as      setlocal filetype=javascript
+	autocmd BufNewFile,BufRead *.gradle  setlocal filetype=groovy
+	autocmd BufNewFile,BufRead *.pde     setlocal filetype=processing
+	autocmd BufNewFile,BufRead *.podspec setlocal filetype=ruby
+	autocmd BufNewFile,BufRead Podfile   setlocal filetype=ruby
+	autocmd FileType apache     setlocal shiftwidth=2 tabstop=2
+	autocmd FileType coffee     setlocal shiftwidth=2 tabstop=2 expandtab
+	autocmd FileType css        setlocal shiftwidth=4 tabstop=4
+	autocmd FileType eruby      setlocal shiftwidth=2 tabstop=2
 	autocmd FileType gitcommit  setlocal nocursorline spell
-	autocmd FileType html       setlocal sw=2 ts=2 indentexpr&
-	autocmd FileType javascript setlocal sw=2 ts=2
-	autocmd FileType php        setlocal sw=4 ts=4
-	autocmd FileType python     setlocal sw=4 ts=4 expandtab
+	autocmd FileType html       setlocal shiftwidth=2 tabstop=2 indentexpr&
+	autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+	autocmd FileType php        setlocal shiftwidth=4 tabstop=4
+	autocmd FileType python     setlocal shiftwidth=4 tabstop=4 expandtab
 	autocmd FileType rst        setlocal indentexpr&
-	autocmd FileType ruby       setlocal sw=2 ts=2 expandtab
-	autocmd FileType scss       setlocal sw=4 ts=4
-	autocmd FileType text       setlocal tw=0
-	autocmd FileType vim        setlocal sw=2 ts=2 fdm=marker
-	autocmd FileType xhtml      setlocal sw=2 ts=2 indentexpr&
-	autocmd FileType xml        setlocal sw=2 ts=2
-	autocmd FileType yaml       setlocal sw=2 ts=2
+	autocmd FileType ruby       setlocal shiftwidth=2 tabstop=2 expandtab
+	autocmd FileType scss       setlocal shiftwidth=4 tabstop=4
+	autocmd FileType text       setlocal textwidth=0
+	autocmd FileType vim        setlocal shiftwidth=2 tabstop=2 fdm=marker
+	autocmd FileType xhtml      setlocal shiftwidth=2 tabstop=2 indentexpr&
+	autocmd FileType xml        setlocal shiftwidth=2 tabstop=2
+	autocmd FileType yaml       setlocal shiftwidth=2 tabstop=2
 augroup END
 " }}}
 
