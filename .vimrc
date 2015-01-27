@@ -86,6 +86,7 @@ let s:plugins = [
 			\ 	'thinca/vim-qfreplace',
 			\ 	'thinca/vim-quickrun',
 			\ 	'thinca/vim-ref',
+			\ 	'tikhomirov/vim-glsl',
 			\ 	'tomtom/tcomment_vim',
 			\ 	'toyamarinyon/vim-swift',
 			\ 	'tpope/vim-fugitive',
