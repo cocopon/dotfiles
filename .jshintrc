@@ -1,13 +1,8 @@
 {
 	"browser": true,
 	"curly": true,
-	"globals": {
-		"Ext":  false,
-		"goog": false
-	},
 	"es3":      true,
 	"eqeqeq":   true,
-	"jquery":   true,
 	"latedef":  true,
 	"sub":      true,
 	"trailing": true,
