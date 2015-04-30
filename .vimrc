@@ -62,11 +62,9 @@ let s:plugins = [
 			\ 	'Shougo/vimshell',
 			\ 	'Shougo/vinarise',
 			\ 	'cocopon/colorswatch.vim',
-			\ 	'cocopon/googkit.vim',
 			\ 	'cocopon/iceberg.vim',
 			\ 	'cocopon/shadeline.vim',
 			\ 	'cocopon/svss.vim',
-			\ 	'davidhalter/jedi-vim',
 			\ 	'groenewege/vim-less',
 			\ 	'hynek/vim-python-pep8-indent',
 			\ 	'itchyny/thumbnail.vim',
@@ -100,7 +98,6 @@ let s:plugins = [
 			\ 	'vim-scripts/matchit.zip',
 			\ 	'vim-scripts/rest.vim',
 			\ 	'w0ng/vim-hybrid',
-			\ 	'yuratomo/w3m.vim',
 			\ 	s:supports.neocomplete
 			\ 		? 'Shougo/neocomplete.vim'
 			\ 		: 'Shougo/neocomplcache.vim',
@@ -391,17 +388,6 @@ if s:bundle_activated
 	map <silent> w <Plug>CamelCaseMotion_w
 	" }}}
 
-	" jedi {{{
-	let g:jedi#auto_vim_configuration = 0
-	let g:jedi#popup_on_dot = 0
-	let g:jedi#popup_select_first = 0
-	let g:jedi#rename_command = '<leader>R'
-	augroup vimrc_jedi
-		autocmd!
-		autocmd FileType python let b:did_ftplugin = 1
-	augroup END
-	" }}}
-
 	" neocomplcache/neocomplete {{{
 	if s:supports.neocomplete
 		let g:neocomplete#enable_at_startup = 1
@@ -410,18 +396,12 @@ if s:bundle_activated
 		let g:neocomplete#force_omni_input_patterns = {
 					\ 	'python': '\h\w*\|[^. \t]\.\w*',
 					\ }
-		let g:neocomplete#sources#omni#functions = {
-					\ 	'python': 'jedi#completions',
-					\ }
 	else
 		let g:neocomplcache_enable_at_startup = 1
 		let g:neocomplcache_temporary_dir = s:env.path.data . '/neocomplcache'
 
 		let g:neocomplcache_force_omni_patterns = {
 					\ 	'python': '\h\w*\|[^. \t]\.\w*',
-					\ }
-		let g:neocomplcache_omni_functions = {
-					\ 	'python': 'jedi#completions',
 					\ }
 	endif
 	" }}}
