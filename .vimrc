@@ -73,7 +73,6 @@ let s:plugins = [
 			\ 	'kana/vim-textobj-user',
 			\ 	'kannokanno/previm',
 			\ 	'kchmck/vim-coffee-script',
-			\ 	'leafgarland/typescript-vim',
 			\ 	'mattn/emmet-vim',
 			\ 	'nanotech/jellybeans.vim',
 			\ 	'osyo-manga/unite-quickfix',
@@ -96,7 +95,6 @@ let s:plugins = [
 			\ 	'ujihisa/unite-colorscheme',
 			\ 	'vim-jp/vital.vim',
 			\ 	'vim-scripts/matchit.zip',
-			\ 	'vim-scripts/rest.vim',
 			\ 	'w0ng/vim-hybrid',
 			\ 	s:supports.neocomplete
 			\ 		? 'Shougo/neocomplete.vim'
