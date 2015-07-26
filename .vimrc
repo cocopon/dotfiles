@@ -66,7 +66,6 @@ let s:plugins = [
 			\ 	'cocopon/shadeline.vim',
 			\ 	'cocopon/svss.vim',
 			\ 	'groenewege/vim-less',
-			\ 	'haya14busa/incsearch.vim',
 			\ 	'hynek/vim-python-pep8-indent',
 			\ 	'itchyny/thumbnail.vim',
 			\ 	'kana/vim-niceblock',
@@ -385,12 +384,6 @@ if s:bundle_activated
 	map <silent> b <Plug>CamelCaseMotion_b
 	map <silent> e <Plug>CamelCaseMotion_e
 	map <silent> w <Plug>CamelCaseMotion_w
-	" }}}
-
-	" incsearch {{{
-	map / <Plug>(incsearch-forward)
-	map ? <Plug>(incsearch-backward)
-	map g/ <Plug>(incsearch-stay)>
 	" }}}
 
 	" neocomplcache/neocomplete {{{
