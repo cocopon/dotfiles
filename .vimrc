@@ -68,7 +68,6 @@ let s:plugins = [
 			\ 	'groenewege/vim-less',
 			\ 	'hynek/vim-python-pep8-indent',
 			\ 	'itchyny/thumbnail.vim',
-			\ 	'kana/vim-niceblock',
 			\ 	'kana/vim-textobj-indent',
 			\ 	'kana/vim-textobj-user',
 			\ 	'kannokanno/previm',
