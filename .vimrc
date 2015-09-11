@@ -484,7 +484,7 @@ if s:bundle_activated
 	let g:syntastic_auto_loc_list = 0
 
 	" javascript
-	let g:syntastic_javascript_checkers = ['jshint']
+	let g:syntastic_javascript_checkers = ['eslint']
 
 	" python
 	" E501 ... line too long
