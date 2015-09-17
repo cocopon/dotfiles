@@ -408,10 +408,6 @@ if s:bundle_activated
 	let g:neomru#directory_mru_path = s:env.path.data . '/neomru/directory'
 	" }}}
 
-	" niceblock {{{
-	xnoremap <expr> r niceblock#force_blockwise('r')
-	" }}}
-
 	" open-browser {{{
 	nmap gW <Plug>(openbrowser-open)
 	" }}}
