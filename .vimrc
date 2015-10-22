@@ -72,6 +72,7 @@ let s:plugins = [
 			\ 	'kana/vim-textobj-user',
 			\ 	'kannokanno/previm',
 			\ 	'kchmck/vim-coffee-script',
+			\ 	'leafgarland/typescript-vim',
 			\ 	'mattn/emmet-vim',
 			\ 	'nanotech/jellybeans.vim',
 			\ 	'osyo-manga/unite-quickfix',
@@ -473,6 +474,7 @@ if s:bundle_activated
 				\ 		'coffee',
 				\ 		'javascript',
 				\ 		'python',
+				\ 		'typescript',
 				\ 		'vim',
 				\ 	],
 				\ 	'passive_filetypes': [],
@@ -488,6 +490,9 @@ if s:bundle_activated
 	let g:syntastic_python_flake8_args = join([
 				\ 	'--ignore=E501',
 				\ ])
+
+	" TypeScript
+	let g:syntastic_typescript_checkers = ['tslint']
 	" }}}
 
 	" unite {{{
