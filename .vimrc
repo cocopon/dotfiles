@@ -74,6 +74,7 @@ let s:plugins = [
 			\ 	'kchmck/vim-coffee-script',
 			\ 	'leafgarland/typescript-vim',
 			\ 	'mattn/emmet-vim',
+			\ 	'mxw/vim-jsx',
 			\ 	'nanotech/jellybeans.vim',
 			\ 	'osyo-manga/unite-quickfix',
 			\ 	'pangloss/vim-javascript',
