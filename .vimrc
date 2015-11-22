@@ -426,7 +426,7 @@ if s:bundle_activated
 				\ }
 	let g:quickrun_config['processing'] = {
 				\ 	'command': 'processing-java',
-				\ 	'exec': '%c --sketch=%s:p:h/ --output=' . s:env.path.tmp . '/processing --run --force',
+				\ 	'exec': '%c --sketch=%s:p:h/ --output=' . s:env.path.tmp . '/processing --force --run',
 				\ }
 	" }}}
 
