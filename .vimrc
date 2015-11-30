@@ -473,6 +473,7 @@ if s:bundle_activated
 				\ 	'mode': 'passive',
 				\ 	'active_filetypes': [
 				\ 		'coffee',
+				\ 		'html',
 				\ 		'javascript',
 				\ 		'python',
 				\ 		'typescript',
