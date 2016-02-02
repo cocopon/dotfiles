@@ -315,7 +315,7 @@ augroup vimrc_filetype
 	autocmd FileType html       setlocal shiftwidth=2 tabstop=2 indentexpr&
 	autocmd FileType jade       setlocal shiftwidth=2 tabstop=2
 	autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-	autocmd FileType php        setlocal shiftwidth=4 tabstop=4
+	autocmd FileType php        setlocal shiftwidth=2 tabstop=2
 	autocmd FileType python     setlocal shiftwidth=4 tabstop=4 expandtab
 	autocmd FileType rst        setlocal indentexpr&
 	autocmd FileType ruby       setlocal shiftwidth=2 tabstop=2 expandtab
