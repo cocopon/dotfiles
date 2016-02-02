@@ -501,10 +501,6 @@ if s:bundle_activated
 
 	" unite {{{
 	let g:unite_data_directory = s:env.path.data . '/unite'
-	nnoremap ,ub :Unite buffer<CR>
-	nnoremap ,ul :Unite line<CR>
-	nnoremap ,um :Unite neomru/file<CR>
-	nnoremap ,uo :Unite outline<CR>
 	nnoremap <C-g> :Unite neomru/file<CR>
 
 	call unite#custom#profile('default', 'context', {
