@@ -65,6 +65,7 @@ let s:plugins = [
 			\ 	'cocopon/iceberg.vim',
 			\ 	'cocopon/shadeline.vim',
 			\ 	'cocopon/svss.vim',
+			\ 	'digitaltoad/vim-jade',
 			\ 	'groenewege/vim-less',
 			\ 	'hynek/vim-python-pep8-indent',
 			\ 	'itchyny/thumbnail.vim',
@@ -312,6 +313,7 @@ augroup vimrc_filetype
 	autocmd FileType eruby      setlocal shiftwidth=2 tabstop=2
 	autocmd FileType gitcommit  setlocal nocursorline spell
 	autocmd FileType html       setlocal shiftwidth=2 tabstop=2 indentexpr&
+	autocmd FileType jade       setlocal shiftwidth=2 tabstop=2
 	autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 	autocmd FileType php        setlocal shiftwidth=4 tabstop=4
 	autocmd FileType python     setlocal shiftwidth=4 tabstop=4 expandtab
