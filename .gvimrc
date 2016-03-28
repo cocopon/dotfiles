@@ -11,7 +11,7 @@ if has('gui_running')
 
 	" Font
 	if s:env.is_win
-		set guifont=BDF_UM+:h9
+		set guifont=Ricty_Diminished:h12
 	else
 		set guifont=SourceCodePro-Regular:h12
 	endif
