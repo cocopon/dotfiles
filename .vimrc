@@ -495,7 +495,7 @@ if s:bundle_activated
 				\ 	'--ignore=E501',
 				\ ])
 
-	" TypeScript
+	" typescript
 	let g:syntastic_typescript_checkers = ['tslint']
 	" }}}
 
