@@ -55,7 +55,6 @@ let s:supports = VimrcSupports()
 let s:plugins = [
 			\ 	'AndrewRadev/linediff.vim',
 			\ 	'Shougo/neomru.vim',
-			\ 	'Shougo/unite-outline',
 			\ 	'Shougo/unite.vim',
 			\ 	'Shougo/vimfiler',
 			\ 	'Shougo/vimproc',
@@ -86,6 +85,7 @@ let s:plugins = [
 			\ 	'thinca/vim-qfreplace',
 			\ 	'thinca/vim-quickrun',
 			\ 	'thinca/vim-ref',
+			\ 	'thinca/vim-zenspace',
 			\ 	'tikhomirov/vim-glsl',
 			\ 	'tomtom/tcomment_vim',
 			\ 	'toyamarinyon/vim-swift',
