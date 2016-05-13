@@ -24,14 +24,14 @@ function! VimrcEnvironment()
 				\ ? expand('$VIM/vimfiles')
 				\ : expand('~/.vim')
 	let env.path = {
-				\ 	'user':          user_dir,
-				\ 	'bundle':        user_dir . '/bundle',
-				\ 	'bundle_preset': user_dir . '/bundle-preset.vim',
-				\ 	'data':          user_dir . '/data',
-				\ 	'local_vimrc':   user_dir . '/.vimrc_local',
-				\ 	'neobundle':     user_dir . '/neobundle.vim',
-				\ 	'tmp':           user_dir . '/tmp',
-				\ 	'undo':          user_dir . '/data/undo',
+				\ 	'user':        user_dir,
+				\ 	'plugins':     user_dir . '/plugins',
+				\ 	'plug_preset': user_dir . '/plug-preset.vim',
+				\ 	'data':        user_dir . '/data',
+				\ 	'local_vimrc': user_dir . '/.vimrc_local',
+				\ 	'tmp':         user_dir . '/tmp',
+				\ 	'undo':        user_dir . '/data/undo',
+				\ 	'vim_plug':    user_dir . '/vim-plug',
 				\ }
 
 	return env
@@ -126,15 +126,10 @@ function! s:mkdir_if_needed(dir)
 endfunction
 
 function! s:install_plugins()
-	call s:mkdir_if_needed(s:env.path.bundle)
+	call s:mkdir_if_needed(s:env.path.plugins)
 
-	if exists(':Unite')
-		Unite neobundle/install:!
-		return 1
-	endif
-
-	if exists(':NeoBundleUpdate')
-		NeoBundleUpdate
+	if exists(':PlugInstall')
+		PlugInstall
 		return 1
 	endif
 
@@ -154,11 +149,11 @@ function! s:install_plugin_manager()
 	call s:mkdir_if_needed(s:env.path.data)
 
 	call s:clone_repository(
-				\ 'https://github.com/Shougo/neobundle.vim',
-				\ s:env.path.neobundle)
+				\ 'https://github.com/junegunn/vim-plug',
+				\ s:env.path.vim_plug . '/autoload')
 	call s:clone_repository(
-				\ 'https://github.com/cocopon/bundle-preset.vim',
-				\ s:env.path.bundle_preset)
+				\ 'https://github.com/cocopon/plug-preset.vim',
+				\ s:env.path.plug_preset)
 
 	if !s:activate_plugin_manager()
 		return 0
@@ -187,14 +182,14 @@ function! s:load_plugin(path)
 endfunction
 
 function! s:activate_plugins()
-	if !exists(':NeoBundle')
+	if !exists(':Plug')
 		" Plugin manager not installed yet
 		return 0
 	endif
 
-	let command = exists(':PresetBundle')
-				\ ? 'PresetBundle'
-				\ : 'NeoBundle'
+	let command = exists(':PresetPlug')
+				\ ? 'PresetPlug'
+				\ : 'Plug'
 
 	for plugin in s:plugins
 		execute printf("%s 'https://github.com/%s'", command, plugin)
@@ -204,23 +199,23 @@ function! s:activate_plugins()
 endfunction
 
 function! s:activate_plugin_manager_internal()
-	" Activate NeoBundle
-	if !exists(':NeoBundle')
-		execute 'set runtimepath+=' . s:env.path.neobundle
+	" Activate plugin manager
+	if !exists(':Plug')
+		execute 'set runtimepath+=' . s:env.path.vim_plug
 	endif
-	call neobundle#begin(s:env.path.bundle)
+	call plug#begin(s:env.path.plugins)
 
 	try
-		" Activate PresetBundle
-		if !exists(':PresetBundle')
-			execute 'set runtimepath+=' . s:env.path.bundle_preset
+		" Activate PresetPlug
+		if !exists(':PresetPlug')
+			execute 'set runtimepath+=' . s:env.path.plug_preset
 		endif
-		call bundle_preset#rc()
+		call plug_preset#init()
 
 		" Activate plugins
 		return s:activate_plugins()
 	finally
-		call neobundle#end()
+		call plug#end()
 		filetype indent on
 		filetype plugin on
 	endtry
@@ -384,7 +379,7 @@ let g:netrw_altv = 1
 let g:netrw_preview = 1
 " }}}
 
-if s:bundle_activated
+if s:plugins_activated
 	" camelcasemotion {{{
 	map <silent> b <Plug>CamelCaseMotion_b
 	map <silent> e <Plug>CamelCaseMotion_e
@@ -584,7 +579,7 @@ endif
 
 
 " Color Scheme {{{
-if s:bundle_activated
+if s:plugins_activated
 	if !has('gui_running')
 		syntax enable
 		execute printf('colorscheme %s', s:colorscheme)
