@@ -236,7 +236,7 @@ endfunction
 " Initializing {{{
 call s:mkdir_if_needed(s:env.path.tmp)
 call s:mkdir_if_needed(s:env.path.undo)
-let s:bundle_activated = s:activate_plugin_manager()
+let s:plugins_activated = s:activate_plugin_manager()
 " }}}
 
 
