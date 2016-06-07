@@ -46,8 +46,27 @@ alias ll="ls -la"
 alias la="ls -a"
 
 
+# peco
+if (( $+commands[peco] )); then
+	function peco-select-history() {
+		local tac
+		if (( $+commands[tac] )); then
+			tac="tac"
+		else
+			tac="tail -r"
+		fi
+		BUFFER=$(history -n 1 | \
+			eval $tac | \
+			peco --query "$LBUFFER")
+		CURSOR=$#BUFFER
+		zle clear-screen
+	}
+	zle -N peco-select-history
+	bindkey '^r' peco-select-history
+fi
+
+
 # Local Settings
 if [ -f ~/.zshrc_local ]; then
 	source ~/.zshrc_local
 fi
-
