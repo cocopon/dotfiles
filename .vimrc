@@ -522,9 +522,12 @@ if s:plugins_activated
 
 	" vimfiler {{{
 	let g:vimfiler_as_default_explorer = 1
-	let g:vimfiler_enable_auto_cd = 1
-	let g:vimfiler_safe_mode_by_default = 0
 	let g:vimfiler_data_directory = s:env.path.data . '/vimfiler'
+	call vimfiler#custom#profile('default', 'context', {
+				\ 	'auto_cd': 1,
+				\ 	'force_quit': 1,
+				\ 	'safe': 0,
+				\ })
 
 	function! s:change_vimfiler_mapping()
 		unmap <buffer> <C-j>
