@@ -1,8 +1,17 @@
-# Prompt
 autoload colors
-colors
+autoload -Uz vcs_info
 
-PROMPT="%1d%# "
+precmd() {
+	vcs_info
+}
+
+# Prompt
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:*' formats '[%b%m%u%c]'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+setopt PROMPT_SUBST
+PROMPT='%1d${vcs_info_msg_0_}%# '
 
 
 # History
