@@ -3,3 +3,7 @@ root = true
 [{.gvimrc,.vimrc}]
 indent_size = 2
 indent_style = tab
+
+[.zshrc]
+indent_size = 2
+indent_style = tab
