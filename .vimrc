@@ -352,6 +352,9 @@ set noimdisable
 
 " Indent
 set autoindent
+if exists('&breakindent')
+	set breakindent
+endif
 set list
 set listchars=eol:¬,tab:▸\ 
 set noexpandtab
