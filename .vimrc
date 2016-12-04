@@ -331,18 +331,22 @@ augroup END
 set completeopt=menu,menuone
 set display=lastline
 set grepprg=grep\ -nH
-set laststatus=2
 set nrformats-=octal
 set shortmess=aTI
 set virtualedit=block
 set wildmenu
 
 " Appearance
+set cmdheight=2
 set cursorline
+set laststatus=2
 set list
 set listchars=eol:¬,tab:▸\ 
 set number
 set numberwidth=5
+set showcmd
+set showmatch
+set wrap
 
 " Backup
 set nobackup
@@ -377,6 +381,7 @@ set hlsearch
 set ignorecase
 set incsearch
 set smartcase
+set wrapscan
 " }}}
 
 
