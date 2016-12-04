@@ -329,16 +329,20 @@ augroup END
 
 " Misc {{{
 set completeopt=menu,menuone
-set cursorline
 set display=lastline
 set grepprg=grep\ -nH
 set laststatus=2
 set nrformats-=octal
-set number
-set numberwidth=5
 set shortmess=aTI
 set virtualedit=block
 set wildmenu
+
+" Appearance
+set cursorline
+set list
+set listchars=eol:¬,tab:▸\ 
+set number
+set numberwidth=5
 
 " Backup
 set nobackup
@@ -357,8 +361,6 @@ set autoindent
 if exists('&breakindent')
 	set breakindent
 endif
-set list
-set listchars=eol:¬,tab:▸\ 
 set noexpandtab
 set nosmartindent
 set shiftround
