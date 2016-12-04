@@ -60,6 +60,7 @@ let s:plugins = [
 			\ 	'Shougo/vimproc',
 			\ 	'Shougo/vimshell',
 			\ 	'Shougo/vinarise',
+			\ 	'cespare/vim-toml',
 			\ 	'cocopon/colorswatch.vim',
 			\ 	'cocopon/iceberg.vim',
 			\ 	'cocopon/shadeline.vim',
