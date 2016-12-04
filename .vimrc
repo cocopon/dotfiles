@@ -338,6 +338,7 @@ set number
 set numberwidth=5
 set shortmess=aTI
 set virtualedit=block
+set wildmenu
 
 " Backup
 set nobackup
