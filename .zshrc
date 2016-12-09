@@ -30,13 +30,18 @@ zle -N history-beginning-search-forward-end history-search-end
 
 # Key
 bindkey -e
-bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
+bindkey "^p" history-beginning-search-backward-end
 
 
 # Completion
 autoload -U compinit
 compinit
+
+
+# Word Selection
+autoload -U select-word-style
+select-word-style bash
 
 
 # Other Zsh Settings
