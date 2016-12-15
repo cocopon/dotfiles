@@ -56,7 +56,6 @@ let s:plugins = [
 			\ 	'AndrewRadev/linediff.vim',
 			\ 	'Shougo/neomru.vim',
 			\ 	'Shougo/unite.vim',
-			\ 	'Shougo/vimfiler',
 			\ 	'Shougo/vimproc',
 			\ 	'Shougo/vimshell',
 			\ 	'Shougo/vinarise',
@@ -70,6 +69,7 @@ let s:plugins = [
 			\ 	'groenewege/vim-less',
 			\ 	'hynek/vim-python-pep8-indent',
 			\ 	'itchyny/thumbnail.vim',
+			\ 	'justinmk/vim-dirvish',
 			\ 	'kana/vim-textobj-indent',
 			\ 	'kana/vim-textobj-user',
 			\ 	'kannokanno/previm',
@@ -398,6 +398,22 @@ if s:plugins_activated
 	map <silent> w <Plug>CamelCaseMotion_w
 	" }}}
 
+	" dirvish {{{
+	function! s:dirvish_init()
+		nmap <buffer> K :!mkdir %
+		nmap <buffer> <silent> h <Plug>(dirvish_up)
+		nmap <buffer> <silent> l <CR>
+
+		" Simulate autochdir
+		execute printf('cd %s', b:dirvish._dir)
+	endfunction
+
+	augroup vimrc_dirvish
+		autocmd!
+		autocmd FileType dirvish call s:dirvish_init()
+	augroup END
+	" }}}
+
 	" neocomplcache/neocomplete {{{
 	if s:supports.neocomplete
 		let g:neocomplete#enable_at_startup = 1
@@ -530,29 +546,7 @@ if s:plugins_activated
 		autocmd!
 		autocmd FileType unite call s:change_unite_mapping()
 	augroup END
-	" }}}
-
-	" vimfiler {{{
-	let g:vimfiler_as_default_explorer = 1
-	let g:vimfiler_data_directory = s:env.path.data . '/vimfiler'
-	call vimfiler#custom#profile('default', 'context', {
-				\ 	'auto_cd': 1,
-				\ 	'force_quit': 1,
-				\ 	'safe': 0,
-				\ })
-
-	function! s:change_vimfiler_mapping()
-		unmap <buffer> <C-j>
-		unmap <buffer> <C-l>
-		map <buffer> D <Plug>(vimfiler_switch_to_drive)
-		map <buffer> L <Plug>(vimfiler_redraw_screen)
-	endfunction
-
-	augroup vimrc_vimfiler
-		autocmd!
-		autocmd FileType vimfiler call s:change_vimfiler_mapping()
-	augroup END
-	" }}}
+	}}}
 
 	" vimshell {{{
 	let g:vimshell_temporary_directory = s:env.path.data . '/vimshell'
