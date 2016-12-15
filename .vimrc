@@ -57,7 +57,6 @@ let s:plugins = [
 			\ 	'Shougo/neomru.vim',
 			\ 	'Shougo/unite.vim',
 			\ 	'Shougo/vimproc',
-			\ 	'Shougo/vimshell',
 			\ 	'Shougo/vinarise',
 			\ 	'cespare/vim-toml',
 			\ 	'cocopon/colorswatch.vim',
@@ -547,25 +546,6 @@ if s:plugins_activated
 		autocmd FileType unite call s:change_unite_mapping()
 	augroup END
 	}}}
-
-	" vimshell {{{
-	let g:vimshell_temporary_directory = s:env.path.data . '/vimshell'
-
-	function! s:change_vimshell_mapping()
-		unmap <buffer> <C-l>
-		map <buffer> L <Plug>(vimshell_clear)
-
-		if !s:supports.neocomplete
-			imap <buffer> <C-p> <Plug>(vimshell_history_unite)
-			imap <buffer> <C-n> <Plug>(vimshell_history_unite)
-		endif
-	endfunction
-
-	augroup vimrc_vimshell
-		autocmd!
-		autocmd FileType vimshell call s:change_vimshell_mapping()
-	augroup END
-	" }}}
 endif
 
 " Disable unused plugins
