@@ -396,6 +396,7 @@ if s:plugins_activated
 
 	" ctrlp {{{
 	let g:ctrlp_cache_dir = s:env.path.data . '/ctrlp'
+	let g:ctrlp_map = ''
 	let g:ctrlp_prompt_mappings = {
 				\ 	'PrtBS()':            ['<C-h>', '<BS>'],
 				\ 	'PrtClear()':         ['<C-k>'],
