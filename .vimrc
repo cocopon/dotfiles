@@ -54,7 +54,6 @@ let s:supports = VimrcSupports()
 " Required Plugins {{{
 let s:plugins = [
 			\ 	'AndrewRadev/linediff.vim',
-			\ 	'ctrlpvim/ctrlp.vim',
 			\ 	'Shougo/vimproc',
 			\ 	'Shougo/vinarise',
 			\ 	'cespare/vim-toml',
@@ -62,6 +61,7 @@ let s:plugins = [
 			\ 	'cocopon/iceberg.vim',
 			\ 	'cocopon/shadeline.vim',
 			\ 	'cocopon/svss.vim',
+			\ 	'ctrlpvim/ctrlp.vim',
 			\ 	'digitaltoad/vim-jade',
 			\ 	'editorconfig/editorconfig-vim',
 			\ 	'groenewege/vim-less',
