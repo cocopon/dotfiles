@@ -54,8 +54,7 @@ let s:supports = VimrcSupports()
 " Required Plugins {{{
 let s:plugins = [
 			\ 	'AndrewRadev/linediff.vim',
-			\ 	'Shougo/neomru.vim',
-			\ 	'Shougo/unite.vim',
+			\ 	'ctrlpvim/ctrlp.vim',
 			\ 	'Shougo/vimproc',
 			\ 	'Shougo/vinarise',
 			\ 	'cespare/vim-toml',
@@ -77,7 +76,6 @@ let s:plugins = [
 			\ 	'mattn/emmet-vim',
 			\ 	'mxw/vim-jsx',
 			\ 	'nanotech/jellybeans.vim',
-			\ 	'osyo-manga/unite-quickfix',
 			\ 	'pangloss/vim-javascript',
 			\ 	'rking/ag.vim',
 			\ 	'scrooloose/syntastic',
@@ -96,7 +94,6 @@ let s:plugins = [
 			\ 	'tpope/vim-surround',
 			\ 	'tyru/open-browser.vim',
 			\ 	'ujihisa/camelcasemotion',
-			\ 	'ujihisa/unite-colorscheme',
 			\ 	'vim-jp/vital.vim',
 			\ 	'vim-scripts/matchit.zip',
 			\ 	'w0ng/vim-hybrid',
@@ -397,6 +394,26 @@ if s:plugins_activated
 	map <silent> w <Plug>CamelCaseMotion_w
 	" }}}
 
+	" ctrlp {{{
+	let g:ctrlp_cache_dir = s:env.path.data . '/ctrlp'
+	let g:ctrlp_prompt_mappings = {
+				\ 	'PrtBS()':            ['<C-h>', '<BS>'],
+				\ 	'PrtClear()':         ['<C-k>'],
+				\ 	'PrtCurLeft()':       ['<C-b>', '<Left>'],
+				\ 	'PrtCurRight()':      ['<C-f>', '<Right>'],
+				\ 	'PrtDelete()':        ['<C-d>', '<Del>'],
+				\ 	'PrtHistory(-1)':     [],
+				\ 	'PrtHistory(1)':      [],
+				\ 	'PrtSelectMove("j")': ['<C-n>', '<Down>'],
+				\ 	'PrtSelectMove("k")': ['<C-p>', '<Up>'],
+				\ 	'ToggleByFname()':    [],
+				\ 	'ToggleType(-1)':     ['<C-Down>'],
+				\ 	'ToggleType(1)':      ['<C-Up>'],
+				\ }
+
+	nnoremap <C-g> :CtrlPMRU<CR>
+	" }}}
+
 	" dirvish {{{
 	function! s:dirvish_init()
 		nmap <buffer> K :!mkdir %
@@ -429,11 +446,6 @@ if s:plugins_activated
 					\ 	'python': '\h\w*\|[^. \t]\.\w*',
 					\ }
 	endif
-	" }}}
-
-	" neomru {{{
-	let g:neomru#file_mru_path = s:env.path.data . '/neomru/file'
-	let g:neomru#directory_mru_path = s:env.path.data . '/neomru/directory'
 	" }}}
 
 	" open-browser {{{
@@ -523,29 +535,6 @@ if s:plugins_activated
 	let g:syntastic_typescript_checkers = ['tslint']
 	" }}}
 
-	" unite {{{
-	let g:unite_data_directory = s:env.path.data . '/unite'
-	nnoremap <C-g> :Unite neomru/file<CR>
-
-	call unite#custom#profile('default', 'context', {
-				\ 	'direction': 'botright',
-				\ 	'enable_start_insert': 0,
-				\ 	'prompt_direction': 'top',
-				\ })
-
-	function! s:change_unite_mapping()
-		try
-			unmap <buffer> <C-k>
-		catch /:E31:/
-			" E31: No such mapping
-		endtry
-	endfunction
-
-	augroup vimrc_unite
-		autocmd!
-		autocmd FileType unite call s:change_unite_mapping()
-	augroup END
-	}}}
 endif
 
 " Disable unused plugins
