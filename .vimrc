@@ -420,6 +420,9 @@ if s:plugins_activated
 
 		" Simulate autochdir
 		execute printf('cd %s', b:dirvish._dir)
+
+		" Show directories at the top
+		sort r /[^\/]$/
 	endfunction
 
 	augroup vimrc_dirvish
