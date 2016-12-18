@@ -71,6 +71,7 @@ let s:plugins = [
 			\ 	'kana/vim-textobj-indent',
 			\ 	'kana/vim-textobj-user',
 			\ 	'kannokanno/previm',
+			\ 	'keith/swift.vim',
 			\ 	'leafgarland/typescript-vim',
 			\ 	'mattn/emmet-vim',
 			\ 	'mxw/vim-jsx',
