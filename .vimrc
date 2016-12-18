@@ -420,7 +420,7 @@ if s:plugins_activated
 		nmap <buffer> <silent> l <CR>
 
 		" Simulate autochdir
-		execute printf('cd %s', b:dirvish._dir)
+		execute printf('lcd %s', b:dirvish._dir)
 
 		" Show directories at the top
 		sort r /[^\/]$/
