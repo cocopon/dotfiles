@@ -61,13 +61,13 @@ let s:plugins = [
 			\ 	'cocopon/iceberg.vim',
 			\ 	'cocopon/shadeline.vim',
 			\ 	'cocopon/svss.vim',
+			\ 	'cocopon/vaffle.vim',
 			\ 	'ctrlpvim/ctrlp.vim',
 			\ 	'digitaltoad/vim-jade',
 			\ 	'editorconfig/editorconfig-vim',
 			\ 	'groenewege/vim-less',
 			\ 	'hynek/vim-python-pep8-indent',
 			\ 	'itchyny/thumbnail.vim',
-			\ 	'justinmk/vim-dirvish',
 			\ 	'kana/vim-textobj-indent',
 			\ 	'kana/vim-textobj-user',
 			\ 	'kannokanno/previm',
@@ -414,24 +414,6 @@ if s:plugins_activated
 	nnoremap <C-g> :CtrlPMRU<CR>
 	" }}}
 
-	" dirvish {{{
-	function! s:dirvish_init()
-		nmap <buffer> K :!mkdir %
-		nmap <buffer> <silent> h <Plug>(dirvish_up)
-		nmap <buffer> <silent> l <CR>
-
-		" Simulate autochdir
-		execute printf('lcd %s', b:dirvish._dir)
-
-		" Show directories at the top
-		sort r /[^\/]$/
-	endfunction
-
-	augroup vimrc_dirvish
-		autocmd!
-		autocmd FileType dirvish call s:dirvish_init()
-	augroup END
-	" }}}
 
 	" neocomplcache/neocomplete {{{
 	if s:supports.neocomplete
