@@ -520,6 +520,9 @@ if s:plugins_activated
 	let g:syntastic_typescript_checkers = ['tslint']
 	" }}}
 
+	" vaffle {{{
+	let g:vaffle_auto_cd = 1
+	" }}}
 endif
 
 " Disable unused plugins
