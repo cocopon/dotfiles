@@ -13,7 +13,8 @@ zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' stagedstr "%F{green}*%f"
 zstyle ':vcs_info:git:*' unstagedstr "%F{yellow}*%f"
 setopt PROMPT_SUBST
-PROMPT='%1d${vcs_info_msg_0_}%# '
+PROMPT='%F{cyan}%1d%#%f '
+RPROMPT='${vcs_info_msg_0_}'
 
 
 # History
