@@ -518,6 +518,9 @@ if s:plugins_activated
 
 	" typescript
 	let g:syntastic_typescript_checkers = ['tslint']
+
+	" vim
+	let g:syntastic_vim_checkers = ['vint']
 	" }}}
 
 	" vaffle {{{
