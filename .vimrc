@@ -187,7 +187,7 @@ function! s:activate_plugins()
 				\ : 'Plug'
 
 	for plugin in s:plugins
-		execute printf("%s 'https://github.com/%s'", command, plugin)
+		execute printf("%s '%s'", command, plugin)
 	endfor
 
 	return 1
