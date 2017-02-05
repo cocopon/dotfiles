@@ -74,6 +74,7 @@ let s:plugins = [
 			\ 	'leafgarland/typescript-vim',
 			\ 	'mattn/emmet-vim',
 			\ 	'mxw/vim-jsx',
+			\ 	'neovimhaskell/haskell-vim',
 			\ 	'pangloss/vim-javascript',
 			\ 	'rking/ag.vim',
 			\ 	'scrooloose/syntastic',
@@ -304,6 +305,7 @@ augroup vimrc_filetype
 	autocmd FileType css        setlocal shiftwidth=4 tabstop=4
 	autocmd FileType eruby      setlocal shiftwidth=2 tabstop=2
 	autocmd FileType gitcommit  setlocal nocursorline spell
+	autocmd FileType haskell    setlocal expandtab
 	autocmd FileType html       setlocal shiftwidth=2 tabstop=2 indentexpr&
 	autocmd FileType jade       setlocal shiftwidth=2 tabstop=2
 	autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
