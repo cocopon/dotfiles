@@ -432,11 +432,6 @@ if s:plugins_activated
 				\ 	'runner': 'vimproc',
 				\ 	'runner/vimproc/updatetime': 40,
 				\ }
-	let g:quickrun_config['rst'] = {
-				\ 	'command': 'rst2html.py',
-				\ 	'outputter': 'browser',
-				\ 	'runner': 'system',
-				\ }
 	let g:quickrun_config['processing'] = {
 				\ 	'command': 'processing-java',
 				\ 	'exec': '%c --sketch=%s:p:h/ --output=' . s:env.path.tmp . '/processing --force --run',
@@ -484,7 +479,6 @@ if s:plugins_activated
 	let g:syntastic_mode_map = {
 				\ 	'mode': 'passive',
 				\ 	'active_filetypes': [
-				\ 		'coffee',
 				\ 		'go',
 				\ 		'html',
 				\ 		'javascript',
