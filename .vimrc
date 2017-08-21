@@ -182,7 +182,7 @@ endfunction
 
 function! s:activate_plugins()
 	if !exists(':Plug')
-		" Plugin manager not installed yet
+		" Plugin manager is not installed yet
 		return 0
 	endif
 
@@ -225,7 +225,7 @@ function! s:activate_plugin_manager()
 		return s:activate_plugin_manager_internal()
 	catch /:E117:/
 		" E117: Unknown function
-		" Plugin manager not installed yet
+		" Plugin manager is not installed yet
 		return 0
 	endtry
 endfunction
