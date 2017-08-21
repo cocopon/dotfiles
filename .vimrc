@@ -65,6 +65,7 @@ let s:plugins = [
 			\ 	'cocopon/vaffle.vim',
 			\ 	'ctrlpvim/ctrlp.vim',
 			\ 	'digitaltoad/vim-jade',
+			\ 	'editorconfig/editorconfig-vim',
 			\ 	'fatih/vim-go',
 			\ 	'groenewege/vim-less',
 			\ 	'hynek/vim-python-pep8-indent',
@@ -80,7 +81,6 @@ let s:plugins = [
 			\ 	'pangloss/vim-javascript',
 			\ 	'rking/ag.vim',
 			\ 	'scrooloose/syntastic',
-			\ 	'sgur/vim-editorconfig',
 			\ 	'slim-template/vim-slim',
 			\ 	'sophacles/vim-processing',
 			\ 	'stephpy/vim-yaml',
@@ -303,25 +303,9 @@ augroup vimrc_filetype
 	autocmd BufNewFile,BufRead *.pde     setlocal filetype=processing
 	autocmd BufNewFile,BufRead *.podspec setlocal filetype=ruby
 	autocmd BufNewFile,BufRead Podfile   setlocal filetype=ruby
-	autocmd FileType apache     setlocal shiftwidth=2 tabstop=2
-	autocmd FileType coffee     setlocal shiftwidth=2 tabstop=2 expandtab
-	autocmd FileType css        setlocal shiftwidth=4 tabstop=4
-	autocmd FileType eruby      setlocal shiftwidth=2 tabstop=2
-	autocmd FileType gitcommit  setlocal nocursorline spell
-	autocmd FileType haskell    setlocal expandtab
-	autocmd FileType html       setlocal shiftwidth=2 tabstop=2 indentexpr&
-	autocmd FileType jade       setlocal shiftwidth=2 tabstop=2
-	autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-	autocmd FileType php        setlocal shiftwidth=2 tabstop=2
-	autocmd FileType python     setlocal shiftwidth=4 tabstop=4 expandtab
-	autocmd FileType rst        setlocal indentexpr&
-	autocmd FileType ruby       setlocal shiftwidth=2 tabstop=2 expandtab
-	autocmd FileType scss       setlocal shiftwidth=4 tabstop=4
-	autocmd FileType text       setlocal textwidth=0
-	autocmd FileType vim        setlocal shiftwidth=2 tabstop=2 fdm=marker
-	autocmd FileType xhtml      setlocal shiftwidth=2 tabstop=2 indentexpr&
-	autocmd FileType xml        setlocal shiftwidth=2 tabstop=2
-	autocmd FileType yaml       setlocal shiftwidth=2 tabstop=2
+	autocmd FileType gitcommit setlocal nocursorline spell
+	autocmd FileType text      setlocal textwidth=0
+	autocmd FileType vim       setlocal foldmethod=marker
 augroup END
 " }}}
 

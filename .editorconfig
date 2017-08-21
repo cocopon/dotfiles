@@ -1,9 +1,37 @@
 root = true
 
-[{.gvimrc,.vimrc}]
+[.{gvimrc,vimrc}]
 indent_size = 2
 indent_style = tab
 
 [.zshrc]
+indent_size = 2
+indent_style = tab
+
+[*.{html,jade,xhtml,xml}]
+indent_size = 2
+indent_style = tab
+
+[*.{js,json,jsx,ts,tsx}]
+indent_size = 2
+indent_style = tab
+
+[*.php]
+indent_size = 2
+indent_style = tab
+
+[*.py]
+indent_size = 4
+indent_style = space
+
+[*.rb]
+indent_size = 2
+indent_style = space
+
+[*.yaml]
+indent_size = 2
+indent_style = space
+
+[*.vim]
 indent_size = 2
 indent_style = tab
