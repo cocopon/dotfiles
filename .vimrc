@@ -61,7 +61,6 @@ let s:plugins = [
 			\ 	'cocopon/iceberg.vim',
 			\ 	'cocopon/pgmnt.vim',
 			\ 	'cocopon/shadeline.vim',
-			\ 	'cocopon/svss.vim',
 			\ 	'cocopon/vaffle.vim',
 			\ 	'ctrlpvim/ctrlp.vim',
 			\ 	'digitaltoad/vim-jade',
@@ -469,10 +468,6 @@ if s:plugins_activated
 					\ : ''
 		return empty(name) ? '' : printf('(%s)', name)
 	endfunction
-	" }}}
-
-	" svss {{{
-	let g:svss_auto_source = 1
 	" }}}
 
 	" syntastic {{{
