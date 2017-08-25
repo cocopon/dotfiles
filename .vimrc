@@ -315,6 +315,7 @@ set display=lastline
 set grepprg=grep\ -nH
 set nrformats-=octal
 set shortmess=aTI
+set splitright
 set virtualedit=block
 set wildmenu
 
