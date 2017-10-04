@@ -58,6 +58,7 @@ let s:plugins = [
 			\ 	'Shougo/vinarise',
 			\ 	'cespare/vim-toml',
 			\ 	'cocopon/colorswatch.vim',
+			\ 	'cocopon/ntdcoco.vim',
 			\ 	'cocopon/iceberg.vim',
 			\ 	'cocopon/pgmnt.vim',
 			\ 	'cocopon/shadeline.vim',
@@ -420,6 +421,10 @@ if s:plugins_activated
 					\ 	'python': '\h\w*\|[^. \t]\.\w*',
 					\ }
 	endif
+	" }}}
+
+	" ntdcoco {{{
+	nmap <Bar> <Plug>(ntdcoco-toggle-cursor)
 	" }}}
 
 	" open-browser {{{
