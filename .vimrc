@@ -376,6 +376,10 @@ let g:netrw_preview = 1
 " }}}
 
 if s:plugins_activated
+	" ag {{{
+	let g:ag_prg = 'ag --vimgrep --smart-case'
+	" }}}
+
 	" camelcasemotion {{{
 	map <silent> b <Plug>CamelCaseMotion_b
 	map <silent> e <Plug>CamelCaseMotion_e
