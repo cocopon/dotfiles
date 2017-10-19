@@ -435,6 +435,10 @@ if s:plugins_activated
 	nmap gW <Plug>(openbrowser-open)
 	" }}}
 
+	" pgmnt {{{
+	let g:pgmnt_auto_source = 1
+	" }}}
+
 	" quickrun {{{
 	let g:quickrun_config = {}
 	let g:quickrun_config['_'] = {
