@@ -18,6 +18,7 @@ scriptencoding utf-8
 " Environment {{{
 function! VimrcEnvironment()
 	let env = {}
+	let env.is_mac = has('mac')
 	let env.is_win = has('win32') || has('win64')
 
 	let user_dir = env.is_win
@@ -37,17 +38,7 @@ function! VimrcEnvironment()
 	return env
 endfunction
 
-function! VimrcSupports()
-	let supports = {}
-
-	let supports.neocomplete = has('lua')
-				\ && (v:version > 703 || (v:version == 703 && has('patch885')))
-
-	return supports
-endfunction
-
 let s:env = VimrcEnvironment()
-let s:supports = VimrcSupports()
 " }}}
 
 
@@ -75,6 +66,7 @@ let s:plugins = [
 			\ 	'kannokanno/previm',
 			\ 	'keith/swift.vim',
 			\ 	'leafgarland/typescript-vim',
+			\ 	'lifepillar/vim-mucomplete',
 			\ 	'mattn/emmet-vim',
 			\ 	'mxw/vim-jsx',
 			\ 	'neovimhaskell/haskell-vim',
@@ -99,9 +91,6 @@ let s:plugins = [
 			\ 	'vim-jp/vital.vim',
 			\ 	'vim-scripts/matchit.zip',
 			\ 	'w0ng/vim-hybrid',
-			\ 	s:supports.neocomplete
-			\ 		? 'Shougo/neocomplete.vim'
-			\ 		: 'Shougo/neocomplcache.vim',
 			\ ]
 let s:colorscheme = 'iceberg'
 " }}}
@@ -311,11 +300,11 @@ augroup END
 
 
 " Misc {{{
-set completeopt=menu,menuone
+set completeopt=menu,menuone,noinsert,noselect
 set display=lastline
 set grepprg=grep\ -nH
 set nrformats-=octal
-set shortmess=aTI
+set shortmess=acTI
 set splitright
 set virtualedit=block
 set wildmenu
@@ -409,22 +398,11 @@ if s:plugins_activated
 	" }}}
 
 
-	" neocomplcache/neocomplete {{{
-	if s:supports.neocomplete
-		let g:neocomplete#enable_at_startup = 1
-		let g:neocomplete#data_directory = s:env.path.data . '/neocomplete'
 
-		let g:neocomplete#force_omni_input_patterns = {
-					\ 	'python': '\h\w*\|[^. \t]\.\w*',
-					\ }
-	else
-		let g:neocomplcache_enable_at_startup = 1
-		let g:neocomplcache_temporary_dir = s:env.path.data . '/neocomplcache'
-
-		let g:neocomplcache_force_omni_patterns = {
-					\ 	'python': '\h\w*\|[^. \t]\.\w*',
-					\ }
-	endif
+	" mucomplete {{{
+	let g:mucomplete#enable_auto_at_startup = 1
+	let g:mucomplete#no_mappings = 1
+	inoremap <expr> <CR> mucomplete#popup_exit("\<CR>")
 	" }}}
 
 	" ntdcoco {{{
