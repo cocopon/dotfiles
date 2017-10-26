@@ -377,7 +377,9 @@ if s:plugins_activated
 
 	" ctrlp {{{
 	let g:ctrlp_cache_dir = s:env.path.data . '/ctrlp'
-	let g:ctrlp_map = ''
+	let g:ctrlp_custom_ignore = {
+				\ 	'dir': '\v[\/](node_modules)$',
+				\ }
 	let g:ctrlp_match_window = 'bottom,order:ttb'
 	let g:ctrlp_prompt_mappings = {
 				\ 	'PrtBS()':            ['<C-h>', '<BS>'],
