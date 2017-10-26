@@ -61,6 +61,7 @@ let s:plugins = [
 			\ 	'fatih/vim-go',
 			\ 	'groenewege/vim-less',
 			\ 	'itchyny/thumbnail.vim',
+			\ 	'junegunn/vim-easy-align',
 			\ 	'kana/vim-textobj-indent',
 			\ 	'kana/vim-textobj-user',
 			\ 	'kannokanno/previm',
