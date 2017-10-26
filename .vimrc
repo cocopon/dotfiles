@@ -404,7 +404,6 @@ if s:plugins_activated
 	" mucomplete {{{
 	let g:mucomplete#enable_auto_at_startup = 1
 	let g:mucomplete#no_mappings = 1
-	inoremap <expr> <CR> mucomplete#popup_exit("\<CR>")
 	" }}}
 
 	" ntdcoco {{{
