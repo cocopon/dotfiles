@@ -381,6 +381,7 @@ if s:plugins_activated
 	let g:ctrlp_custom_ignore = {
 				\ 	'dir': '\v[\/](node_modules)$',
 				\ }
+	let g:ctrlp_map = ''
 	let g:ctrlp_match_window = 'bottom,order:ttb'
 	let g:ctrlp_prompt_mappings = {
 				\ 	'PrtBS()':            ['<C-h>', '<BS>'],
@@ -397,7 +398,7 @@ if s:plugins_activated
 				\ 	'ToggleType(1)':      ['<C-Up>'],
 				\ }
 
-	nnoremap <C-g> :CtrlPMRU<CR>
+	nnoremap <C-g> :CtrlPMixed<CR>
 	" }}}
 
 
