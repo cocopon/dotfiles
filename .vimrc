@@ -311,6 +311,7 @@ set virtualedit=block
 set wildmenu
 
 " Appearance
+set ambiwidth=single
 set cmdheight=2
 set cursorline
 set laststatus=2
