@@ -378,8 +378,9 @@ if s:plugins_activated
 
 	" ctrlp {{{
 	let g:ctrlp_cache_dir = s:env.path.data . '/ctrlp'
+	let g:ctrlp_clear_cache_on_exit = 0
 	let g:ctrlp_custom_ignore = {
-				\ 	'dir': '\v[\/](node_modules)$',
+				\ 	'dir': '\v[\/](node_modules|\.git)$',
 				\ }
 	let g:ctrlp_map = ''
 	let g:ctrlp_match_window = 'bottom,order:ttb'
