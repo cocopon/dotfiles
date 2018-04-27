@@ -314,6 +314,7 @@ set wildmenu
 
 " Appearance
 set ambiwidth=single
+set background=dark
 set cmdheight=2
 set cursorline
 set laststatus=2
