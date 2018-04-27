@@ -59,6 +59,7 @@ let s:plugins = [
 			\ 	'digitaltoad/vim-jade',
 			\ 	'editorconfig/editorconfig-vim',
 			\ 	'fatih/vim-go',
+			\ 	'flowtype/vim-flow',
 			\ 	'groenewege/vim-less',
 			\ 	'itchyny/thumbnail.vim',
 			\ 	'jparise/vim-graphql',
@@ -75,7 +76,6 @@ let s:plugins = [
 			\ 	'onemanstartup/vim-slim',
 			\ 	'pangloss/vim-javascript',
 			\ 	'rking/ag.vim',
-			\ 	'scrooloose/syntastic',
 			\ 	'sophacles/vim-processing',
 			\ 	'stephpy/vim-yaml',
 			\ 	'thinca/vim-qfreplace',
@@ -94,6 +94,7 @@ let s:plugins = [
 			\ 	'vim-jp/vital.vim',
 			\ 	'vim-scripts/matchit.zip',
 			\ 	'w0ng/vim-hybrid',
+			\ 	'w0rp/ale',
 			\ ]
 let s:colorscheme = 'iceberg'
 " }}}
@@ -374,6 +375,15 @@ if s:plugins_activated
 	let g:ag_prg = 'ag --vimgrep --smart-case'
 	" }}}
 
+	" ale {{{
+	let g:ale_linters = {
+				\ 	'javascript': ['eslint', 'flow'],
+				\ }
+	let g:ale_open_list = 1
+	let g:ale_set_loclist = 0
+	let g:ale_set_quickfix = 1
+	" }}}
+
 	" camelcasemotion {{{
 	map <silent> b <Plug>CamelCaseMotion_b
 	map <silent> e <Plug>CamelCaseMotion_e
@@ -406,6 +416,11 @@ if s:plugins_activated
 
 	nnoremap <C-g> :CtrlPMixed<CR>
 	" }}}
+
+	" flow {{
+	let g:flow#enable = 0
+	let g:flow#omnifunc = 0
+	" }}
 
 	" go {{{
 	let g:go_version_warning = 0
@@ -475,38 +490,6 @@ if s:plugins_activated
 					\ : ''
 		return empty(name) ? '' : printf('(%s)', name)
 	endfunction
-	" }}}
-
-	" syntastic {{{
-	let g:syntastic_mode_map = {
-				\ 	'mode': 'passive',
-				\ 	'active_filetypes': [
-				\ 		'go',
-				\ 		'html',
-				\ 		'javascript',
-				\ 		'python',
-				\ 		'typescript',
-				\ 		'vim',
-				\ 	],
-				\ 	'passive_filetypes': [],
-				\ }
-	let g:syntastic_auto_loc_list = 0
-
-	" javascript
-	let g:syntastic_javascript_checkers = ['eslint']
-
-	" python
-	" E501 ... line too long
-	let g:syntastic_python_checkers = ['flake8']
-	let g:syntastic_python_flake8_args = join([
-				\ 	'--ignore=E501',
-				\ ])
-
-	" typescript
-	let g:syntastic_typescript_checkers = ['tslint']
-
-	" vim
-	let g:syntastic_vim_checkers = ['vint']
 	" }}}
 
 	" vaffle {{{
