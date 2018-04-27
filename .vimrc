@@ -295,7 +295,7 @@ augroup vimrc_filetype
 	autocmd BufNewFile,BufRead *.pde     setlocal filetype=processing
 	autocmd BufNewFile,BufRead *.podspec setlocal filetype=ruby
 	autocmd BufNewFile,BufRead Podfile   setlocal filetype=ruby
-	autocmd FileType gitcommit setlocal nocursorline spell
+	autocmd FileType gitcommit setlocal nocursorline spell spelllang=cjk,en
 	autocmd FileType text      setlocal textwidth=0
 	autocmd FileType vim       setlocal foldmethod=marker
 augroup END
