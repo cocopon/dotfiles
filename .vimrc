@@ -401,11 +401,18 @@ if s:plugins_activated
 				\ 	'ToggleType(-1)':     ['<C-Down>'],
 				\ 	'ToggleType(1)':      ['<C-Up>'],
 				\ }
+	let g:ctrlp_tilde_homedir = 1
 
 	nnoremap <C-g> :CtrlPMixed<CR>
 	" }}}
 
+	" go {{{
+	let g:go_version_warning = 0
+	" }}}
 
+	" javascript {{{
+	let g:javascript_plugin_flow = 1
+	" }}}
 
 	" mucomplete {{{
 	let g:mucomplete#enable_auto_at_startup = 1
