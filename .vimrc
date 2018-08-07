@@ -42,7 +42,7 @@ let s:env = VimrcEnvironment()
 " }}}
 
 
-" Required Plugins {{{
+" Required plugins {{{
 let s:plugins = [
 			\ 	'AndrewRadev/linediff.vim',
 			\ 	'Shougo/vimproc',
@@ -110,7 +110,7 @@ endfunction
 " }}}
 
 
-" Installing {{{
+" Installation {{{
 function! s:mkdir_if_needed(dir)
 	if isdirectory(a:dir)
 		return 0
@@ -164,7 +164,7 @@ endfunction
 " }}}
 
 
-" Activating {{{
+" Activation {{{
 function! s:load_plugin(path)
 	try
 		execute 'set runtimepath+=' . a:path
@@ -228,7 +228,7 @@ endfunction
 " }}}
 
 
-" Initializing {{{
+" Initialization {{{
 call s:mkdir_if_needed(s:env.path.tmp)
 call s:mkdir_if_needed(s:env.path.undo)
 let s:plugins_activated = s:activate_plugin_manager()
@@ -267,7 +267,7 @@ inoremap <C-k> <C-o>D
 inoremap <C-n> <Down>
 inoremap <C-p> <Up>
 
-" Refer to history in Command-line mode
+" Refer to history in command-line mode
 cnoremap <C-p> <Up>
 cnoremap <Up> <C-p>
 cnoremap <C-n> <Down>
@@ -291,7 +291,7 @@ nnoremap K <Nop>
 " }}}
 
 
-" File Types {{{
+" File types {{{
 augroup vimrc_filetype
 	autocmd!
 	autocmd BufNewFile,BufRead *.as      setlocal filetype=javascript
@@ -517,14 +517,14 @@ let g:plugin_dicwin_disable = 1
 " }}}
 
 
-" Local Settings {{{
+" Local settings {{{
 if filereadable(s:env.path.local_vimrc)
 	execute 'source ' . s:env.path.local_vimrc
 endif
 " }}}
 
 
-" Color Scheme {{{
+" Color scheme {{{
 if s:plugins_activated
 	if !has('gui_running')
 		syntax enable
