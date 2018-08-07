@@ -54,6 +54,7 @@ let s:plugins = [
 			\ 	'cocopon/ntdcoco.vim',
 			\ 	'cocopon/pgmnt.vim',
 			\ 	'cocopon/shadeline.vim',
+			\ 	'cocopon/snapbuffer.vim',
 			\ 	'cocopon/vaffle.vim',
 			\ 	'ctrlpvim/ctrlp.vim',
 			\ 	'digitaltoad/vim-jade',
@@ -70,10 +71,12 @@ let s:plugins = [
 			\ 	'leafgarland/typescript-vim',
 			\ 	'lifepillar/vim-mucomplete',
 			\ 	'mattn/emmet-vim',
+			\ 	'morhetz/gruvbox',
 			\ 	'mxw/vim-jsx',
 			\ 	'neovimhaskell/haskell-vim',
 			\ 	'onemanstartup/vim-slim',
 			\ 	'pangloss/vim-javascript',
+			\ 	'prettier/vim-prettier',
 			\ 	'previm/previm',
 			\ 	'rking/ag.vim',
 			\ 	'sophacles/vim-processing',
@@ -444,6 +447,12 @@ if s:plugins_activated
 
 	" pgmnt {{{
 	let g:pgmnt_auto_source = 1
+	" }}}
+
+	" prettier
+	" {{{
+	let g:prettier#exec_cmd_async = 1
+	let g:prettier#quickfix_enabled = 0
 	" }}}
 
 	" quickrun {{{
