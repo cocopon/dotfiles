@@ -28,8 +28,12 @@ if has('gui_running')
 	endif
 
 	" Misc
-	set guioptions-=m
+	set guioptions-=L
+	set guioptions-=R
 	set guioptions-=T
+	set guioptions-=l
+	set guioptions-=m
+	set guioptions-=r
 	set showtabline=2
 	set visualbell t_vb=
 end
