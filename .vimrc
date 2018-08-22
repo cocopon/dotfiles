@@ -19,7 +19,7 @@ scriptencoding utf-8
 function! VimrcEnvironment()
 	let env = {}
 	let env.is_mac = has('mac')
-	let env.is_win = has('win32') || has('win64')
+	let env.is_win = has('win32')
 
 	let user_dir = env.is_win
 				\ ? expand('$VIM/vimfiles')
