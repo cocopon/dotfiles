@@ -332,7 +332,7 @@ set wrap
 " Backup
 set nobackup
 set noswapfile
-execute 'set undodir=' . s:env.path.undo
+let &undodir = s:env.path.undo
 set undofile
 
 " IME
