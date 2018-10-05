@@ -428,6 +428,11 @@ if s:plugins_activated
 	let g:javascript_plugin_flow = 1
 	" }}}
 
+	" linediff {{{
+	let g:linediff_first_buffer_command = 'new'
+	let g:linediff_further_buffer_command = 'vertical new'
+	" }}}
+
 	" mucomplete {{{
 	let g:mucomplete#enable_auto_at_startup = 1
 	let g:mucomplete#no_mappings = 1
