@@ -51,12 +51,14 @@ let s:plugins = [
 			\ 	'cespare/vim-toml',
 			\ 	'cocopon/colorswatch.vim',
 			\ 	'cocopon/iceberg.vim',
+			\ 	'cocopon/inspecthi.vim',
 			\ 	'cocopon/ntdcoco.vim',
 			\ 	'cocopon/pgmnt.vim',
 			\ 	'cocopon/shadeline.vim',
 			\ 	'cocopon/snapbuffer.vim',
 			\ 	'cocopon/vaffle.vim',
 			\ 	'ctrlpvim/ctrlp.vim',
+			\ 	'delphinus/vim-auto-cursorline',
 			\ 	'editorconfig/editorconfig-vim',
 			\ 	'fatih/vim-go',
 			\ 	'flowtype/vim-flow',
@@ -68,6 +70,7 @@ let s:plugins = [
 			\ 	'leafgarland/typescript-vim',
 			\ 	'lifepillar/vim-mucomplete',
 			\ 	'mattn/emmet-vim',
+			\ 	'mattn/sonictemplate-vim',
 			\ 	'morhetz/gruvbox',
 			\ 	'mxw/vim-jsx',
 			\ 	'neovimhaskell/haskell-vim',
@@ -499,6 +502,10 @@ if s:plugins_activated
 					\ : ''
 		return empty(name) ? '' : printf('(%s)', name)
 	endfunction
+	" }}}
+
+	" sonictemplate {{{
+	let g:sonictemplate_vim_template_dir = s:env.path.plugins . '/sonictemplate-templates/template'
 	" }}}
 
 	" vaffle {{{
