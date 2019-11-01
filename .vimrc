@@ -46,7 +46,6 @@ let s:env = VimrcEnvironment()
 let s:plugins = [
 			\ 	'AndrewRadev/linediff.vim',
 			\ 	'Shougo/vimproc',
-			\ 	'Shougo/vinarise',
 			\ 	'Vimjas/vim-python-pep8-indent',
 			\ 	'cespare/vim-toml',
 			\ 	'cocopon/colorswatch.vim',
@@ -60,7 +59,6 @@ let s:plugins = [
 			\ 	'ctrlpvim/ctrlp.vim',
 			\ 	'delphinus/vim-auto-cursorline',
 			\ 	'editorconfig/editorconfig-vim',
-			\ 	'fatih/vim-go',
 			\ 	'flowtype/vim-flow',
 			\ 	'itchyny/thumbnail.vim',
 			\ 	'jparise/vim-graphql',
