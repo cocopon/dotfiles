@@ -66,11 +66,11 @@ let s:plugins = [
 			\ 	'kana/vim-textobj-indent',
 			\ 	'kana/vim-textobj-user',
 			\ 	'leafgarland/typescript-vim',
-			\ 	'lifepillar/vim-mucomplete',
 			\ 	'mattn/emmet-vim',
 			\ 	'mattn/sonictemplate-vim',
 			\ 	'morhetz/gruvbox',
 			\ 	'mxw/vim-jsx',
+			\ 	'neoclide/coc.nvim',
 			\ 	'neovimhaskell/haskell-vim',
 			\ 	'pangloss/vim-javascript',
 			\ 	'prettier/vim-prettier',
@@ -389,6 +389,10 @@ if s:plugins_activated
 	map <silent> w <Plug>CamelCaseMotion_w
 	" }}}
 
+	" coc {{{
+	let g:coc_config_home = s:env.path.data . '/coc'
+	" }}}
+
 	" ctrlp {{{
 	let g:ctrlp_cache_dir = s:env.path.data . '/ctrlp'
 	let g:ctrlp_clear_cache_on_exit = 0
@@ -432,11 +436,6 @@ if s:plugins_activated
 	" linediff {{{
 	let g:linediff_first_buffer_command = 'new'
 	let g:linediff_further_buffer_command = 'vertical new'
-	" }}}
-
-	" mucomplete {{{
-	let g:mucomplete#enable_auto_at_startup = 1
-	let g:mucomplete#no_mappings = 1
 	" }}}
 
 	" ntdcoco {{{
