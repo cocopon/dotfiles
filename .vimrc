@@ -282,6 +282,9 @@ inoremap <C-@> <Nop>
 " For US keyboard
 noremap ; :
 
+" Clear hlsearch
+nnoremap <silent> <Esc><Esc> :<C-u>set nopaste<CR>:nohlsearch<CR>:diffoff!<CR>
+
 " Misc
 nnoremap Y y$
 nnoremap K <Nop>
