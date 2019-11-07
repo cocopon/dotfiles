@@ -270,8 +270,8 @@ cnoremap <Up> <C-p>
 cnoremap <C-n> <Down>
 cnoremap <Down> <C-n>
 
-" Open the parent directory, or the current directory if not saved yet
-nnoremap <silent> <C-u> :execute 'e ' . ((strlen(bufname('')) == 0) ? '.' : '%:h')<CR>
+" Open the parent directory, or the current directory if empty
+nnoremap <silent> <C-u> :Vaffle<CR>
 
 " Insert escaped '/' while inputting a search pattern
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
