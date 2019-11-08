@@ -232,7 +232,7 @@ let s:plugins_activated = s:activate_plugin_manager()
 " }}}
 
 
-" Mapping {{{
+" Mappings {{{
 " Turn off the IME when escaping from Insert mode
 inoremap <silent> <ESC> <ESC>:<C-u>set iminsert=0<CR>
 
@@ -303,6 +303,15 @@ augroup vimrc_filetype
 	autocmd FileType text      setlocal textwidth=0
 	autocmd FileType vim       setlocal foldmethod=marker
 augroup END
+" }}}
+
+
+" Terminal {{{
+tnoremap <ESC><ESC> <C-\><C-n>
+
+if exists('&ttermwinkey')
+	set termwinkey=<C-_>
+endif
 " }}}
 
 
