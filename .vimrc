@@ -309,7 +309,7 @@ augroup END
 " Terminal {{{
 tnoremap <ESC><ESC> <C-\><C-n>
 
-if exists('&ttermwinkey')
+if exists('&termwinkey')
 	set termwinkey=<C-_>
 endif
 " }}}
