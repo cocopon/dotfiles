@@ -556,5 +556,9 @@ if s:plugins_activated
 			execute printf('autocmd GUIEnter * colorscheme %s', s:colorscheme)
 		augroup END
 	endif
+
+	if $COLORTERM ==# 'truecolor' || $COLORTERM ==# '24bit'
+		set termguicolors
+	endif
 endif
 " }}}
