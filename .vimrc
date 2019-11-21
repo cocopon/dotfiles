@@ -403,6 +403,9 @@ if s:plugins_activated
 	" }}}
 
 	" coc {{{
+	let g:coc_global_extensions = [
+				\   'coc-omnisharp',
+				\ ]
 	let g:coc_config_home = s:env.path.data . '/coc'
 	" }}}
 
