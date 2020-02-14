@@ -92,7 +92,6 @@ let s:plugins = [
 			\ 	'tweekmonster/helpful.vim',
 			\ 	'tyru/open-browser.vim',
 			\ 	'ujihisa/camelcasemotion',
-			\ 	'vim-jp/vital.vim',
 			\ 	'w0ng/vim-hybrid',
 			\ 	'w0rp/ale',
 			\ ]
