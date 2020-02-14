@@ -66,6 +66,7 @@ let s:plugins = [
 			\ 	'junegunn/vim-easy-align',
 			\ 	'kana/vim-textobj-indent',
 			\ 	'kana/vim-textobj-user',
+			\ 	'lambdalisue/gina.vim',
 			\ 	'leafgarland/typescript-vim',
 			\ 	'mattn/emmet-vim',
 			\ 	'mattn/sonictemplate-vim',
@@ -86,7 +87,6 @@ let s:plugins = [
 			\ 	'thinca/vim-zenspace',
 			\ 	'tikhomirov/vim-glsl',
 			\ 	'tomtom/tcomment_vim',
-			\ 	'tpope/vim-fugitive',
 			\ 	'tpope/vim-markdown',
 			\ 	'tpope/vim-surround',
 			\ 	'tweekmonster/helpful.vim',
@@ -442,6 +442,10 @@ if s:plugins_activated
 	let g:flow#omnifunc = 0
 	" }}
 
+	" gina {{{
+	let g:gina#command#blame#use_default_mappings = 0
+	" }}}
+
 	" go {{{
 	let g:go_version_warning = 0
 	" }}}
@@ -511,8 +515,8 @@ if s:plugins_activated
 				\ }
 
 	function! ShadelineItemGitBranch()
-		let name = exists('*fugitive#head')
-					\ ? fugitive#head()
+		let name = exists('*gina#component#repo#branch')
+					\ ? gina#component#repo#branch()
 					\ : ''
 		return empty(name) ? '' : printf('(%s)', name)
 	endfunction
