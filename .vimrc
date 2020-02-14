@@ -404,7 +404,9 @@ if s:plugins_activated
 
 	" coc {{{
 	let g:coc_global_extensions = [
+				\   'coc-css',
 				\   'coc-omnisharp',
+				\   'coc-tsserver',
 				\ ]
 	let g:coc_config_home = s:env.path.data . '/coc'
 	" }}}
