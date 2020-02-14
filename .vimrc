@@ -47,6 +47,7 @@ let s:plugins = [
 			\ 	'AndrewRadev/linediff.vim',
 			\ 	'Shougo/vimproc',
 			\ 	'Vimjas/vim-python-pep8-indent',
+			\ 	'andymass/vim-matchup',
 			\ 	'cespare/vim-toml',
 			\ 	'cocopon/colorswatch.vim',
 			\ 	'cocopon/iceberg.vim',
@@ -92,7 +93,6 @@ let s:plugins = [
 			\ 	'tyru/open-browser.vim',
 			\ 	'ujihisa/camelcasemotion',
 			\ 	'vim-jp/vital.vim',
-			\ 	'vim-scripts/matchit.zip',
 			\ 	'w0ng/vim-hybrid',
 			\ 	'w0rp/ale',
 			\ ]
@@ -527,6 +527,7 @@ if s:plugins_activated
 endif
 
 " Disable unused plugins
+let g:loaded_matchit = 1
 let g:loaded_gzip = 1
 let g:loaded_tar = 1
 let g:loaded_tarPlugin = 1
