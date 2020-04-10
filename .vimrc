@@ -459,6 +459,12 @@ if s:plugins_activated
 	let g:linediff_further_buffer_command = 'vertical new'
 	" }}}
 
+	" matchup {{{
+	let g:matchup_matchparen_offscreen = {
+				\ 	'method': 'popup',
+				\ }
+	" }}}
+
 	" ntdcoco {{{
 	nmap <Bar> <Plug>(ntdcoco-toggle-cursor)
 	" }}}
