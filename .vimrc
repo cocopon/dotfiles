@@ -521,10 +521,13 @@ if s:plugins_activated
 				\ }
 
 	function! ShadelineItemGitBranch()
-		let name = exists('*gina#component#repo#branch')
-					\ ? gina#component#repo#branch()
-					\ : ''
-		return empty(name) ? '' : printf('(%s)', name)
+		try
+			let name = gina#component#repo#branch()
+			return empty(name) ? '' : printf('(%s)', name)
+		catch /:E117:/
+			" E117: Unknown function
+			return ''
+		endtry
 	endfunction
 	" }}}
 
