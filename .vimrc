@@ -270,7 +270,7 @@ cnoremap <C-n> <Down>
 cnoremap <Down> <C-n>
 
 " Open the parent directory, or the current directory if empty
-nnoremap <silent> <C-u> :Vaffle<CR>
+nnoremap <silent> <C-u> :<C-u>call vaffle#init(expand('%'))<CR>
 
 " Insert escaped '/' while inputting a search pattern
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
