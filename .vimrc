@@ -318,6 +318,7 @@ endif
 set completeopt=menu,menuone,noinsert,noselect
 set display=lastline
 set grepprg=grep\ -nH
+set mouse=a
 set nrformats-=octal
 set shortmess=acTI
 set splitright
