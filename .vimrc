@@ -63,6 +63,7 @@ let s:plugins = [
 			\ 	'editorconfig/editorconfig-vim',
 			\ 	'flowtype/vim-flow',
 			\ 	'itchyny/thumbnail.vim',
+			\ 	'iberianpig/tig-explorer.vim',
 			\ 	'jparise/vim-graphql',
 			\ 	'junegunn/vim-easy-align',
 			\ 	'kana/vim-textobj-indent',
