@@ -49,6 +49,7 @@ let s:plugins = [
 			\ 	'Vimjas/vim-python-pep8-indent',
 			\ 	'andymass/vim-matchup',
 			\ 	'cespare/vim-toml',
+			\ 	'chaoren/vim-wordmotion',
 			\ 	'cocopon/colorswatch.vim',
 			\ 	'cocopon/iceberg.vim',
 			\ 	'cocopon/inspecthi.vim',
@@ -91,7 +92,6 @@ let s:plugins = [
 			\ 	'tpope/vim-surround',
 			\ 	'tweekmonster/helpful.vim',
 			\ 	'tyru/open-browser.vim',
-			\ 	'ujihisa/camelcasemotion',
 			\ 	'w0ng/vim-hybrid',
 			\ 	'w0rp/ale',
 			\ ]
@@ -394,12 +394,6 @@ if s:plugins_activated
 	let g:ale_open_list = 1
 	let g:ale_set_loclist = 0
 	let g:ale_set_quickfix = 0
-	" }}}
-
-	" camelcasemotion {{{
-	map <silent> b <Plug>CamelCaseMotion_b
-	map <silent> e <Plug>CamelCaseMotion_e
-	map <silent> w <Plug>CamelCaseMotion_w
 	" }}}
 
 	" coc {{{
