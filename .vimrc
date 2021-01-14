@@ -62,8 +62,8 @@ let s:plugins = [
 			\ 	'delphinus/vim-auto-cursorline',
 			\ 	'editorconfig/editorconfig-vim',
 			\ 	'flowtype/vim-flow',
-			\ 	'itchyny/thumbnail.vim',
 			\ 	'iberianpig/tig-explorer.vim',
+			\ 	'itchyny/thumbnail.vim',
 			\ 	'jparise/vim-graphql',
 			\ 	'junegunn/vim-easy-align',
 			\ 	'kana/vim-textobj-indent',
@@ -72,11 +72,16 @@ let s:plugins = [
 			\ 	'leafgarland/typescript-vim',
 			\ 	'mattn/emmet-vim',
 			\ 	'mattn/sonictemplate-vim',
+			\ 	'mattn/vim-lsp-settings',
 			\ 	'morhetz/gruvbox',
 			\ 	'mxw/vim-jsx',
-			\ 	'neoclide/coc.nvim',
 			\ 	'neovimhaskell/haskell-vim',
 			\ 	'pangloss/vim-javascript',
+			\ 	'prabirshrestha/asyncomplete-buffer.vim',
+			\ 	'prabirshrestha/asyncomplete-file.vim',
+			\ 	'prabirshrestha/asyncomplete-lsp.vim',
+			\ 	'prabirshrestha/asyncomplete.vim',
+			\ 	'prabirshrestha/vim-lsp',
 			\ 	'prettier/vim-prettier',
 			\ 	'previm/previm',
 			\ 	'rking/ag.vim',
@@ -391,19 +396,29 @@ if s:plugins_activated
 	" ale {{{
 	let g:ale_linters = {
 				\ 	'javascript': ['eslint', 'flow'],
+				\ 	'typescript': ['tsserver'],
 				\ }
 	let g:ale_open_list = 1
 	let g:ale_set_loclist = 0
 	let g:ale_set_quickfix = 0
+	let g:ale_virtualtext_cursor = 1
 	" }}}
 
-	" coc {{{
-	let g:coc_global_extensions = [
-				\   'coc-css',
-				\   'coc-omnisharp',
-				\   'coc-tsserver',
-				\ ]
-	let g:coc_config_home = s:env.path.data . '/coc'
+	" asyncomplete.vim {{{
+	call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+				\		'name': 'buffer',
+				\ 	'allowlist': ['*'],
+				\ 	'blocklist': ['go'],
+				\ 	'completor': function('asyncomplete#sources#buffer#completor'),
+				\ }))
+
+	if !has('nvim')
+		autocmd User lsp_float_opened
+					\ call popup_setoptions(lsp#ui#vim#output#getpreviewwinid(), {
+					\ 	'border': [0, 0, 0, 0],
+					\ 	'padding': [0, 1, 0, 1],
+					\ })
+	end
 	" }}}
 
 	" ctrlp {{{
