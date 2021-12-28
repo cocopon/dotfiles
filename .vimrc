@@ -365,8 +365,8 @@ endif
 set noexpandtab
 set nosmartindent
 set shiftround
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 " Scroll
 set scrolloff=8
