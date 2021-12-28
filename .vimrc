@@ -44,6 +44,10 @@ let s:env = VimrcEnvironment()
 
 " Required plugins {{{
 let s:plugins = [
+			\ 	'bluz71/vim-nightfly-guicolors',
+			\ 	'kyazdani42/blue-moon',
+			\ 	'arcticicestudio/nord-vim',
+			\ 	'mhartington/oceanic-next',
 			\ 	'AndrewRadev/linediff.vim',
 			\ 	'Shougo/vimproc',
 			\ 	'Vimjas/vim-python-pep8-indent',
@@ -72,16 +76,10 @@ let s:plugins = [
 			\ 	'leafgarland/typescript-vim',
 			\ 	'mattn/emmet-vim',
 			\ 	'mattn/sonictemplate-vim',
-			\ 	'mattn/vim-lsp-settings',
 			\ 	'morhetz/gruvbox',
 			\ 	'mxw/vim-jsx',
 			\ 	'neovimhaskell/haskell-vim',
 			\ 	'pangloss/vim-javascript',
-			\ 	'prabirshrestha/asyncomplete-buffer.vim',
-			\ 	'prabirshrestha/asyncomplete-file.vim',
-			\ 	'prabirshrestha/asyncomplete-lsp.vim',
-			\ 	'prabirshrestha/asyncomplete.vim',
-			\ 	'prabirshrestha/vim-lsp',
 			\ 	'prettier/vim-prettier',
 			\ 	'previm/previm',
 			\ 	'rking/ag.vim',
@@ -101,6 +99,30 @@ let s:plugins = [
 			\ 	'w0ng/vim-hybrid',
 			\ 	'w0rp/ale',
 			\ ]
+if has('nvim')
+	call extend(s:plugins, [
+				\ 	'hrsh7th/cmp-nvim-lsp',
+				\ 	'hrsh7th/cmp-buffer',
+				\ 	'hrsh7th/cmp-path',
+				\ 	'hrsh7th/cmp-cmdline',
+				\ 	'hrsh7th/cmp-vsnip',
+				\ 	'hrsh7th/nvim-cmp',
+				\ 	'hrsh7th/vim-vsnip',
+				\ 	'neovim/nvim-lspconfig',
+				\ 	'nvim-treesitter/nvim-treesitter',
+				\ 	'nvim-treesitter/playground',
+				\ 	'williamboman/nvim-lsp-installer',
+				\ ])
+else
+	call extend(s:plugins, [
+				\ 	'mattn/vim-lsp-settings',
+				\ 	'prabirshrestha/asyncomplete-buffer.vim',
+				\ 	'prabirshrestha/asyncomplete-file.vim',
+				\ 	'prabirshrestha/asyncomplete-lsp.vim',
+				\ 	'prabirshrestha/asyncomplete.vim',
+				\ 	'prabirshrestha/vim-lsp',
+				\ ])
+endif
 let s:colorscheme = 'iceberg'
 " }}}
 
@@ -405,20 +427,20 @@ if s:plugins_activated
 	" }}}
 
 	" asyncomplete.vim {{{
-	call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-				\		'name': 'buffer',
-				\ 	'allowlist': ['*'],
-				\ 	'blocklist': ['go'],
-				\ 	'completor': function('asyncomplete#sources#buffer#completor'),
-				\ }))
-
-	if !has('nvim')
-		autocmd User lsp_float_opened
-					\ call popup_setoptions(lsp#ui#vim#output#getpreviewwinid(), {
-					\ 	'border': [0, 0, 0, 0],
-					\ 	'padding': [0, 1, 0, 1],
-					\ })
-	end
+	try
+		call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+					\ 	'name': 'buffer',
+					\ 	'allowlist': ['*'],
+					\ 	'completor': function('asyncomplete#sources#buffer#completor'),
+					\ }))
+		call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+					\ 	'name': 'file',
+					\ 	'allowlist': ['*'],
+					\ 	'completor': function('asyncomplete#sources#file#completor')
+					\ }))
+	catch /:E117:/
+		" E117: Unknown function
+	endtry
 	" }}}
 
 	" ctrlp {{{
