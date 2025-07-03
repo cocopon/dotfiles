@@ -44,13 +44,7 @@ let s:env = VimrcEnvironment()
 
 " Required plugins {{{
 let s:plugins = [
-			\ 	'bluz71/vim-nightfly-guicolors',
-			\ 	'kyazdani42/blue-moon',
-			\ 	'arcticicestudio/nord-vim',
-			\ 	'mhartington/oceanic-next',
 			\ 	'AndrewRadev/linediff.vim',
-			\ 	'Shougo/vimproc',
-			\ 	'Vimjas/vim-python-pep8-indent',
 			\ 	'andymass/vim-matchup',
 			\ 	'cespare/vim-toml',
 			\ 	'chaoren/vim-wordmotion',
@@ -65,22 +59,12 @@ let s:plugins = [
 			\ 	'ctrlpvim/ctrlp.vim',
 			\ 	'delphinus/vim-auto-cursorline',
 			\ 	'editorconfig/editorconfig-vim',
-			\ 	'flowtype/vim-flow',
-			\ 	'iberianpig/tig-explorer.vim',
-			\ 	'itchyny/thumbnail.vim',
-			\ 	'jparise/vim-graphql',
 			\ 	'junegunn/vim-easy-align',
 			\ 	'kana/vim-textobj-indent',
 			\ 	'kana/vim-textobj-user',
-			\ 	'lambdalisue/gina.vim',
 			\ 	'leafgarland/typescript-vim',
 			\ 	'mattn/emmet-vim',
-			\ 	'mattn/sonictemplate-vim',
-			\ 	'morhetz/gruvbox',
 			\ 	'mxw/vim-jsx',
-			\ 	'neovimhaskell/haskell-vim',
-			\ 	'pangloss/vim-javascript',
-			\ 	'prettier/vim-prettier',
 			\ 	'previm/previm',
 			\ 	'rking/ag.vim',
 			\ 	'sophacles/vim-processing',
@@ -96,31 +80,12 @@ let s:plugins = [
 			\ 	'tpope/vim-surround',
 			\ 	'tweekmonster/helpful.vim',
 			\ 	'tyru/open-browser.vim',
-			\ 	'w0ng/vim-hybrid',
 			\ 	'w0rp/ale',
 			\ ]
 if has('nvim')
 	call extend(s:plugins, [
-				\ 	'hrsh7th/cmp-nvim-lsp',
-				\ 	'hrsh7th/cmp-buffer',
-				\ 	'hrsh7th/cmp-path',
-				\ 	'hrsh7th/cmp-cmdline',
-				\ 	'hrsh7th/cmp-vsnip',
-				\ 	'hrsh7th/nvim-cmp',
-				\ 	'hrsh7th/vim-vsnip',
-				\ 	'neovim/nvim-lspconfig',
 				\ 	'nvim-treesitter/nvim-treesitter',
 				\ 	'nvim-treesitter/playground',
-				\ 	'williamboman/nvim-lsp-installer',
-				\ ])
-else
-	call extend(s:plugins, [
-				\ 	'mattn/vim-lsp-settings',
-				\ 	'prabirshrestha/asyncomplete-buffer.vim',
-				\ 	'prabirshrestha/asyncomplete-file.vim',
-				\ 	'prabirshrestha/asyncomplete-lsp.vim',
-				\ 	'prabirshrestha/asyncomplete.vim',
-				\ 	'prabirshrestha/vim-lsp',
 				\ ])
 endif
 let s:colorscheme = 'iceberg'
@@ -426,23 +391,6 @@ if s:plugins_activated
 	let g:ale_virtualtext_cursor = 1
 	" }}}
 
-	" asyncomplete.vim {{{
-	try
-		call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-					\ 	'name': 'buffer',
-					\ 	'allowlist': ['*'],
-					\ 	'completor': function('asyncomplete#sources#buffer#completor'),
-					\ }))
-		call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-					\ 	'name': 'file',
-					\ 	'allowlist': ['*'],
-					\ 	'completor': function('asyncomplete#sources#file#completor')
-					\ }))
-	catch /:E117:/
-		" E117: Unknown function
-	endtry
-	" }}}
-
 	" ctrlp {{{
 	let g:ctrlp_cache_dir = s:env.path.data . '/ctrlp'
 	let g:ctrlp_clear_cache_on_exit = 0
@@ -470,23 +418,6 @@ if s:plugins_activated
 	nnoremap <C-g> :CtrlPMixed<CR>
 	" }}}
 
-	" flow {{
-	let g:flow#enable = 0
-	let g:flow#omnifunc = 0
-	" }}
-
-	" gina {{{
-	let g:gina#command#blame#use_default_mappings = 0
-	" }}}
-
-	" go {{{
-	let g:go_version_warning = 0
-	" }}}
-
-	" javascript {{{
-	let g:javascript_plugin_flow = 1
-	" }}}
-
 	" linediff {{{
 	let g:linediff_first_buffer_command = 'new'
 	let g:linediff_further_buffer_command = 'vertical new'
@@ -508,12 +439,6 @@ if s:plugins_activated
 
 	" pgmnt {{{
 	let g:pgmnt_auto_source = 1
-	" }}}
-
-	" prettier
-	" {{{
-	let g:prettier#exec_cmd_async = 1
-	let g:prettier#quickfix_enabled = 0
 	" }}}
 
 	" quickrun {{{
@@ -562,10 +487,6 @@ if s:plugins_activated
 			return ''
 		endtry
 	endfunction
-	" }}}
-
-	" sonictemplate {{{
-	let g:sonictemplate_vim_template_dir = s:env.path.plugins . '/sonictemplate-templates/template'
 	" }}}
 
 	" vaffle {{{
